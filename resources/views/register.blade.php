@@ -18,13 +18,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="mb-4 text-center border rounded">
-                    <h2 class="my-4">Criar nova conta:</h2>
-                    <h4 class="my-4">Já tem conta? Faça aqui seu login</h4>
+                <div class="row mb-4 text-center border rounded" style="background-color: #edf2f7">
+                    <h2 class="mt-4">Criar nova conta:</h2>
+                    <h4 class="my-2">Já tem uma conta? Faça seu login <a href="{{route('login')}}"> aqui</a></h4>
                 </div>
                 <form action="{{route('registrar')}}" method="post">
                     @csrf
-                    <div class="row border rounded mb-4">
+                    <div class="row border rounded mb-4 " style="background-color: #edf2f7">
                         <div class="col-md-6">
                             <div class="my-4">
                                 <label for="nome" class="form-label">Nome:</label>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tipoUsuario')->nullable()->default('2');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->string('funcao');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('tipoUsuario')->references('id')->on('tipo_usuario');
         });
     }
 

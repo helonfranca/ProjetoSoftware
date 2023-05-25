@@ -5,30 +5,44 @@ namespace App\Http\Controllers;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\URL;
 
 class AuthController extends Controller
 {
     public function showPagePrincipal()
     {
+        if (Auth::check()) {
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
+        }
+
         return view('welcome');
     }
 
     public function showPageLogin()
     {
+        if (Auth::check()) {
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
+        }
+
         return view('login');
     }
 
     public function showRegistroForm()
     {
+        if (Auth::check()) {
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
+        }
         return view('register');
     }
 
     public function showRecuperarSenhaForm()
     {
+        if (Auth::check()) {
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
+        }
         return view('recuperarSenha');
     }
 
@@ -49,9 +63,9 @@ class AuthController extends Controller
         $response = PASSWORD::broker()->sendResetLink(
             $request->only('email'),
             function ($user, $resetToken) {
-                    $resetUrl = URL::to('/resetar-senha/' . $resetToken);
-                    $user->notify(new ResetPasswordNotification($resetToken, $resetUrl));
-                }
+                $resetUrl = URL::to('/resetar-senha/' . $resetToken);
+                $user->notify(new ResetPasswordNotification($resetToken, $resetUrl));
+            }
         );
 
         if ($response == Password::RESET_LINK_SENT) {
@@ -104,7 +118,7 @@ class AuthController extends Controller
 
     public function registrar(Request $request)
     {
-         //Validação dos dados do formulário
+        //Validação dos dados do formulário
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -114,6 +128,7 @@ class AuthController extends Controller
             'instituicao' => 'required',
         ],[
             'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'bhdbfsd',
             'email.required' => 'O campo de email é obrigatório.',
             'email.email' => 'Informe um endereço de email válido.',
             'email.unique' => 'Endereço de email já estar em uso.',
@@ -162,8 +177,9 @@ class AuthController extends Controller
             $usuario = Auth::user();
 
             session(['nome_usuario' => $usuario->name]);
-
-            return view('pages.projetos');
+            //echo Auth::user();
+            //dd(Auth::check());
+            return redirect('/projetos');
 
         } else {
             // Credenciais informadas estão incorretas
