@@ -19,10 +19,30 @@
 
         {{--Template gerenciar projetos--}}
         <div class="dashboard-app">
-            <div class="dashboard-content ms-5">
+            <div class="dashboard-content">
                 <div class="container">
                     <div class="card sm-2 p-2">
                         <h2 class="text-center mb-3 p-3" id="tabelacrud">Gerenciar projetos</h2>
+                        @if(session('success'))
+                            <div id="mensagemSucesso" class="alert alert-success text-center my-2">
+                                <span>{{ session('success') }}</span>
+                            </div>
+                        @endif
+
+                        @if(session('error'))
+                            <div id="mensagemError" class="alert alert-danger text-center my-2">
+                                <span>{{ session('error') }}</span>
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger text-center my-1 mensagemError">
+                                    <span>{{ $error }}</span>
+                                </div>
+                            @endforeach
+                        @endif
+
                         <div class="d-flex justify-content-end">
                             <a id="colorb" href="#addEmployeeModal" class="btn btn-dark my-1 me-2" data-toggle="modal">
                                 <div class="d-flex align-items-center">
@@ -31,7 +51,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <table class="table table-striped table-bordered" id="projectTable">
                             <thead>
                                 <tr class="text-center">
@@ -44,24 +63,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($projetos as $projeto)
                                 <tr class="text-center">
-                                    <th scope="row">1</th>
-                                    <td>Imuno</td>
-                                    <td>99/99/99</td>
-                                    <td>99/99/99</td>
-                                    <td>Finalizado</td>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $projeto->titulo}}</td>
+                                    <td>{{ date('d/m/Y', strtotime($projeto->data_inicial))}}</td>
+                                    <td>{{ date('d/m/Y', strtotime($projeto->data_final))}}</td>
+                                    <td>{{ $projeto->status }}</td>
                                     <td scope="col" class="text-center">
-                                        <a href="#viewEmployeeModal" class="view" data-toggle="modal">
+                                        <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">
                                             <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
                                         </a>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                        <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
                                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                         </a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
                                             <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                         </a>
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -70,48 +91,13 @@
         </div>
 
         @include('components.modais')
+
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#projectTable').DataTable({
-            language: {
-                url: '{{asset('js/pt-BR.json')}}'
-            },
-            lengthMenu: [5,10],
-            paging: true, // Ativar paginação
-            searching: true, // Ativar barra de pesquisa
-            // Outras opções personalizadas, se necessário
-            });
-        });
-         $(document).ready(function() {
-            // Ativar tooltip
-            $('[data-toggle="tooltip"]').tooltip();
-
-            const mobileScreen = window.matchMedia("(max-width: 990px)");
-
-            $(".dashboard-nav-dropdown-toggle").click(function() {
-                $(this).closest(".dashboard-nav-dropdown")
-                    .toggleClass("show")
-                    .find(".dashboard-nav-dropdown")
-                    .removeClass("show");
-                $(this).parent()
-                    .siblings()
-                    .removeClass("show");
-            });
-
-            $(".menu-toggle").click(function() {
-                if (mobileScreen.matches) {
-                    $(".dashboard-nav").toggleClass("mobile-show");
-                } else {
-                    $(".dashboard").toggleClass("dashboard-compact");
-                }
-            });
-        });
-    </script>
+    <script src="{{asset('js/crudProjeto.js')}}"></script>
 </body>
 </html>
