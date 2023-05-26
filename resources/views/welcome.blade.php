@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-12 ">
+            <div class="col-md-6 col-12 pe-0">
                 <img src="{{ asset('img/pessoaMicroscopio.jpg') }}"  alt="microscopio" width="100%" height="100%">
             </div>
         </div>

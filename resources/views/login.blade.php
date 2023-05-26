@@ -38,7 +38,7 @@
                             <input type="password" id="Password" class="form-control" placeholder="Sua Senha" name="password"  autocomplete="current-password">
                         </div>
 
-                        <div class="text-center mt-4">
+                        <div class="text-center mt-4 mb-4">
                             <button type="submit" class="btn btn-primary px-4">Entrar</button>
                         </div>
 
