@@ -9,6 +9,10 @@
           integrity="sha512" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+
 </head>
 
 <body>
@@ -22,28 +26,40 @@
                     <h2 class="mt-4">Criar nova conta:</h2>
                     <h4 class="my-2">Já tem uma conta? Faça seu login <a href="{{route('login')}}"> aqui</a></h4>
                 </div>
-                <form action="{{route('registrar')}}" method="post">
-                    @csrf
+                <form action="{{route('registrar')}}" method="post" class="needs-validation" novalidate>
+                    @csrf 
                     <div class="row border rounded mb-4 " style="background-color: #edf2f7">
                         <div class="col-md-6">
                             <div class="my-4">
                                 <label for="nome" class="form-label">Nome:</label>
-                                <input type="text" class="form-control" id="nome" name="name">
+                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-z]{1,300}" required>
+                                <div class="invalid-feedback">
+                                    O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
+                                </div>
                             </div>
 
                             <div class="my-4">
                                 <label for="email" class="form-label">E-mail:</label>
-                                <input type="email" class="form-control" id="email" name="email">
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">
+                                    Digite um e-mail válido.
+                                </div>
                             </div>
 
                             <div class="my-4">
                                 <label for="password" class="form-label">Senha:</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" required minlength="8" maxlength="30">
+                                <div class="invalid-feedback">
+                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                </div>
                             </div>
 
                             <div class="my-4">
                                 <label for="confirm_password" class="form-label">Repetir Senha:</label>
-                                <input type="password" class="form-control" name="confirm_password">
+                                <input type="password" class="form-control" name="confirm_password" required minlength="8" maxlength="30">
+                                <div class="invalid-feedback">
+                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                </div>
                             </div>
                         </div>
 
@@ -54,8 +70,13 @@
                             </div>
 
                             <div class="my-4">
-                                <label for="telefone" class="form-label">Telefone:</label>
-                                <input type="tel" class="form-control" id="celular" name="telefone">
+                                <label for="celular" class="form-label">Celular:</label>
+                                <input type="tel" class="form-control" id="celular" name="telefone"pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" >
+                                <script> $('#celular').mask('(00) 0000-0000');</script>
+
+                                <div class="invalid-feedback">
+                                    Digite um número de celular válido com DDD.
+                                </div>
                             </div>
 
                             <div class="my-4">
@@ -107,6 +128,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/validacao.js') }}" ></script>
+
 </main>
 </body>
 </html>

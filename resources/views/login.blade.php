@@ -29,13 +29,13 @@
                             <label style="font-weight: bold; font-size: 35px;">Login</label>
                         </div>
                         <div class="my-2 mx-auto" style="max-width: 300px;">
-                            <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                            <input type="email" id="Email" class="form-control" placeholder="Seu email" name="email" autocomplete="username" autofocus>
+                            <label for="Email" class="form-label">E-mail</label>
+                            <input type="email" id="Email" class="form-control" placeholder="Seu email" name="email" autocomplete="username" autofocus required>
                         </div>
 
                         <div class="my-2 mx-auto" style="max-width: 300px;">
                             <label for="exampleInputPassword1" class="form-label text-start">Senha</label>
-                            <input type="password" id="Password" class="form-control" placeholder="Sua Senha" name="password"  autocomplete="current-password">
+                            <input type="password" id="Password" class="form-control" placeholder="Sua Senha" name="password"  autocomplete="current-password" required  minlength="8" maxlength="30">
                         </div>
 
                         <div class="text-center mt-4 mb-4">

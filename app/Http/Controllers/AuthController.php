@@ -133,7 +133,7 @@ class AuthController extends Controller
             'email.email' => 'Informe um endereço de email válido.',
             'email.unique' => 'Endereço de email já estar em uso.',
             'password.required' => 'O campo de senha é obrigatório.',
-            'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
+            'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
             'confirm_password.required' => 'O campo de confirmação de senha é obrigatório.',
             'confirm_password.same' => 'As senhas não coincidem.',
             'curriculoLattes.url' => 'Coloque um link valido para o Curriculo Lattes.',
