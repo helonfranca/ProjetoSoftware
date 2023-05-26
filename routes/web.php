@@ -37,7 +37,6 @@ Route::middleware(['auth'])->group(function () {
 
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
-
 });
 
 
