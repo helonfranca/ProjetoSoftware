@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8" />
-    <title>Meus Projetos</title>
+    <title>Editar Perfil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/crud.css')}}">
     <link rel="stylesheet" href="{{asset('css/datatable.css')}}">
