@@ -6,34 +6,43 @@
     </header>
 
     <nav class="dashboard-nav-list">
-        <a href="#" class="dashboard-nav-item">
+        <a href="{{route('home')}}" class="dashboard-nav-item">
             <i class="fas fa-home"></i>
-            Página Inicial
+            <span>Página Inicial</span>
         </a>
+        <?php $tipoUsuario = Auth::user()->tipoUsuario; ?>
+        @if($tipoUsuario == 1 )
+            <a href="#" class="dashboard-nav-item">
+                <i class="fas fa-microscope"></i>
+                <span>Cadastro de equipamentos</span>
+            </a>
+        @endif
 
         <a href="#" class="dashboard-nav-item">
             <i class="fas fa-tachometer-alt"></i>
-            Agenda de equipamentos
+            <span>Agenda de equipamentos</span>
         </a>
 
         <a href="#" class="dashboard-nav-item">
             <i class="fas fa-file-upload"></i>
-            Estoque
+            <span>Estoque de projetos</span>
         </a>
 
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-file-upload"></i>
-            Gerenciar projetos
+        <a href="{{route('projetos')}}" class="dashboard-nav-item">
+            <i class="fas fa-project-diagram"></i>
+            <spam>Meus projetos</span>
         </a>
 
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-file-upload"></i>
-            Gerenciar usuários
+        <a class="dashboard-nav-item">
+            <i class="fas fa-user"></i>
+            <?php $nomeCompleto = Auth::user()->name; ?>
+            <?php $nomes = explode(' ', $nomeCompleto); ?>
+            <span>Bem vindo, {{ $nomes[0] }}</span>
         </a>
 
         <div class="nav-item-divider"></div>
 
-        <a href="{{route('welcome')}}" class="dashboard-nav-item">
+        <a href="{{route('logout')}}" class="dashboard-nav-item">
             <i class="fas fa-sign-out-alt"></i>
             Logout
         </a>

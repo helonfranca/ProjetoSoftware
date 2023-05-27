@@ -25,5 +25,18 @@ Route::post('/resetar-senha', [AuthController::class,'updateSenha'])->name('rese
 Route::post('/recuperar_senha', [AuthController::class, 'recuperSenha'])->name('recuperar_senha');
 Route::post('/registrar/save', [AuthController::class, 'registrar'])->name('registrar');
 Route::post('/login',[AuthController::class, 'login'])->name('login');
+Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
-Route::get('/projetos', [ProjetoController::class, 'showPage'])->name('projetos');
+Route::middleware(['auth'])->group(function () {
+    //Rotas projetos
+    Route::get('/projetos', [ProjetoController::class, 'listarProjetos'])->name('projetos');
+    Route::post('/projetos/salvar', [ProjetoController::class, 'cadastrarProjeto'])->name('salvar_projeto');
+    Route::get('/projetos/visualizar/{id}', [ProjetoController::class, 'verificarProjeto'])->name('verificar_projeto');
+    Route::put('/projetos/editar', [ProjetoController::class, 'editarProjeto'])->name('editar_projeto');
+    Route::delete('/projetos/deletar', [ProjetoController::class, 'deletarProjeto'])->name('deletar_projeto');
+
+    //Rota Page principal
+    Route::get('/home', [ProjetoController::class, 'home'])->name('home');
+});
+
+
