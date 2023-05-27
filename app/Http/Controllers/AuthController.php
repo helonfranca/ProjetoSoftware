@@ -188,4 +188,13 @@ class AuthController extends Controller
         Auth::logout(); // Destruir a sessão
         return redirect('/');
     }
+
+    public function showPageEditarPerfil()
+    {
+        if (Auth::check()) {
+            return view('editarPerfil'); // Exibe a página de edição do perfil
+        }
+
+        return redirect('/login'); // Redireciona para a página de login caso o usuário não esteja autenticado
+    }
 }
