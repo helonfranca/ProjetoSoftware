@@ -192,9 +192,18 @@ class AuthController extends Controller
     public function showPageEditarPerfil()
     {
         if (Auth::check()) {
-            return view('editarPerfil'); // Exibe a página de edição do perfil
+            return view('editarPerfil'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
         }
 
-        return redirect('/login'); // Redireciona para a página de login caso o usuário não esteja autenticado
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
+    public function showPageEditarSenha()
+    {
+        if (Auth::check()) {
+            return view('editarSenha'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+        }
+
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
     }
 }

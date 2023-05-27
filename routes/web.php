@@ -28,7 +28,7 @@ Route::post('/login',[AuthController::class, 'login'])->name('login');
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 Route::get('/editarPerfil', [AuthController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
-Route::get('/alterarSenha', [AuthController::class, 'showPagealterarSenha'])->name('alterarSenha');
+Route::get('/editarSenha', [AuthController::class, 'showPageEditarSenha'])->name('editarSenha');
 
 Route::middleware(['auth'])->group(function () {
     //Rotas projetos
