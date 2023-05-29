@@ -38,7 +38,7 @@
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
                                             <div class="my-4">
                                                 <label for="nome" class="form-label">Nome:</label>
-                                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-z]{1,300}" required>
+                                                <input type="text" class="form-control" id="nome" name="name" pattern="pattern="[A-Za-zÀ-ÿ\s]{1,300}" required>
                                                 <div class="invalid-feedback">
                                                     O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
                                                 </div>

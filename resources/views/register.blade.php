@@ -27,12 +27,12 @@
                     <h4 class="my-2">Já tem uma conta? Faça seu login <a href="{{route('login')}}"> aqui</a></h4>
                 </div>
                 <form action="{{route('registrar')}}" method="post" class="needs-validation" novalidate>
-                    @csrf 
+                    @csrf
                     <div class="row border rounded mb-4 " style="background-color: #edf2f7">
                         <div class="col-md-6">
                             <div class="my-4">
                                 <label for="nome" class="form-label">Nome:</label>
-                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-z]{1,300}" required>
+                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,300}" required>
                                 <div class="invalid-feedback">
                                     O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
                                 </div>
@@ -48,18 +48,20 @@
 
                             <div class="my-4">
                                 <label for="password" class="form-label">Senha:</label>
-                                <input type="password" class="form-control" name="password" required minlength="8" maxlength="30">
+                                <input type="password" class="form-control" name="password" id="password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                 <div class="invalid-feedback">
                                     A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                 </div>
+                                <span id="senhaMessage" class="text-danger"></span>
                             </div>
 
                             <div class="my-4">
                                 <label for="confirm_password" class="form-label">Repetir Senha:</label>
-                                <input type="password" class="form-control" name="confirm_password" required minlength="8" maxlength="30">
+                                <input type="password" class="form-control" name="confirm_password" id="confirm_password"  required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                 <div class="invalid-feedback">
                                     A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                 </div>
+                                <span id="confirmeSenhaMessage" class="text-danger"></span>
                             </div>
                         </div>
 

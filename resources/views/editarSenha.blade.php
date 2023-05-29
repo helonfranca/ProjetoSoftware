@@ -37,10 +37,11 @@
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
                                             <div class="my-4">
                                                 <label for="password" class="form-label">Senha nova:</label>
-                                                <input type="password" class="form-control" name="senhaNova" required minlength="8" maxlength="30">
+                                                <input type="password" class="form-control" name="senhaNova" id="password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                                 <div class="invalid-feedback">
                                                     A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                                 </div>
+                                                <span id="senhaMessage" class="text-danger"></span>
                                             </div>
 
 
@@ -49,10 +50,11 @@
                                         <div class="col-md-6"> <!-- Campos a direita agora: -->
                                             <div class="my-4">
                                                 <label for="password" class="form-label">Confirme a senha nova:</label>
-                                                <input type="password" class="form-control" name="confirmeSenhaNova" required minlength="8" maxlength="30">
+                                                <input type="password" class="form-control" name="confirmeSenhaNova" id="confirm_password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                                 <div class="invalid-feedback">
                                                     A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                                 </div>
+                                                <span id="confirmeSenhaMessage" class="text-danger"></span>
                                             </div>
                                         </div>
 
