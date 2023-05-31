@@ -1,6 +1,6 @@
 <div class="dashboard-nav">
     <header>
-        <a href="{{route('welcome')}}" class="brand-logo">
+        <a href="{{route('home')}}" class="brand-logo">
             <img id="logo" src="{{asset('img/logo.png')}}" width="240" height="200">
         </a>
     </header>
@@ -30,7 +30,7 @@
 
         <a href="{{route('projetos')}}" class="dashboard-nav-item">
             <i class="fas fa-project-diagram"></i>
-            <spam>Meus projetos</span>
+            <span>Meus projetos</span>
         </a>
 
         <a class="dashboard-nav-item">

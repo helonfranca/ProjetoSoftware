@@ -68,7 +68,13 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $projeto->titulo}}</td>
                                     <td>{{ date('d/m/Y', strtotime($projeto->data_inicial))}}</td>
-                                    <td>{{ date('d/m/Y', strtotime($projeto->data_final))}}</td>
+                                    <td>
+                                        @if ($projeto->data_final)
+                                            {{ date('d/m/Y', strtotime($projeto->data_final)) }}
+                                        @else
+                                            <p>Não definida</p>
+                                        @endif
+                                    </td>
                                     <td>{{ $projeto->status }}</td>
                                     <td scope="col" class="text-center">
                                         <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">

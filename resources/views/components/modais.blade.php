@@ -20,11 +20,11 @@
                     </div>
                     <div class="form-group">
                         <label class="my-1">Data final</label>
-                        <input type="date" class="form-control" name="data_final" required>
+                        <input type="date" class="form-control" name="data_final">
                     </div>
                     <div class="form-group">
                         <label class="my-1">Descrição</label>
-                        <textarea class="form-control" placeholder="Detalhamento sucinto do projeto de no minimo 50 linhas." name="descricao" required></textarea>
+                        <textarea class="form-control" name="descricao" required></textarea>
                     </div>
                     <div class="form-group">
                         <label class="my-1">Status</label>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label class="my-1">Data final</label>
-                        <input type="date" class="form-control" id="data_final_edit" name="data_final" required>
+                        <input type="date" class="form-control" id="data_final_edit" name="data_final">
                     </div>
                     <div class="form-group">
                         <label class="my-1">Descrição</label>
