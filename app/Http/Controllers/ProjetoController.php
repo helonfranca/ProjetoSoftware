@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Projeto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProjetoController extends Controller
 {
     public function home(){
-        return view('pages.home');
+
+        $projetos = Projeto::all();
+        return view('pages.home', compact('projetos'));
+
     }
     public function listarProjetos()
     {
@@ -30,21 +34,23 @@ class ProjetoController extends Controller
         try{
             //validações
             $request->validate([
-                'titulo' => 'required',
-                'data_inicial' => 'required|date|after_or_equal:today|',
-                'data_final' => 'required|date|after_or_equal:today',
-                'descricao' => 'required|string|min:50|max:255',
-            ], [
+                'titulo' => 'required|min:1|max:50|unique:projetos' ,
+                'data_inicial' => 'required|date|before_or_equal:today|',
+                'data_final' => 'nullable|date|after_or_equal:today',
+                'descricao' => 'required|string|min:10|max:255',
+            ],[
+                'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
+                'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
+                'titulo.max' => 'O campo título deve ter no máximo 50 caracteres.',
                 'data_inicial.required' => 'O campo data inicial é obrigatório.',
-                'data_inicial.after_or_equal' => 'A data inicial deve ser a partir da data atual.',
+                'data_inicial.before_or_equal' => 'A data inicial deve ser igual ou anterior à data atual.',
                 'data_inicial.date' => 'O campo data inicial deve ser uma data válida.',
-                'data_final.after_or_equal' => 'A data final deve ser a partir da data atual.',
-                'data_final.required' => 'O campo data final é obrigatório.',
                 'data_final.date' => 'O campo data final deve ser uma data válida.',
+                'data_final.after_or_equal' => 'A data final deve ser igual ou posterior à data atual.',
                 'descricao.required' => 'O campo descrição é obrigatório.',
                 'descricao.string' => 'O campo descrição deve ser uma sequência de caracteres.',
-                'descricao.min' => 'O campo descrição deve ter no mínimo 50 caracteres.',
+                'descricao.min' => 'O campo descrição deve ter no mínimo 10 caracteres.',
                 'descricao.max' => 'O campo descrição deve ter no máximo 255 caracteres.'
             ]);
 
@@ -67,6 +73,7 @@ class ProjetoController extends Controller
             }
 
         }catch (\Exception $exception) {
+
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
 
@@ -84,23 +91,26 @@ class ProjetoController extends Controller
     public function editarProjeto(Request $request){
 
         try{
+            $idDoProjeto = $request->input('id');
             //validações
             $request->validate([
-                'titulo' => 'required',
-                'data_inicial' => 'required|date|after_or_equal:today|',
-                'data_final' => 'required|date|after_or_equal:today',
-                'descricao' => 'required|string|min:50|max:255',
-            ], [
+                'titulo' => 'required|min:1|max:50|unique:projetos,titulo,' . $idDoProjeto,
+                'data_inicial' => 'required|date|before_or_equal:today|',
+                'data_final' => 'nullable|date|after_or_equal:today',
+                'descricao' => 'required|string|min:10|max:255',
+            ],[
+                'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
+                'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
+                'titulo.max' => 'O campo título deve ter no máximo 50 caracteres.',
                 'data_inicial.required' => 'O campo data inicial é obrigatório.',
-                'data_inicial.after_or_equal' => 'A data inicial deve ser a partir da data atual.',
-                'data_final.after_or_equal' => 'A data final deve ser a partir da data atual.',
+                'data_inicial.before_or_equal' => 'A data inicial deve ser igual ou anterior à data atual.',
                 'data_inicial.date' => 'O campo data inicial deve ser uma data válida.',
-                'data_final.required' => 'O campo data final é obrigatório.',
                 'data_final.date' => 'O campo data final deve ser uma data válida.',
+                'data_final.after_or_equal' => 'A data final deve ser igual ou posterior à data atual.',
                 'descricao.required' => 'O campo descrição é obrigatório.',
                 'descricao.string' => 'O campo descrição deve ser uma sequência de caracteres.',
-                'descricao.min' => 'O campo descrição deve ter no mínimo 50 caracteres.',
+                'descricao.min' => 'O campo descrição deve ter no mínimo 10 caracteres.',
                 'descricao.max' => 'O campo descrição deve ter no máximo 255 caracteres.'
             ]);
 
@@ -118,6 +128,7 @@ class ProjetoController extends Controller
                 return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
             }
         }catch (\Exception $exception) {
+
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
 

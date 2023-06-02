@@ -36,10 +36,22 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
             .then((response) => response.json())
             .then((data) => data.projeto)
             .then((dados) => {
+                const dataFinalElement = document.getElementById('data_final');
+                const dataFinal = dados.data_final;
+
+                if (dataFinal) {
+                    dataFinalElement.textContent = new Date(dataFinal).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric'
+                    });
+                } else {
+                    dataFinalElement.textContent = ''; // Define o valor como vazio
+                }
+
                 document.getElementById('id_proj').textContent = dados.id;
                 document.getElementById('titulo').textContent = dados.titulo;
                 document.getElementById('data_inicial').textContent = new Date(dados.data_inicial).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-                document.getElementById('data_final').textContent = new Date(dados.data_final).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
                 document.getElementById('descricao').textContent = dados.descricao;
                 document.getElementById('participantes').textContent = dados.participantes;
                 document.getElementById('status').textContent = dados.status;
