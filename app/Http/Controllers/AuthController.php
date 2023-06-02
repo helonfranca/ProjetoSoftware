@@ -175,23 +175,17 @@ class AuthController extends Controller
         if (Auth::attempt($dados)) {
             // autenticação bem-sucedida, o usuário está agora autenticado
             $usuario = Auth::user();
-
             session(['nome_usuario' => $usuario->name]);
-            //echo Auth::user();
-            //dd(Auth::check());
-            return redirect('/projetos');
+            return redirect()->route('home');
 
         } else {
             // Credenciais informadas estão incorretas
-            return redirect()->back()->withErrors([
-                'email' => 'Senha e/ou email da conta incorreta.',
-            ]);
+            return redirect()->back()->withErrors(['email' => 'Senha e/ou email da conta incorreta.',]);
         }
     }
     public function logout()
     {
         Auth::logout(); // Destruir a sessão
-
         return redirect('/');
     }
 }

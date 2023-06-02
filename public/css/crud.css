@@ -167,7 +167,7 @@ h1,
     -webkit-flex-grow: 2;
     -ms-flex-positive: 2;
     flex-grow: 2;
-    margin-top: 84px;
+    margin-top: 70px;
 }
 
 .dashboard-content {
@@ -439,7 +439,7 @@ h1,
 
 @media (min-width: 992px) {
     .dashboard-app {
-        margin-left: 238px;
+        margin-left: 300px;
     }
 
     .dashboard-compact .dashboard-app {
