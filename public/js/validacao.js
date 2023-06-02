@@ -17,4 +17,21 @@
     })
     })()
 
-   
+function verificarSenhas() {
+    var senhaNova = document.getElementById("password").value;
+    var confirmeSenhaNova = document.getElementById("confirm_password").value;
+
+    var senhaMessage = document.getElementById("senhaMessage");
+    var confirmeSenhaMessage = document.getElementById("confirmeSenhaMessage");
+
+    if (senhaNova !== confirmeSenhaNova) {
+        senhaMessage.innerText = "As senhas não coincidem. Por favor, verifique novamente.";
+        confirmeSenhaMessage.innerText = "As senhas não coincidem. Por favor, verifique novamente.";
+    } else {
+        senhaMessage.innerText = "";
+        confirmeSenhaMessage.innerText = "";
+    }
+}
+
+
+
