@@ -33,6 +33,16 @@
             <span>Meus projetos</span>
         </a>
 
+        <a href="{{route('editarPerfil')}}" class="dashboard-nav-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>Editar perfil</span>
+        </a>
+
+        <a href="{{route('editarSenha')}}" class="dashboard-nav-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>Editar senha</span>
+        </a>
+
         <a class="dashboard-nav-item">
             <i class="fas fa-user"></i>
             <?php $nomeCompleto = Auth::user()->name; ?>
