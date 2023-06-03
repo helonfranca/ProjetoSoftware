@@ -27,9 +27,6 @@ Route::post('/registrar/save', [AuthController::class, 'registrar'])->name('regi
 Route::post('/login',[AuthController::class, 'login'])->name('login');
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
-Route::get('/editarPerfil', [AuthController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
-Route::get('/editarSenha', [AuthController::class, 'showPageEditarSenha'])->name('editarSenha');
-
 Route::middleware(['auth'])->group(function () {
     //Rotas projetos
     Route::get('/projetos', [ProjetoController::class, 'listarProjetos'])->name('projetos');
@@ -37,6 +34,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/projetos/visualizar/{id}', [ProjetoController::class, 'verificarProjeto'])->name('verificar_projeto');
     Route::put('/projetos/editar', [ProjetoController::class, 'editarProjeto'])->name('editar_projeto');
     Route::delete('/projetos/deletar', [ProjetoController::class, 'deletarProjeto'])->name('deletar_projeto');
+
+    Route::get('/projetos/editarPerfil', [ProjetoController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
+    Route::get('/projetos/editarSenha', [ProjetoController::class, 'showPageEditarSenha'])->name('editarSenha');
+
+    Route::get('/projetos/itens', [ProjetoController::class, 'showPageItens'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
+    Route::get('/projetos/resultados', [ProjetoController::class, 'showPageResultados'])->name('editarSenha');
 
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');

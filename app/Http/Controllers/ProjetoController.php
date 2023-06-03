@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class ProjetoController extends Controller
 {
-    public function home(){
+    public function home()
+    {
 
         $projetos = Projeto::all();
         return view('pages.home', compact('projetos'));
 
     }
+
     public function listarProjetos()
     {
         //Dados do usuario logado
@@ -30,15 +32,16 @@ class ProjetoController extends Controller
         return view('pages.projetos', compact('projetos'));
     }
 
-    public function cadastrarProjeto(Request $request){
-        try{
+    public function cadastrarProjeto(Request $request)
+    {
+        try {
             //validações
             $request->validate([
-                'titulo' => 'required|min:1|max:50|unique:projetos' ,
+                'titulo' => 'required|min:1|max:50|unique:projetos',
                 'data_inicial' => 'required|date|before_or_equal:today|',
                 'data_final' => 'nullable|date|after_or_equal:today',
                 'descricao' => 'required|string|min:10|max:255',
-            ],[
+            ], [
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
                 'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
@@ -58,7 +61,7 @@ class ProjetoController extends Controller
             $projeto = new Projeto;
             $projeto->titulo = trim($request->titulo);
             $projeto->data_inicial = $request->data_inicial;
-            $projeto->data_final =  $request->data_final;
+            $projeto->data_final = $request->data_final;
             $projeto->descricao = trim($request->descricao);
             $projeto->status = trim($request->status);
 
@@ -68,18 +71,19 @@ class ProjetoController extends Controller
             //projeto é um array de objetos
             $dadosCriado = $usuario->projetos()->create($projeto->toArray());
 
-            if($dadosCriado){
+            if ($dadosCriado) {
                 return redirect()->route('projetos')->with('success', 'Projeto adicionado com sucesso!');
             }
 
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
 
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
 
     }
 
-    public function verificarProjeto($id){
+    public function verificarProjeto($id)
+    {
 
         //filtra o projeto baseado no id
         $projeto = Projeto::findOrFail($id);
@@ -88,9 +92,10 @@ class ProjetoController extends Controller
         return response()->json(['projeto' => $projeto]);
     }
 
-    public function editarProjeto(Request $request){
+    public function editarProjeto(Request $request)
+    {
 
-        try{
+        try {
             $idDoProjeto = $request->input('id');
             //validações
             $request->validate([
@@ -98,7 +103,7 @@ class ProjetoController extends Controller
                 'data_inicial' => 'required|date|before_or_equal:today|',
                 'data_final' => 'nullable|date|after_or_equal:today',
                 'descricao' => 'required|string|min:10|max:255',
-            ],[
+            ], [
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
                 'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
@@ -119,7 +124,7 @@ class ProjetoController extends Controller
 
             $projeto->titulo = trim($request->titulo);
             $projeto->data_inicial = $request->data_inicial;
-            $projeto->data_final =  $request->data_final;
+            $projeto->data_final = $request->data_final;
             $projeto->descricao = trim($request->descricao);
             $projeto->status = trim($request->status);
             $projeto->save();
@@ -127,22 +132,87 @@ class ProjetoController extends Controller
             if ($projeto) {
                 return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
             }
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
 
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
 
     }
 
-    public function deletarProjeto(Request $request){
+    public function deletarProjeto(Request $request)
+    {
 
         $projeto = Projeto::find($request->input('id'));
         $projetoDeletado = $projeto->delete();
 
-        if($projetoDeletado){
+        if ($projetoDeletado) {
             return redirect()->route('projetos')->with('success', 'Projeto excluído com sucesso!');
-        } else{
+        } else {
             return redirect()->route('projetos')->with('error', 'Projeto não foi excluído!');
         }
     }
+
+
+    public function showPageEditarPerfil()
+    {
+        if (Auth::check()) {
+            return view('pages.editarPerfil'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+        }
+
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
+    public function showPageEditarSenha()
+    {
+        if (Auth::check()) {
+            return view('pages.editarSenha'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+        }
+
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
+    public function showPageItens()
+    {
+        if (Auth::check()) {
+            //Dados do usuario logado
+            $usuario = Auth::user();
+
+            //verificando se é admin e retornando todos os projetos
+            if ($usuario->tipoUsuario == 1) {
+                $itens= Projeto::all();
+            } else {
+                $itens = $usuario->projetos;
+            }
+
+            return view('pages.itens', compact('itens')); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+            // a variável $itens é passada para a view usando a função compact('itens'):
+            // Essa função cria um array associativo onde a chave é o nome da variável e o valor é o valor da variável. Em seguida, esse array é passado como argum
+        }
+
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
+    public function showPageResultados()
+    {
+        if (Auth::check()) {
+            //Dados do usuario logado
+            $usuario = Auth::user();
+
+            //verificando se é admin e retornando todos os projetos
+            if ($usuario->tipoUsuario == 1) {
+                $resultados= Projeto::all();
+            } else {
+                $resultados = $usuario->projetos;
+            }
+
+
+            return view('pages.resultados', compact('resultados')); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+            // a variável $resultados é passada para a view usando a função compact('resultados'):
+            // Essa função cria um array associativo onde a chave é o nome da variável e o valor é o valor da variável. Em seguida, esse array é passado como argumento para a função view().
+        }
+
+
+        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
 }
