@@ -225,8 +225,8 @@ class ProjetoController extends Controller
             $user->save();
 
             $mensagem = 'Edição guardada com sucesso!';
-
-            return redirect()->route('login')->with('success', $mensagem);
+            return redirect()->back()->with('success', $mensagem);
+            #MENSAGEM NÃO APARECE AQUI. ROTA VAI.
         }
     }
 
@@ -236,6 +236,7 @@ class ProjetoController extends Controller
         $request->validate([
             'senhaNova' => 'required|string|min:8',
             'confirmeSenhaNova' => 'required|same:senhaNova',
+            'senhaAntiga' => 'required',
 
         ], [
 
@@ -249,15 +250,20 @@ class ProjetoController extends Controller
         // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
         $user = Auth::user();
 
-        if ($novaSenha !== $user->password) {
-            $user->password = Hash::make($request->input('password'));
+        // Verifica se a senha antiga fornecida corresponde à senha atual no banco de dados
+        if (!Hash::check($request->senhaAntiga, $user->password)) {
+            // Senha antiga incorreta
+            $mensagem = 'A senha antiga não corresponde à senha atual.';
+            return redirect()->back()->with('error', $mensagem);
         }
 
+        // Atualiza a senha com a nova senha fornecida
+        $user->password = Hash::make($request->senhaNova);
         $user->save();
 
         $mensagem = 'Edição guardada com sucesso!';
-
-        return redirect()->route('login')->with('success', $mensagem);
+        return redirect()->back()->with('success', $mensagem);
+        #MENSAGEM NÃO APARECE AQUI. ROTA VAI.
 
     }
 
