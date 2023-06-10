@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
+use App\Http\Controllers\ItemController; #Tem que add aqui o endereço do controller também
+use App\Http\Controllers\ResultadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/projetos/editarPerfil', [ProjetoController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
     Route::get('/projetos/editarSenha', [ProjetoController::class, 'showPageEditarSenha'])->name('editarSenha');
 
-    Route::get('/projetos/itens', [ProjetoController::class, 'showPageItens'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
-    Route::get('/projetos/resultados', [ProjetoController::class, 'showPageResultados'])->name('editarSenha');
+    Route::get('/projetos/itens', [ItemController::class, 'showPageItens'])->name('gerenciarItens'); //Pega o get "/projetos/itens", vai no "ItemController:: , showPageItens..." e aida dá um nome
+    Route::get('/projetos/resultados', [ResultadoController::class, 'showPageResultados'])->name('gerenciarResultados');
 
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
