@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projeto;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProjetoController extends Controller
@@ -169,6 +171,94 @@ class ProjetoController extends Controller
         }
 
         return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+    }
+
+    public function editarPerfil (Request $request)
+    {
+        //Validação dos dados do formulário
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            #'password' => 'required|string|min:8',
+            #'confirm_password' => 'required|same:password',
+            'curriculoLattes' => 'required|url',
+            'instituicao' => 'required',
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'bhdbfsd',
+            'email.required' => 'O campo de email é obrigatório.',
+            'email.email' => 'Informe um endereço de email válido.',
+            'email.unique' => 'Endereço de email já estar em uso.',
+            #'password.required' => 'O campo de senha é obrigatório.',
+            #'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
+            #'confirm_password.required' => 'O campo de confirmação de senha é obrigatório.',
+            #'confirm_password.same' => 'As senhas não coincidem.',
+            'curriculoLattes.url' => 'Coloque um link valido para o Curriculo Lattes.',
+            'curriculoLattes.required' => 'O campo Curriculo Lattes é obrigatório.',
+            'instituicao.required' => 'O campo Instituição é obrigatório.'
+        ]);
+
+        // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
+        $user = Auth::user();
+
+        if ($user) {
+            $campos = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'datadeNascimento' => $request->input('datadeNascimento'),
+                'telefone' => $request->input('telefone'),
+                'curriculoLattes' => $request->input('curriculoLattes'),
+                'instituicao' => $request->input('instituicao'),
+                'funcao' => $request->input('funcao'),
+                'sexo' => $request->input('sexo'),
+            ];
+
+            // Verificar e atualizar os campos se os novos valores forem diferentes dos valores atuais
+            foreach ($campos as $campo => $novoValor) {
+                $valorAtual = $user->{$campo};
+
+                if ($novoValor !== $valorAtual) {
+                    $user->{$campo} = $novoValor;
+                }
+            }
+
+            $user->save();
+
+            $mensagem = 'Edição guardada com sucesso!';
+
+            return redirect()->route('login')->with('success', $mensagem);
+        }
+    }
+
+    public function editarSenha (Request $request)
+    {
+        //Validação dos dados do formulário
+        $request->validate([
+            'senhaNova' => 'required|string|min:8',
+            'confirmeSenhaNova' => 'required|same:senhaNova',
+
+        ], [
+
+            'senhaNova.required' => 'O campo de senha é obrigatório.',
+            'senhaNova.min' => 'A senha deve ter pelo menos 8 caracteres.',
+            'confirmeSenhaNova.required' => 'O campo de confirmação de senha é obrigatório.',
+            'confirmeSenhaNova.same' => 'As senhas não coincidem.',
+
+        ]);
+
+        // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
+        $user = Auth::user();
+
+        if ($novaSenha !== $user->password) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        $user->save();
+
+        $mensagem = 'Edição guardada com sucesso!';
+
+        return redirect()->route('login')->with('success', $mensagem);
+
     }
 
 }
