@@ -38,7 +38,7 @@
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
                                             <div class="my-4">
                                                 <label for="nome" class="form-label">Nome:</label>
-                                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,300}" required>
+                                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,300}" value="{{ $user->name }}" required>
                                                 <div class="invalid-feedback">
                                                     O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
                                                 </div>
@@ -46,28 +46,28 @@
 
                                             <div class="my-4">
                                                 <label for="email" class="form-label">E-mail:</label>
-                                                <input type="email" class="form-control" id="email" name="email" required>
+                                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
                                                 <div class="invalid-feedback">
                                                     Digite um e-mail válido.
                                                 </div>
                                             </div>
 
                                             <div class="my-4">
-                                                <label for="curriculoLattes" class="form-label">Currículo Lattes:</label>
-                                                <input type="text" class="form-control" id="lattes" name="curriculoLattes">
+                                                <label for="curriculoLattes" class="form-label" >Currículo Lattes:</label>
+                                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" value="{{ $user->curriculoLattes }}">
                                             </div>
 
                                         </div>
 
                                         <div class="col-md-6"> <!-- Campos a direita agora: -->
                                             <div class="my-4">
-                                                <label for="datadeNascimento" class="form-label">Data de Nascimento: </label>
-                                                <input type="date" class="form-control" id="datanascimento" name="datadeNascimento">
+                                                <label for="datadeNascimento" class="form-label" >Data de Nascimento: </label>
+                                                <input type="date" class="form-control" id="datanascimento" name="datadeNascimento" value="{{ $user->datadeNascimento }}">
                                             </div>
 
                                             <div class="my-4">
                                                 <label for="celular" class="form-label">Celular:</label>
-                                                <input type="tel" class="form-control" id="celular" name="telefone" pattern="\([0-9]{2}\)[\s-]?[0-9]{4,5}-[0-9]{4,5}">
+                                                <input type="tel" class="form-control" id="celular" name="telefone" pattern="\([0-9]{2}\)[\s-]?[0-9]{4,5}-[0-9]{4,5}" value="{{ $user->telefone }}">
                                                 <script> $('#celular').mask('(00) 00000-0000');</script>
 
                                                 <div class="invalid-feedback">
@@ -77,7 +77,7 @@
 
                                             <div class="my-4">
                                                 <label for="instituicao" class="form-label">Instituição:</label>
-                                                <input type="text" class="form-control" id="instituicao" name="instituicao">
+                                                <input type="text" class="form-control" id="instituicao" name="instituicao" value="{{ $user->instituicao }}">
                                             </div>
                                         </div>
 
@@ -85,18 +85,18 @@
 
                                         <div class="my-4 text-center">
                                             <label for="funcao" class="form-label">Função:</label>
-                                            <input type="text" class="form-control" id="funcao" name="funcao">
+                                            <input type="text" class="form-control" id="funcao" name="funcao" value="{{ $user->funcao }}">
                                         </div>
 
                                         <div class="my-4 text-center">
                                             <label class="form-label">Sexo:  </label>
                                             <div class="form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sexo" id="Feminino" value="Feminino">
+                                                <input class="form-check-input" type="radio" name="sexo" id="Feminino" value="Feminino" {{ $user->sexo == 'Feminino' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="feminino">Feminino</label>
                                             </div>
                                             <div class="form-check-inline">
                                                 <input class="form-check-input" type="radio" name="sexo" id="Masculino" value="Masculino"
-                                                       checked>
+                                                    {{ $user->sexo == 'Masculino' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="masculino">Masculino</label>
                                             </div>
                                         </div>

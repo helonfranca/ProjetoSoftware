@@ -158,10 +158,13 @@ class ProjetoController extends Controller
     public function showPageEditarPerfil()
     {
         if (Auth::check()) {
-            return view('pages.editarPerfil'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
+            // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
+            $user = Auth::user();
+            return view('pages.editarPerfil', compact('user'));; // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
         }
-
-        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+        else {
+            return redirect('/login');// Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+        }
     }
 
     public function showPageEditarSenha()
@@ -169,8 +172,9 @@ class ProjetoController extends Controller
         if (Auth::check()) {
             return view('pages.editarSenha'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
         }
-
+        else {
         return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
+        }
     }
 
     public function editarPerfil (Request $request)
