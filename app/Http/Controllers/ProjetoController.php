@@ -179,10 +179,19 @@ class ProjetoController extends Controller
 
     public function editarPerfil (Request $request)
     {
+
+        // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
+        $user = Auth::user();
+
+
+
         //Validação dos dados do formulário
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,'.$user->id, //o valor do campo deve ser único na tabela "users"
+            // na coluna "email", MAS o ID do usuário atual ($user->id) é fornecido para que o próprio valor do usuário
+            //atual seja ignorado durante a verificação de unicidade.
+
             #'password' => 'required|string|min:8',
             #'confirm_password' => 'required|same:password',
             'curriculoLattes' => 'required|url',
@@ -200,10 +209,12 @@ class ProjetoController extends Controller
             'curriculoLattes.url' => 'Coloque um link valido para o Curriculo Lattes.',
             'curriculoLattes.required' => 'O campo Curriculo Lattes é obrigatório.',
             'instituicao.required' => 'O campo Instituição é obrigatório.'
-        ]);
+        ]
 
-        // Indicando que estamos a mudar o usuário LOGADO (AUTENTICADO)
-        $user = Auth::user();
+        );
+
+
+
 
         if ($user) {
             $campos = [
@@ -230,7 +241,7 @@ class ProjetoController extends Controller
 
             $mensagem = 'Edição guardada com sucesso!';
             return redirect()->back()->with('success', $mensagem);
-            #MENSAGEM NÃO APARECE AQUI. ROTA VAI.
+            #Foi necessário na pág. blade verificar a existência da chave "success" na sessão usando @if(session('success'))
         }
     }
 
@@ -267,7 +278,7 @@ class ProjetoController extends Controller
 
         $mensagem = 'Edição guardada com sucesso!';
         return redirect()->back()->with('success', $mensagem);
-        #MENSAGEM NÃO APARECE AQUI. ROTA VAI.
+        #Foi necessário na pág. blade verificar a existência da chave "success" na sessão usando @if(session('success'))
 
     }
 

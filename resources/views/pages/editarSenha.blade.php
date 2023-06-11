@@ -79,6 +79,12 @@
                                     </div>
                                 </form>
 
+                                @if(session('success'))
+                                    <div class="alert alert-success text-center mt-3">
+                                        <span>{{ session('success') }}</span>
+                                    </div>
+                                @endif
+
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
                                         <div class="alert alert-danger text-center mt-3">
