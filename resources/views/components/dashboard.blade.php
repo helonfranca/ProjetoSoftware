@@ -1,60 +1,102 @@
-<div class="dashboard-nav">
-    <header>
-        <a href="{{route('home')}}" class="brand-logo">
-            <img id="logo" src="{{asset('img/logo.png')}}" width="240" height="200">
+<!-- SideBar tamanho de janela media a xxl -->
+<div class="container d-none d-md-block col-xxl-2 col-md-3 ms-0">
+    <div class=" d-flex flex-column  position-fixed flex-shrink-0 align-items-stretch text-white bg-dark p-3 m-0" style="width: 250px; height:600px">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">LabOrganizer</span>
         </a>
-    </header>
-
-    <nav class="dashboard-nav-list">
-        <a href="{{route('home')}}" class="dashboard-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Página Inicial</span>
-        </a>
-        <?php $tipoUsuario = Auth::user()->tipoUsuario; ?>
-        @if($tipoUsuario == 1 )
-            <a href="#" class="dashboard-nav-item">
-                <i class="fas fa-microscope"></i>
-                <span>Cadastro de equipamentos</span>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{{route('home')}}"  class="nav-link text-white" aria-current="page">
+            Página Inicial
             </a>
-        @endif
+        </li>
+        <li>
+            <a href="{{route('projetos')}}" class="nav-link text-white">
+            Meus projetos
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+            Estoque
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+            Resultados
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+            
+            Agenda de equipamentos
+            </a>
+        </li>
+        </ul>
+        <hr>
+            <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+               
+                <li><a class="dropdown-item" href="#">Editar senha</a></li>
+                <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+            </div>
+    </div>
+</div>
 
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Agenda de equipamentos</span>
+<!-- SideBar tamanho de janela mobile a sm (pequena) -->
+
+<div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none">
+<div class=" d-flex flex-column flex-shrink-0 bg-light position-fixed" style="width: 4.5rem;">
+    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+      <svg class="bi" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <span class="visually-hidden">Icon-only</span>
+    </a>
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item">
+        <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"/></svg>
         </a>
-
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-file-upload"></i>
-            <span>Estoque de projetos</span>
+      </li>
+      <li>
+        <a href="#" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
         </a>
-
-        <a href="{{route('projetos')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Meus projetos</span>
+      </li>
+      <li>
+        <a href="#" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"/></svg>
         </a>
-
-        <a href="{{route('editarPerfil')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Editar perfil</span>
+      </li>
+      <li>
+        <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
         </a>
-
-        <a href="{{route('editarSenha')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Editar senha</span>
+      </li>
+      <li>
+        <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
         </a>
-
-        <a class="dashboard-nav-item">
-            <i class="fas fa-user"></i>
-            <?php $nomeCompleto = Auth::user()->name; ?>
-            <?php $nomes = explode(' ', $nomeCompleto); ?>
-            <span>Bem vindo, {{ $nomes[0] }}</span>
-        </a>
-
-        <div class="nav-item-divider"></div>
-
-        <a href="{{route('logout')}}" class="dashboard-nav-item">
-            <i class="fas fa-sign-out-alt"></i>
-            Logout
-        </a>
-    </nav>
+      </li>
+    </ul>
+    <div class="dropdown border-top">
+      <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
