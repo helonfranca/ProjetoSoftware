@@ -55,7 +55,7 @@
 
 <div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none">
 <div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed" style="width: 20%; height:100%">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+    <a href="/" class="d-block p-3 link-dark text-decoration-none text-center" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
       <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
       <span class="visually-hidden">Icon-only</span>
     </a>
