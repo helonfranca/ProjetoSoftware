@@ -1,6 +1,6 @@
 <!-- SideBar tamanho de janela media a xxl -->
-<div class="container d-none d-md-block col-xxl-2 col-md-3 ms-0">
-    <div class=" d-flex flex-column  position-fixed flex-shrink-0 align-items-stretch text-white bg-dark p-3 m-0" style="width: 250px; height:600px">
+<div class="container d-none d-md-block col-xxl-3 col-md-4 ms-0">
+    <div class=" d-flex flex-column  position-fixed flex-shrink-0 align-items-stretch text-white bg-dark p-3 m-0" style="width: 20%; height:100%">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span class="fs-4">LabOrganizer</span>
@@ -54,15 +54,15 @@
 <!-- SideBar tamanho de janela mobile a sm (pequena) -->
 
 <div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none">
-<div class=" d-flex flex-column flex-shrink-0 bg-light position-fixed" style="width: 4.5rem;">
+<div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed" style="width: 20%; height:100%">
     <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-      <svg class="bi" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
       <span class="visually-hidden">Icon-only</span>
     </a>
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
       <li class="nav-item">
-        <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"/></svg>
+        <a href="#" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+        <i class="bi bi-house-door"></i>
         </a>
       </li>
       <li>

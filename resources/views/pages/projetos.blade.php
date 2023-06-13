@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
    
 </head> 
 <body>
@@ -22,7 +23,7 @@
        
             
                     <div class="container text-center
-                    col-10 col-sm-9 mt-1 col-xxl-10 col-md-8 mt-2 pe-5">
+                    col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-2 pe-5">
                         <h1 class=" p-3" id="tabelacrud" >Gerenciar projetos</h1>
                         @if(session('success'))
                             <div id="mensagemSucesso" class="alert alert-success text-center my-2">
