@@ -119,7 +119,9 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="button my-3">Acesse aqui</button>
+                            <a href="{{route('itens')}}">
+                                <button class="button my-3">Acesse aqui</button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -167,11 +167,12 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#projectTable').DataTable({
-            language: {
-                url: 'js/pt-BR.json'
+        language: {
+            url: 'js/pt-BR.json'
         },
         lengthMenu: [5,10],
         paging: true, // Ativar paginação
         searching: true, // Ativar barra de pesquisa
+    });
 });
-});
+

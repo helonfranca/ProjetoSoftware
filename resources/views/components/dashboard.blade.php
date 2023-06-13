@@ -23,7 +23,7 @@
             <span>Agenda de equipamentos</span>
         </a>
 
-        <a href="#" class="dashboard-nav-item">
+        <a href="{{route('itens')}}" class="dashboard-nav-item">
             <i class="fas fa-file-upload"></i>
             <span>Estoque de projetos</span>
         </a>
