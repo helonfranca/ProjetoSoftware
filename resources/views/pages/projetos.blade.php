@@ -20,11 +20,13 @@
         @include('components.dashboard')
 
         {{--Template gerenciar projetos--}}
-       
+             
             
                     <div class="container text-center
                     col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-2 pe-5">
+                   
                         <h1 class=" p-3" id="tabelacrud" >Gerenciar projetos</h1>
+                    
                         @if(session('success'))
                             <div id="mensagemSucesso" class="alert alert-success text-center my-2">
                                 <span>{{ session('success') }}</span>
@@ -53,7 +55,8 @@
                                 </div>
                             </a>
                         </div>
-                        <table class="table  table-bordered m-0 p-0" id="projectTable">
+                        <div class="table-responsive-md">
+                        <table class="table table-bordered m-0 p-0" id="projectTable">
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col">#</th>
@@ -93,8 +96,11 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div>
-               
+</div>
+                       
+                        
+                    </div>   
+</div>      
 
  
 
