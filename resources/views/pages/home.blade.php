@@ -20,7 +20,7 @@
         @include('components.dashboard')
 
         {{--Main--}}
-        <div class="container  text-center col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-5">
+        <div class="container  text-center col-10 col-sm-9 col-xxl-9 col-md-8 mt-5 me-sm-0 me-md-5">
             <div class="container">
                 <div class="container text-center">
                     <h1>Projetos</h1>
@@ -92,9 +92,10 @@
                                     <div class="mt-3 text-inform">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
-                                    
-                                <button class="button my-3">Acesse aqui</button>
-                        </div>                            
+                                    <div>
+                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                    </div>
+                                </div>                            
                              
                         </div>
                          
@@ -114,6 +115,10 @@
                                     <div class="mt-3 text-inform">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
+                                    <div>
+                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -122,9 +127,7 @@
                                 <img src="{{ asset('img/itens-lab.jpg') }}" alt="logo" width="250" height="200">
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="button my-3">Acesse aqui</button>
-                        </div>
+                      
                     </div>
                 </div>
 
@@ -144,12 +147,13 @@
                                     <div class="mt-3 text-inform">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
+                                    <div>
+                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="button my-3">Acesse aqui</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
