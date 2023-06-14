@@ -53,21 +53,25 @@
 
 <!-- SideBar tamanho de janela mobile a sm (pequena) -->
 
-<div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none">
-<div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed" style="width: 15%; height:100%">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none text-center" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+<div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none text-center">
+<div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed pt-3" style="width: 15%; height:100%">
+
+    <ul class="nav nav-pills nav-flush flex-column ">
+    <li class="nav-item">
+    <a href="/" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
       <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
       <span class="visually-hidden">Icon-only</span>
     </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    </li>
+
       <li class="nav-item">
-        <a href="#" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="{{route('home')}}" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
         <i class="bi bi-house-door"></i>
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
+        <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+        <i class="bi bi-folder"></i>
         </a>
       </li>
       <li>

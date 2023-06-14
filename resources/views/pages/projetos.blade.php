@@ -15,7 +15,7 @@
    
 </head> 
 <body>
-    <div class="row  me-5">
+    <div class="row me-2 me-md-5">
         {{--Dashbord--}}
         @include('components.dashboard')
 
@@ -23,14 +23,14 @@
              
             
                     <div class="container text-center
-                    col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-2 pe-5">
+                    col-10 col-sm-9 col-xxl-9 col-md-9 mt-2 me-md-0 ">
                    
-                        <h1 class=" p-3" id="tabelacrud" >Gerenciar projetos</h1>
+                        <h1 class=" p-3 bg-dark text-white rounded" id="" >Gerenciar projetos</h1>
                     
                         @if(session('success'))
                             <div id="mensagemSucesso" class="alert alert-success text-center my-2">
                                 <span>{{ session('success') }}</span>
-                  
+                            </div>
                         @endif
 
                         @if(session('error'))
@@ -47,60 +47,93 @@
                             @endforeach
                         @endif
 
-                        <div class="text-center mb-3 p-0">
-                            <a id="colorb" href="#addEmployeeModal" class="btn btn-dark my-1 me-2" data-toggle="modal">
+                        <div class="text-center mb-3 p-2 ">
+                            <a id="" href="#addEmployeeModal" class="btn btn-dark my-1 me-2 text-white rounded" data-toggle="modal">
                                 <div class=" ">
                                     <i class="material-icons me-1">&#xE147;</i>
                                     <span>Adicionar novo projeto</span>
                                 </div>
                             </a>
                         </div>
-                        <div class="table-responsive-md">
-                        <table class="table table-bordered m-0 p-0" id="projectTable">
-                            <thead>
-                                <tr class="text-center">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Título</th>
-                                    <th scope="col">Data inicial</th>
-                                    <th scope="col">Data final</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($projetos as $projeto)
-                                <tr class="text-center">
-                                    <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $projeto->titulo}}</td>
-                                    <td>{{ date('d/m/Y', strtotime($projeto->data_inicial))}}</td>
-                                    <td>
-                                        @if ($projeto->data_final)
-                                            {{ date('d/m/Y', strtotime($projeto->data_final)) }}
-                                        @else
-                                            <p>Não definida</p>
-                                        @endif
-                                    </td>
-                                    <td>{{ $projeto->status }}</td>
-                                    <td scope="col" class="text-center">
-                                        <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">
-                                            <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
-                                        </a>
-                                        <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
-                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                        </a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
-                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-</div>
-                       
+                        <div class="table-responsive-md d-none d-md-block text-center p-2">
+                            <table class="table table-bordered" id="projectTable">
+                                <thead>
+                                    <tr class="text-center ">
+                                        <th class="bg-dark text-white" scope="col">#</th>
+                                        <th class="bg-dark text-white" scope="col">Título</th>
+                                        <th class="bg-dark text-white" scope="col">Data inicial</th>
+                                        <th class="bg-dark text-white" scope="col">Data final</th>
+                                        <th class="bg-dark text-white" scope="col">Status</th>
+                                        <th class="bg-dark text-white" scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($projetos as $projeto)
+                                    <tr class="text-center">
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $projeto->titulo}}</td>
+                                        <td>{{ date('d/m/Y', strtotime($projeto->data_inicial))}}</td>
+                                        <td>
+                                            @if ($projeto->data_final)
+                                                {{ date('d/m/Y', strtotime($projeto->data_final)) }}
+                                            @else
+                                                <p>Não definida</p>
+                                            @endif
+                                        </td>
+                                        <td>{{ $projeto->status }}</td>
+                                        <td scope="col" class="text-center">
+                                            <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
+                                            </a>
+                                            <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                            </a>
+                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+<!--------------------tabela mobile ----------------------------------------------------------------------------------->   
+                        <div class="table-responsive-md d-block d-md-none text-center">
+                            <table class="table table-bordered" id="projectTable2">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="bg-dark text-white"  scope="col">#</th>
+                                        <th class="bg-dark text-white"  scope="col">Título</th>
+                                        <th class="bg-dark text-white"  scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($projetos as $projeto)
+                                    <tr class="text-center">
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $projeto->titulo}}</td>
+                          
+                                        <td scope="col" class="text-center">
+                                            <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
+                                            </a>
+                                            <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                            </a>
+                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>   
+ <!--------------------tabela mobile ----------------------------------------------------------------------------------->                   
                         
-                    </div>   
-</div>      
+                </div>   
+    </div>      
 
  
 

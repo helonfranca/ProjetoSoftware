@@ -20,7 +20,7 @@
         @include('components.dashboard')
 
         {{--Main--}}
-        <div class="container text-center col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-5">
+        <div class="container  text-center col-10 col-sm-9 mt-1 col-xxl-9 col-md-8 mt-5">
             <div class="container">
                 <div class="container text-center">
                     <h1>Projetos</h1>
