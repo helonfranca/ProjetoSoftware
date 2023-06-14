@@ -174,13 +174,23 @@
                     fetch('/projetos/visualizar/' + idProj)
                         .then((response) => response.json())
                         .then((data) => {
-
                             const participantes = data.participantes;
                             const dados = data.projeto;
+                            const dataFinalElement = document.getElementById('modal-data-final');
+                            const dataFinal = dados.data_final;
+
+                            if (dataFinal) {
+                                dataFinalElement.textContent = new Date(dataFinal).toLocaleDateString('pt-BR', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric'
+                                });
+                            } else {
+                                dataFinalElement.textContent = 'Não definida'; // Define o valor como vazio
+                            }
 
                             document.getElementById('modal-titulo').textContent = dados.titulo;
                             document.getElementById('modal-data-inicial').textContent = new Date(dados.data_inicial).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-                            document.getElementById('modal-data-final').textContent = new Date(dados.data_final).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
                             document.getElementById('modal-descricao').textContent = dados.descricao;
                             const participantesElement = document.getElementById('modal-participantes');
                             participantesElement.textContent = '';

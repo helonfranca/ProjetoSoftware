@@ -66,8 +66,7 @@ class ItemController extends Controller
             $itens->projeto_id = $projetoId;
             $itens->save();
 
-            return redirect()->route('itens')
-                ->with('success', 'Item adicionado com sucesso!');
+            return redirect()->back()->with('success', 'Item adicionado com sucesso!');
 
         }catch (\Exception $exception) {
 
@@ -108,8 +107,7 @@ class ItemController extends Controller
             $item->projeto_id = $request->input('projeto_id');
             $item->save();
 
-            return redirect()->route('itens')
-                ->with('success', 'Item atualizado com sucesso!');
+            return redirect()->back()->with('success', 'Item atualizado com sucesso!');
 
         } catch (\Exception $exception) {
             return redirect()->back()->withErrors([$exception->getMessage()]);
@@ -124,7 +122,7 @@ class ItemController extends Controller
         $ItemDeletado = $item->delete();
 
         if($ItemDeletado){
-            return redirect()->route('itens')->with('success', 'Item excluído com sucesso!');
+            return redirect()->back()->with('success', 'Item excluído com sucesso!');
         } else{
             return redirect()->route('itens')->with('error', 'item não foi excluído!');
         }
