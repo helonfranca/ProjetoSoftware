@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
@@ -49,6 +50,19 @@ Route::middleware(['auth'])->group(function () {
 
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
+
+    //Pages de editar senha e editar perfil
+    Route::get('/editarPerfil', [AuthController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
+    Route::get('/editarSenha', [AuthController::class, 'showPageEditarSenha'])->name('editarSenha');
+
+    //Pages de Itens
+    Route::get('/itens', [ItemController::class, 'showPageItens'])->name('itens');
+    Route::get('/itens/buscar', [ItemController::class,'obterItensDoProjeto'])->name('itens.buscar');
+    Route::post('/itens/salvar', [ItemController::class,'cadastrarItem'])->name('itens.salvar');
+    Route::get('/itens/visualizar/{id}', [ItemController::class, 'visualizarItem'])->name('itens.visualizar');
+    Route::put('/itens/editar', [ItemController::class, 'editarItem'])->name('itens.editar');
+    Route::delete('/itens/deletar', [ItemController::class, 'deletarItem'])->name('itens.deletar');
+
 });
 
 
