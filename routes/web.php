@@ -36,6 +36,12 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/projetos/editar', [ProjetoController::class, 'editarProjeto'])->name('editar_projeto');
     Route::delete('/projetos/deletar', [ProjetoController::class, 'deletarProjeto'])->name('deletar_projeto');
 
+    Route::get('/projetos/editarPerfil', [ProjetoController::class, 'showPageEditarPerfil'])->name('editarPerfil'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome
+    Route::get('/projetos/editarSenha', [ProjetoController::class, 'showPageEditarSenha'])->name('editarSenha');
+
+    Route::post('/projetos/editarPerfil/save', [ProjetoController::class, 'editarPerfil'])->name('editarPerfilSave');
+    Route::post('/projetos/editarSenha/save', [ProjetoController::class, 'editarSenha'])->name('editarSenhaSave'); //Esse "nome" que damos, é usado no HTML action (do forms).
+
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
 
