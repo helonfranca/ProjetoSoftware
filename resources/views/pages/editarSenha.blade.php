@@ -30,7 +30,9 @@
                                 <div class="row mb-4 text-center border rounded" style="background-color: #edf2f7">
                                     <h2 class="mt-2">Editar senha</h2>
                                 </div>
-                                <form action="{{route('editarPerfil')}}" method="post" class="needs-validation" novalidate>
+
+                                <form action="{{route('editarSenhaSave')}}" method="post" class="needs-validation" novalidate>
+
                                     <!-- Mudar claro, a action-->
                                     @csrf
                                     <div class="row border rounded mb-4 " style="background-color: #edf2f7">

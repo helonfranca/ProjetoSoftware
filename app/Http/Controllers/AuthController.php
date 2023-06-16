@@ -48,14 +48,14 @@ class AuthController extends Controller
 
     public function showmudSenhaForm($token)
     {
-        return view('trocaSenha',['token' => $token]);
+        return view('trocaSenha', ['token' => $token]);
     }
 
     public function recuperSenha(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
-        ],[
+        ], [
             'email.required' => 'O campo de email é obrigatório.',
             'email.email' => 'Informe um endereço de email válido.',
         ]);
@@ -78,14 +78,15 @@ class AuthController extends Controller
 
     }
 
-    public function updateSenha(Request $request){
+    public function updateSenha(Request $request)
+    {
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password|min:8'
 
-        ],[
+        ], [
             'email.required' => 'O campo de email é obrigatório.',
             'password.required' => 'O campo de senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
@@ -110,7 +111,7 @@ class AuthController extends Controller
             return redirect()->route('login')->with('success', $mensagem);
         } else {
             $mensagem = 'Falha ao efetuar mudança de senha!';
-            return redirect()->route('password.reset/'.$token)->with('danger', $mensagem);
+            return redirect()->route('password.reset/' . $token)->with('danger', $mensagem);
         }
 
 
@@ -126,7 +127,7 @@ class AuthController extends Controller
             'confirm_password' => 'required|same:password',
             'curriculoLattes' => 'required|url',
             'instituicao' => 'required',
-        ],[
+        ], [
             'name.required' => 'O campo nome é obrigatório.',
             'name.string' => 'bhdbfsd',
             'email.required' => 'O campo de email é obrigatório.',
@@ -183,20 +184,14 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['email' => 'Senha e/ou email da conta incorreta.',]);
         }
     }
+
     public function logout()
     {
         Auth::logout(); // Destruir a sessão
         return redirect('/');
     }
 
-    public function showPageEditarPerfil()
-    {
-        return view('pages.editarPerfil'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
-    }
 
-    public function showPageEditarSenha()
-    {
-        return view('pages.editarSenha'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
-    }
+
 
 }

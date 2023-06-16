@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Item;
 use App\Models\Projeto;
 use Illuminate\Http\Request;
@@ -126,6 +127,7 @@ class ItemController extends Controller
         } else{
             return redirect()->route('itens')->with('error', 'item não foi excluído!');
         }
+
     }
 
 }

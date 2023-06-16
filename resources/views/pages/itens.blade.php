@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
     <body>
         <div class='dashboard'>
             {{--Dashbord--}}
@@ -117,4 +118,5 @@
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <script src="{{asset('js/crudItens.js')}}"></script>
     </body>
+
 </html>
