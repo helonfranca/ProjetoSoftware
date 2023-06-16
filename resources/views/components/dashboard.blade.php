@@ -1,8 +1,7 @@
 <!-- SideBar tamanho de janela media a xxl -->
 <div class="container d-none d-md-block col-xxl-3 col-md-4 ms-0">
     <div class=" d-flex flex-column  position-fixed flex-shrink-0 align-items-stretch text-white bg-dark p-3 m-0" style="width: 20%; height:100%">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <a href="/" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-4">LabOrganizer</span>
         </a>
         <hr>
