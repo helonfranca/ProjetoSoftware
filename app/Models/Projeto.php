@@ -22,9 +22,4 @@ class Projeto extends Model
         return $this->belongsToMany(User::class, 'usuario_projeto', 'projeto_id', 'usuario_id');
     }
 
-    public function itens()
-    {
-        return $this->hasMany(Item::class);
-    }
-
 }

@@ -119,9 +119,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <a href="{{route('itens')}}">
-                                <button class="button my-3">Acesse aqui</button>
-                            </a>
+                            <button class="button my-3">Acesse aqui</button>
                         </div>
                     </div>
                 </div>
@@ -166,42 +164,20 @@
                 document.getElementById('modal-data-final').textContent = 'Carregando...';
                 document.getElementById('modal-descricao').textContent = 'Carregando...';
                 document.getElementById('modal-status').textContent = 'Carregando...';
-                document.getElementById('modal-participantes').textContent = 'Carregando...';
 
                 // Fazer uma requisição AJAX para atualizar os dados do projeto
                 setTimeout(function() {
                     // Fazer uma requisição AJAX para atualizar os dados do projeto
                     fetch('/projetos/visualizar/' + idProj)
                         .then((response) => response.json())
-                        .then((data) => {
-                            const participantes = data.participantes;
-                            const dados = data.projeto;
-                            const dataFinalElement = document.getElementById('modal-data-final');
-                            const dataFinal = dados.data_final;
-
-                            if (dataFinal) {
-                                dataFinalElement.textContent = new Date(dataFinal).toLocaleDateString('pt-BR', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric'
-                                });
-                            } else {
-                                dataFinalElement.textContent = 'Não definida'; // Define o valor como vazio
-                            }
-
+                        .then((data) => data.projeto)
+                        .then((dados) => {
                             document.getElementById('modal-titulo').textContent = dados.titulo;
                             document.getElementById('modal-data-inicial').textContent = new Date(dados.data_inicial).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                            document.getElementById('modal-data-final').textContent = new Date(dados.data_final).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
                             document.getElementById('modal-descricao').textContent = dados.descricao;
-                            const participantesElement = document.getElementById('modal-participantes');
-                            participantesElement.textContent = '';
-                            participantes.forEach(function(participante, index) {
-                                if (index === participantes.length - 1) {
-                                    participantesElement.innerText += ` ${participante.name}.`;
-                                } else {
-                                    participantesElement.innerText += `${participante.name},`;
-                                }
-                            });
                             document.getElementById('modal-status').textContent = dados.status;
+                            document.getElementById('modal-participantes').textContent = dados.participantes;
 
                         })
                         .catch(function(error) {

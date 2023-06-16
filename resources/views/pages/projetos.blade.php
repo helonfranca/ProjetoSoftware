@@ -77,24 +77,15 @@
                                     </td>
                                     <td>{{ $projeto->status }}</td>
                                     <td scope="col" class="text-center">
-                                        {{-- acessar todos os projetos, do atual usuario, depois pega o primeiro objeto da relação,
-                                        acessa a tabela intermediaria e ver se tipo de usuario do projeto que retornou é igual criador--}}
-
-                                        @if($projeto->users()->where('id', Auth::user()->id)->wherePivot('tipo_participacao', 'criador')->exists()|| Auth::user()->tipoUsuario == 1)
-                                            <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal" data-id="{{ $projeto->id }}">
-                                                <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
-                                            </a>
-                                            <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
-                                                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                                            </a>
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
-                                                <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                                            </a>
-                                        @elseif($projeto->users()->where('id', Auth::user()->id)->wherePivot('tipo_participacao', 'participante')->exists())
-                                        <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                        <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal"  data-id="{{ $projeto->id }}">
                                             <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
                                         </a>
-                                        @endif
+                                        <a href="#editEmployeeModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                        </a>
+                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="{{ $projeto->id }}">
+                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -114,5 +105,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="{{asset('js/crudProjeto.js')}}"></script>
-    </body>
+</body>
 </html>
