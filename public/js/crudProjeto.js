@@ -175,4 +175,3 @@ $(document).ready(function() {
         searching: true, // Ativar barra de pesquisa
     });
 });
-
