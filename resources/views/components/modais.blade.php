@@ -26,6 +26,23 @@
                         <label class="my-1">Descrição</label>
                         <textarea class="form-control" name="descricao" required></textarea>
                     </div>
+                    <div class="form-group multiselect">
+                        <label for="participante" class="my-1">Participantes</label>
+                        <div class="selectBox participantes" >
+                            <select id="participante" class="form-select">
+                                    <option>Clique aqui para selecionar os participantes</option>
+                            </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div class="checkboxes">
+                            @foreach($participantes as $participante)
+                                <label for="{{$participante->id}}" class="form-check-label">
+                                    <input type="checkbox" value="{{$participante->id}}" name="participantes[]" class="form-check-input mx-2">
+                                    <span>{{$participante->name}}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="my-1">Status</label>
                         <select class="form-select" aria-label="Default select example" name="status">
@@ -58,20 +75,37 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="my-1">Título</label>
+                        <label for="titulo_edit" class="my-1">Título</label>
                         <input type="text" class="form-control" id="titulo_edit"  name="titulo" required>
                     </div>
                     <div class="form-group">
-                        <label class="my-1">Data inicial</label>
-                        <input type="date" class="form-control" id="data_inicial_edit" name="data_inicial"required>
+                        <label for="data_inicial_edit" class="my-1">Data inicial</label>
+                        <input type="date" class="form-control" id="data_inicial_edit" name="data_inicial" required>
                     </div>
                     <div class="form-group">
-                        <label class="my-1">Data final</label>
+                        <label for="data_final_edit" class="my-1">Data final</label>
                         <input type="date" class="form-control" id="data_final_edit" name="data_final">
                     </div>
                     <div class="form-group">
-                        <label class="my-1">Descrição</label>
+                        <label for="descricao_edit" class="my-1">Descrição</label>
                         <textarea class="form-control"  id="descricao_edit" name="descricao" required></textarea>
+                    </div>
+                    <div class="form-group multiselect">
+                        <label for="participante" class="my-1">Participantes</label>
+                        <div class="selectBox participantes" >
+                            <select id="participante_edit" class="form-select">
+                                <option>Clique aqui para selecionar os participantes</option>
+                            </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div class="checkboxes">
+                            @foreach($participantes as $participante)
+                                <label for="{{$participante->id}}" class="form-check-label">
+                                    <input type="checkbox" value="{{$participante->id}}" name="participantes[]" class="form-check-input mx-2 participante-checkbox">
+                                    <span>{{$participante->name}}</span>
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="my-1">Status</label>
@@ -128,34 +162,34 @@
             <div class="modal-body" >
                 <table class="table table-striped">
                     <tbody>
-                    <tr>
-                        <td>#</td>
-                        <td id="id_proj"></td>
-                    </tr>
-                    <tr>
-                        <td>Título</td>
-                        <td id="titulo"></td>
-                    </tr>
-                    <tr>
-                        <td>Data Inicial</td>
-                        <td id="data_inicial"></td>
-                    </tr>
-                    <tr>
-                        <td>Data Final</td>
-                        <td id="data_final"></td>
-                    </tr>
-                    <tr>
-                        <td>Descrição</td>
-                        <td id="descricao"></td>
-                    </tr>
-                    <tr>
-                        <td>Participantes</td>
-                        <td id="participantes"></td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td id="status"></td>
-                    </tr>
+                        <tr>
+                            <td>#</td>
+                            <td id="id_proj"></td>
+                        </tr>
+                        <tr>
+                            <td>Título</td>
+                            <td id="titulo"></td>
+                        </tr>
+                        <tr>
+                            <td>Data Inicial</td>
+                            <td id="data_inicial"></td>
+                        </tr>
+                        <tr>
+                            <td>Data Final</td>
+                            <td id="data_final"></td>
+                        </tr>
+                        <tr>
+                            <td>Descrição</td>
+                            <td id="descricao"></td>
+                        </tr>
+                        <tr>
+                            <td>Participantes</td>
+                            <td id="participants"></td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td id="status"></td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="modal-footer">

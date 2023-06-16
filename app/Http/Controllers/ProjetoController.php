@@ -3,22 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projeto;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProjetoController extends Controller
 {
-    public function home()
-    {
+    public function home(){
 
         $projetos = Projeto::all();
         return view('pages.home', compact('projetos'));
 
     }
-
     public function listarProjetos()
     {
         //Dados do usuario logado
@@ -31,19 +28,21 @@ class ProjetoController extends Controller
             $projetos = $usuario->projetos;
         }
 
-        return view('pages.projetos', compact('projetos'));
+        //buscando participantes
+        $participantes = User::where('tipoUsuario', '2')->where('id', '!=', Auth::user()->id)->get();
+
+        return view('pages.projetos', compact('projetos', 'participantes'));
     }
 
-    public function cadastrarProjeto(Request $request)
-    {
-        try {
+    public function cadastrarProjeto(Request $request){
+        try{
             //validações
             $request->validate([
-                'titulo' => 'required|min:1|max:50|unique:projetos',
+                'titulo' => 'required|min:1|max:50|unique:projetos' ,
                 'data_inicial' => 'required|date|before_or_equal:today|',
                 'data_final' => 'nullable|date|after_or_equal:today',
                 'descricao' => 'required|string|min:10|max:255',
-            ], [
+            ],[
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
                 'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
@@ -63,41 +62,47 @@ class ProjetoController extends Controller
             $projeto = new Projeto;
             $projeto->titulo = trim($request->titulo);
             $projeto->data_inicial = $request->data_inicial;
-            $projeto->data_final = $request->data_final;
+            $projeto->data_final =  $request->data_final;
             $projeto->descricao = trim($request->descricao);
             $projeto->status = trim($request->status);
+            $projeto->save();
 
             // salvar o projeto associado ao usuário atual
             $usuario = Auth::user();
 
-            //projeto é um array de objetos
-            $dadosCriado = $usuario->projetos()->create($projeto->toArray());
+            // Associar usuário como criador do projeto
+            $usuario->projetos()->attach($projeto->id, ['tipo_participacao' => 'criador']);
 
-            if ($dadosCriado) {
-                return redirect()->route('projetos')->with('success', 'Projeto adicionado com sucesso!');
+            $participantes = $request->input('participantes', []);
+
+            //Adicionar participantes
+            foreach ($participantes as $participanteId) {
+                $projeto->users()->attach($participanteId, ['tipo_participacao' => 'participante']);
             }
 
-        } catch (\Exception $exception) {
+            return redirect()->route('projetos')->with('success', 'Projeto adicionado com sucesso!');
+
+        }catch (\Exception $exception) {
 
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
-
     }
 
-    public function verificarProjeto($id)
-    {
+    public function verificarProjeto($id){
 
         //filtra o projeto baseado no id
         $projeto = Projeto::findOrFail($id);
 
-        //retorna um json para  mostrar no modal
-        return response()->json(['projeto' => $projeto]);
+        // Carrega os participantes do projeto
+        $participantes = $projeto->users;
+
+        // Retorna um JSON com o projeto e os participantes
+        return response()->json(['projeto' => $projeto, 'participantes' => $participantes]);
     }
 
-    public function editarProjeto(Request $request)
-    {
+    public function editarProjeto(Request $request){
 
-        try {
+        try{
             $idDoProjeto = $request->input('id');
             //validações
             $request->validate([
@@ -105,7 +110,7 @@ class ProjetoController extends Controller
                 'data_inicial' => 'required|date|before_or_equal:today|',
                 'data_final' => 'nullable|date|after_or_equal:today',
                 'descricao' => 'required|string|min:10|max:255',
-            ], [
+            ],[
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
                 'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
@@ -126,33 +131,53 @@ class ProjetoController extends Controller
 
             $projeto->titulo = trim($request->titulo);
             $projeto->data_inicial = $request->data_inicial;
-            $projeto->data_final = $request->data_final;
+            $projeto->data_final =  $request->data_final;
             $projeto->descricao = trim($request->descricao);
             $projeto->status = trim($request->status);
             $projeto->save();
 
-            if ($projeto) {
-                return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
+            $participantes = $request->input('participantes', []);
+
+            // busca todos os projetos de todos os usuarios, onde a condição da participação é diferente
+            // de criador, logo apos cria uma lista com todos os ids, e retorna um array.
+            $participantesAtuais = $projeto->users()->where('tipo_participacao', '!=', 'criador')->pluck('id')->toArray();
+
+            // identifica os participantes a serem adicionados
+            $participantesAdicionar = array_diff($participantes, $participantesAtuais);
+
+            // Identifica os participantes a serem removidos
+            $participantesRemover = array_diff($participantesAtuais, $participantes);
+
+            // aqui adiciona participantes que não esta associado ao projeto
+            foreach ($participantesAdicionar as $participanteId) {
+                $projeto->users()->attach($participanteId, ['tipo_participacao' => 'participante']);
             }
-        } catch (\Exception $exception) {
+
+            // aqui remove participantes associados ao projeto
+            foreach ($participantesRemover as $participanteId) {
+                $projeto->users()->detach($participanteId);
+            }
+
+            return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
+
+        }catch (\Exception $exception) {
 
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
-
     }
 
-    public function deletarProjeto(Request $request)
-    {
+    public function deletarProjeto(Request $request){
 
         $projeto = Projeto::find($request->input('id'));
         $projetoDeletado = $projeto->delete();
 
-        if ($projetoDeletado) {
+        if($projetoDeletado){
             return redirect()->route('projetos')->with('success', 'Projeto excluído com sucesso!');
-        } else {
+        } else{
             return redirect()->route('projetos')->with('error', 'Projeto não foi excluído!');
         }
     }
+
 
 
     public function showPageEditarPerfil()
@@ -281,5 +306,6 @@ class ProjetoController extends Controller
         #Foi necessário na pág. blade verificar a existência da chave "success" na sessão usando @if(session('success'))
 
     }
+
 
 }

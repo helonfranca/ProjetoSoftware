@@ -38,7 +38,9 @@
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
                                             <div class="my-4">
                                                 <label for="nome" class="form-label">Nome:</label>
+
                                                 <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,300}" value="{{ $user->name }}" required>
+
                                                 <div class="invalid-feedback">
                                                     O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
                                                 </div>
@@ -67,8 +69,10 @@
 
                                             <div class="my-4">
                                                 <label for="celular" class="form-label">Celular:</label>
+
                                                 <input type="tel" class="form-control" id="celular" name="telefone" pattern="\([0-9]{2}\)[\s-]?[0-9]{4,5}-[0-9]{4,5}" value="{{ $user->telefone }}">
                                                 <script> $('#celular').mask('(00) 00000-0000');</script>
+
 
                                                 <div class="invalid-feedback">
                                                     Digite um número de celular válido com DDD.
