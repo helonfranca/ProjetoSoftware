@@ -89,18 +89,15 @@
                             <div class="d-flex flex-column h-100 justify-content-between text-end ms-5">
                                 <div class="mt-4">
                                     <h4>Agenda de equipamentos</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
                                     <div>
                                     <button class="button my-3 py-2 px-3">Acesse aqui</button>
                                     </div>
-                                </div>                            
-                             
+                                </div>
+                            </div>
                         </div>
-                         
-                        </div>
-                    
                     </div>
                 </div>
 
@@ -112,13 +109,14 @@
                             <div class="d-flex flex-column h-100 justify-content-between text-start">
                                 <div class="mt-4">
                                     <h4>Estoque</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
                                     <div>
-                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        <a href="{{route("itens")}}">
+                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        </a>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -127,7 +125,7 @@
                                 <img src="{{ asset('img/itens-lab.jpg') }}" alt="logo" width="250" height="200">
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
 
@@ -144,22 +142,23 @@
                             <div class="d-flex flex-column h-100 justify-content-between text-end ms-5">
                                 <div class="mt-4">
                                     <h4>Resultados</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
                                     <div>
-                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        <button class="button my-3 py-2 px-3">Acesse aqui</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>

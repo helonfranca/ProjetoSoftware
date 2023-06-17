@@ -13,16 +13,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
     <body>
-        <div class='dashboard'>
+        <div class='row me-2 me-md-5'>
             {{--Dashbord--}}
-            @include('components.dashboard');
+            @include('components.dashboard')
 
             {{--Template gerenciar itens--}}
-            <div class="dashboard-app">
-                <div class="dashboard-content">
-                    <div class="container">
-                        <div class="card sm-2 p-2">
-                            <h2 class="text-center mb-3 p-3" id="tabelacrud">Gerenciar itens</h2>
+            <div class="container text-center col-10 col-sm-9 col-xxl-9 col-md-9 mt-2 me-md-0 ">
+                            <h1 class="p-3 bg-dark text-white rounded">Gerenciar itens</h1>
                             <form action="{{ route('itens.buscar') }}" method="get">
                                 <div class="d-flex justify-content-end mb-3">
                                     <select class="form-select me-2" id="selectProjetos" name="id_projeto" required>
@@ -33,7 +30,7 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                    <button type="submit" id="colorb" class="btn btn-dark me-2">Buscar</button>
+                                    <button type="submit" class="btn btn-dark my-1 me-2 text-white rounded">Buscar</button>
                                 </div>
                             </form>
 
@@ -57,8 +54,8 @@
                                 @endforeach
                             @endif
 
-                            <div class="d-flex justify-content-end">
-                                <a id="colorb" href="#addEmployeeModal" class="btn btn-dark my-1 me-2" data-toggle="modal">
+                            <div class="d-flex justify-content-end mb-3 p-2">
+                                <a  href="#addEmployeeModal" class="btn btn-dark my-1 me-2 text-white rounded" data-toggle="modal">
                                     <div class="d-flex align-items-center">
                                         <i class="material-icons me-1">&#xE147;</i>
                                         <span>Adicionar novo item</span>
@@ -68,11 +65,11 @@
                             <table class="table table-striped table-bordered" id="projectTable">
                                 <thead>
                                 <tr class="text-center">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Quantidade</th>
-                                    <th scope="col">Descrição</th>
-                                    <th scope="col">Ações</th>
+                                    <th class="bg-dark text-white" scope="col">#</th>
+                                    <th class="bg-dark text-white" scope="col">Nome</th>
+                                    <th class="bg-dark text-white" scope="col">Quantidade</th>
+                                    <th class="bg-dark text-white" scope="col">Descrição</th>
+                                    <th class="bg-dark text-white" scope="col">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
