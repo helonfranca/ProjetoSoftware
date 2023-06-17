@@ -27,4 +27,8 @@ class Projeto extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function resultados(){
+        return $this->hasMany(Resultado::class);
+    }
+
 }
