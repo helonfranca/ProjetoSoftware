@@ -53,6 +53,7 @@
                                                         A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                                     </div>
                                                     <span id="confirmeSenhaMessage" class="text-danger"></span>
+
                                                 </div>
                                             </div>
 

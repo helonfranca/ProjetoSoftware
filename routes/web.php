@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
@@ -45,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
 
+
     //Pages de Itens
     Route::get('/itens', [ItemController::class, 'showPageItens'])->name('itens');
     Route::get('/itens/buscar', [ItemController::class,'obterItensDoProjeto'])->name('itens.buscar');
@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/itens/visualizar/{id}', [ItemController::class, 'visualizarItem'])->name('itens.visualizar');
     Route::put('/itens/editar', [ItemController::class, 'editarItem'])->name('itens.editar');
     Route::delete('/itens/deletar', [ItemController::class, 'deletarItem'])->name('itens.deletar');
+
 
 });
 

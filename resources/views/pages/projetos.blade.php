@@ -51,6 +51,7 @@
                                 </div>
                             </a>
                         </div>
+
                         <div class="table-responsive-md d-none d-md-block text-center p-2">
                             <table class="table table-bordered" id="projectTable">
                                 <thead>
@@ -136,6 +137,7 @@
                             </table>
                         </div>
  <!--------------------tabela mobile ----------------------------------------------------------------------------------->
+
                 </div>
     </div>
 

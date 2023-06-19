@@ -52,7 +52,9 @@
     </div>
 </div>
 
+
 <!-- SideBar tamanho de janela mobile a sm (pequena) -->
+
 
 <div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none text-center">
     <div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed pt-3" style="width: 15%; height:100%">

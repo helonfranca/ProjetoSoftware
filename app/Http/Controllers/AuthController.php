@@ -189,6 +189,7 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+
     public function showPageEditarPerfil()
     {
         return view('pages.editarPerfil'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
@@ -198,5 +199,6 @@ class AuthController extends Controller
     {
         return view('pages.editarSenha'); // Aqui é sem a barra  "/", pois é uma view. E exibe a página de edição do perfil
     }
+
 
 }

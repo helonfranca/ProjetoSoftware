@@ -28,16 +28,14 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
         document.getElementById('titulo').textContent = 'Carregando';
         document.getElementById('data_inicial').textContent = 'Carregando';
         document.getElementById('data_final').textContent =  'Carregando';
+        document.getElementById('participantes').textContent = 'Carregando';
         document.getElementById('status').textContent = 'Carregando';
-        document.getElementById('participants').textContent = 'Carregando';
 
         // Fazer uma requisição AJAX para atualizar os dados de projeto
         fetch('/projetos/visualizar/' + idProj)
             .then((response) => response.json())
-            .then((data) => {
-                const dados = data.projeto;
-                const participantes = data.participantes;
-
+            .then((data) => data.projeto)
+            .then((dados) => {
                 const dataFinalElement = document.getElementById('data_final');
                 const dataFinal = dados.data_final;
 
@@ -48,25 +46,14 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
                         year: 'numeric'
                     });
                 } else {
-                    dataFinalElement.textContent = 'Não definida'; // Define o valor como vazio
+                    dataFinalElement.textContent = ''; // Define o valor como vazio
                 }
 
                 document.getElementById('id_proj').textContent = dados.id;
                 document.getElementById('titulo').textContent = dados.titulo;
                 document.getElementById('data_inicial').textContent = new Date(dados.data_inicial).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
                 document.getElementById('descricao').textContent = dados.descricao;
-
-                // Exibir os participantes
-                const participantesElement = document.getElementById('participants');
-                participantesElement.textContent = '';
-                participantes.forEach(function(participante, index) {
-                    if (index === participantes.length - 1) {
-                        participantesElement.innerText += ` ${participante.name}.`;
-                    } else {
-                        participantesElement.innerText += `${participante.name},`;
-                    }
-                });
-
+                document.getElementById('participantes').textContent = dados.participantes;
                 document.getElementById('status').textContent = dados.status;
             })
             .catch(function(error) {
@@ -79,7 +66,8 @@ document.querySelectorAll('#editar').forEach(function(button) {
     button.addEventListener('click', function() {
         const idProj = this.getAttribute('data-id');
 
-        document.getElementById('id_edit').value = 'Carregando';
+        document.getElementById('id_edit').value ='Carregando';
+        document.getElementById('titulo_edit').value = 'Carregando';
         document.getElementById('titulo_edit').value = 'Carregando';
         document.getElementById('data_inicial_edit').value = 'Carregando';
         document.getElementById('data_final_edit').value = 'Carregando';
@@ -89,25 +77,15 @@ document.querySelectorAll('#editar').forEach(function(button) {
         // Fazer uma requisição AJAX para atualizar os dados de projeto
         fetch('/projetos/visualizar/' + idProj)
             .then((response) => response.json())
-            .then((data) => {
-                const dados = data.projeto;
-                const participantes = data.participantes;
-                console.log(participantes);
+            .then((data) => data.projeto)
+            .then((dados) => {
                 document.getElementById('id_edit').value = dados.id;
+                document.getElementById('titulo_edit').value = dados.titulo;
                 document.getElementById('titulo_edit').value = dados.titulo;
                 document.getElementById('data_inicial_edit').value = dados.data_inicial;
                 document.getElementById('data_final_edit').value = dados.data_final;
                 document.getElementById('descricao_edit').value = dados.descricao;
                 document.getElementById('status_edit').value = dados.status;
-
-                // Marcar as caixas de seleção dos participantes associados ao projeto
-                participantes.forEach(function(participante) {
-                    const checkbox = document.querySelector(`.participante-checkbox[value="${participante.id}"]`);
-                    console.log(participante);
-                    if (checkbox) {
-                        checkbox.checked = true;
-                    }
-                });
 
             })
             .catch(function(error) {
@@ -141,40 +119,16 @@ $(document).ready(function() {
     });
 });
 
-
-$(document).ready(function() {
-    $('.delete').click(function() {
-        const idProjeto = $(this).data('id');
-        $('#delete_id').val(idProjeto);
-    });
-})
-
-$(document).ready(function() {
-    let expanded = false;
-    $('.participantes').click(function() {
-        const checkboxes = $(this).siblings(".checkboxes");
-        if (!expanded) {
-            checkboxes.css("display", "block");
-            checkboxes.css("position", "absolute");
-            checkboxes.css("z-index", "9999");
-            expanded = true;
-        } else {
-            checkboxes.css("display", "none");
-            expanded = false;
-        }
-    });
-});
-
 $(document).ready(function() {
     $('#projectTable').DataTable({
-        language: {
-            url: 'js/pt-BR.json'
+            language: {
+                url: 'js/pt-BR.json'
         },
         lengthMenu: [5,10],
         paging: true, // Ativar paginação
         searching: true, // Ativar barra de pesquisa
-    });
 });
+
 
 $(document).ready(function() {
     $('#projectTable2').DataTable({
@@ -185,4 +139,5 @@ $(document).ready(function() {
         paging: true, // Ativar paginação
         searching: true, // Ativar barra de pesquisa
     });
+
 });
