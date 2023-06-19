@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projeto;
-
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +28,10 @@ class ProjetoController extends Controller
             $projetos = $usuario->projetos;
         }
 
-        return view('pages.projetos', compact('projetos'));
+        //buscando participantes
+        $participantes = User::where('tipoUsuario', '2')->where('id', '!=', Auth::user()->id)->get();
+
+        return view('pages.projetos', compact('projetos', 'participantes'));
     }
 
     public function cadastrarProjeto(Request $request){
@@ -64,30 +65,27 @@ class ProjetoController extends Controller
             $projeto->data_final =  $request->data_final;
             $projeto->descricao = trim($request->descricao);
             $projeto->status = trim($request->status);
+            $projeto->save();
 
             // salvar o projeto associado ao usuário atual
             $usuario = Auth::user();
-
 
             // Associar usuário como criador do projeto
             $usuario->projetos()->attach($projeto->id, ['tipo_participacao' => 'criador']);
 
             $participantes = $request->input('participantes', []);
 
-
-            if ($dadosCriado) {
-                return redirect()->route('projetos')->with('success', 'Projeto adicionado com sucesso!');
+            //Adicionar participantes
+            foreach ($participantes as $participanteId) {
+                $projeto->users()->attach($participanteId, ['tipo_participacao' => 'participante']);
             }
-
 
             return redirect()->route('projetos')->with('success', 'Projeto adicionado com sucesso!');
 
         }catch (\Exception $exception) {
 
-
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
-
     }
 
     public function verificarProjeto($id){
@@ -95,8 +93,11 @@ class ProjetoController extends Controller
         //filtra o projeto baseado no id
         $projeto = Projeto::findOrFail($id);
 
-        //retorna um json para  mostrar no modal
-        return response()->json(['projeto' => $projeto]);
+        // Carrega os participantes do projeto
+        $participantes = $projeto->users;
+
+        // Retorna um JSON com o projeto e os participantes
+        return response()->json(['projeto' => $projeto, 'participantes' => $participantes]);
     }
 
     public function editarProjeto(Request $request){
@@ -135,19 +136,34 @@ class ProjetoController extends Controller
             $projeto->status = trim($request->status);
             $projeto->save();
 
-            if ($projeto) {
-                return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
+            $participantes = $request->input('participantes', []);
+
+            // busca todos os projetos de todos os usuarios, onde a condição da participação é diferente
+            // de criador, logo apos cria uma lista com todos os ids, e retorna um array.
+            $participantesAtuais = $projeto->users()->where('tipo_participacao', '!=', 'criador')->pluck('id')->toArray();
+
+            // identifica os participantes a serem adicionados
+            $participantesAdicionar = array_diff($participantes, $participantesAtuais);
+
+            // Identifica os participantes a serem removidos
+            $participantesRemover = array_diff($participantesAtuais, $participantes);
+
+            // aqui adiciona participantes que não esta associado ao projeto
+            foreach ($participantesAdicionar as $participanteId) {
+                $projeto->users()->attach($participanteId, ['tipo_participacao' => 'participante']);
             }
 
+            // aqui remove participantes associados ao projeto
+            foreach ($participantesRemover as $participanteId) {
+                $projeto->users()->detach($participanteId);
+            }
 
             return redirect()->route('projetos')->with('success', 'Projeto editado com sucesso!');
 
         }catch (\Exception $exception) {
 
-
             return redirect()->back()->withErrors([$exception->getMessage()]);
         }
-
     }
 
     public function deletarProjeto(Request $request){
