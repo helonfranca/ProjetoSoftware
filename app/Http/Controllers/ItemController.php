@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Item;
+
 use App\Models\Projeto;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +29,6 @@ class ItemController
             // Essa função cria um array associativo onde a chave é o nome da variável e o valor é o valor da variável. Em seguida, esse array é passado como argum
         }
 
-        return redirect('/login'); // Aqui é com a barra  "/", pois é um redirecionamento (caso o usuário não esteja logado).
     }
 
 }

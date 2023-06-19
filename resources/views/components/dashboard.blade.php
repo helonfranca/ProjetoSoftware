@@ -1,60 +1,111 @@
-<div class="dashboard-nav">
-    <header>
-        <a href="{{route('home')}}" class="brand-logo">
-            <img id="logo" src="{{asset('img/logo.png')}}" width="240" height="200">
+<!-- SideBar tamanho de janela media a xxl -->
+<div class="container d-none d-md-block col-xxl-3 col-md-4 ms-0">
+    <div class=" d-flex flex-column  position-fixed flex-shrink-0 align-items-stretch text-white bg-dark p-3 m-0" style="width: 20%; height:100%">
+        <a href="{{route('home')}}" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-4">LabOrganizer</span>
         </a>
-    </header>
-
-    <nav class="dashboard-nav-list">
-        <a href="{{route('home')}}" class="dashboard-nav-item">
-            <i class="fas fa-home"></i>
-            <span>Página Inicial</span>
-        </a>
-        <?php $tipoUsuario = Auth::user()->tipoUsuario; ?>
-        @if($tipoUsuario == 1 )
-            <a href="#" class="dashboard-nav-item">
-                <i class="fas fa-microscope"></i>
-                <span>Cadastro de equipamentos</span>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{{route('home')}}"  class="nav-link text-white" aria-current="page">
+            Página Inicial
             </a>
-        @endif
+        </li>
+        <li>
+            <a href="{{route('projetos')}}" class="nav-link text-white">
+            Meus projetos
+            </a>
+        </li>
+        <li>
+            <a href="{{route('itens')}}" class="nav-link text-white">
+            Estoque
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+            Resultados
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
 
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Agenda de equipamentos</span>
+            Agenda de equipamentos
+            </a>
+        </li>
+        </ul>
+        <hr>
+            <div class="dropdown">
+            <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://img.favpng.com/17/1/20/user-interface-design-computer-icons-default-png-favpng-A0tt8aVzdqP30RjwFGhjNABpm.jpg"
+                     alt="" width="32" height="32" class="rounded-circle me-2">
+                <?php $nomeCompleto = Auth::user()->name; ?>
+                <?php $nomes = explode(' ', $nomeCompleto); ?>
+                <strong>{{ $nomes[0] }}</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="{{route("editarSenha")}}">Editar senha</a></li>
+                <li><a class="dropdown-item" href="{{route("editarPerfil")}}">Editar perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{route("logout")}}">Logout</a></li>
+            </ul>
+            </div>
+    </div>
+</div>
+
+
+<!-- SideBar tamanho de janela mobile a sm (pequena) -->
+
+
+<div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none text-center">
+    <div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed pt-3" style="width: 15%; height:100%">
+
+    <ul class="nav nav-pills nav-flush flex-column ">
+    <li class="nav-item">
+
+    <a href="/" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+        <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
+        <span class="visually-hidden">Icon-only</span>
+    </a>
+
+    </li>
+        <li class="nav-item">
+            <a href="{{route('home')}}" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+                <i class="bi bi-house-door"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+                <i class="bi bi-folder"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
+                <i class="bi bi-folder"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
+                <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
+            </a>
+        </li>
+    </ul>
+    <div class="dropdown border-top">
+        <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://img.favpng.com/17/1/20/user-interface-design-computer-icons-default-png-favpng-A0tt8aVzdqP30RjwFGhjNABpm.jpg"
+                 alt="user" width="24" height="24" class="rounded-circle">
         </a>
 
-        <a href="#" class="dashboard-nav-item">
-            <i class="fas fa-file-upload"></i>
-            <span>Estoque de projetos</span>
-        </a>
-
-        <a href="{{route('projetos')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Meus projetos</span>
-        </a>
-
-        <a href="{{route('editarPerfil')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Editar perfil</span>
-        </a>
-
-        <a href="{{route('editarSenha')}}" class="dashboard-nav-item">
-            <i class="fas fa-project-diagram"></i>
-            <span>Editar senha</span>
-        </a>
-
-        <a class="dashboard-nav-item">
-            <i class="fas fa-user"></i>
-            <?php $nomeCompleto = Auth::user()->name; ?>
-            <?php $nomes = explode(' ', $nomeCompleto); ?>
-            <span>Bem vindo, {{ $nomes[0] }}</span>
-        </a>
-
-        <div class="nav-item-divider"></div>
-
-        <a href="{{route('logout')}}" class="dashboard-nav-item">
-            <i class="fas fa-sign-out-alt"></i>
-            Logout
-        </a>
-    </nav>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+            <li><a class="dropdown-item" href="{{route("editarSenha")}}">Editar senha</a></li>
+            <li><a class="dropdown-item" href="{{route("editarPerfil")}}">Editar perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{route("logout")}}">Logout</a></li>
+        </ul>
+    </div>
+  </div>
 </div>

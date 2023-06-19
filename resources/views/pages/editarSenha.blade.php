@@ -13,100 +13,97 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<div class='dashboard'>
-    {{--Dashbord--}}
-    @include('components.dashboard');
+    <div class='row me-4'>
+        {{--Dashbord--}}
+        @include('components.dashboard');
 
-    {{--Template Editar perfil--}}
-    <div class="dashboard-app">
-        <div class="dashboard-content">
-            <div class="container">
-
-
-                <main>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row mb-4 text-center border rounded" style="background-color: #edf2f7">
-                                    <h2 class="mt-2">Editar senha</h2>
-                                </div>
-                                <form action="{{route('editarSenhaSave')}}" method="post" class="needs-validation" novalidate>
-                                    <!-- Mudar claro, a action-->
-                                    @csrf
-                                    <div class="row border rounded mb-4 " style="background-color: #edf2f7">
-                                        <div class="col-md-6"> <!-- Campos a esquerda: -->
-                                            <div class="my-4">
-                                                <label for="password" class="form-label">Senha nova:</label>
-                                                <input type="password" class="form-control" name="senhaNova" id="password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
-                                                <div class="invalid-feedback">
-                                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
-                                                </div>
-                                                <span id="senhaMessage" class="text-danger"></span>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="col-md-6"> <!-- Campos a direita agora: -->
-                                            <div class="my-4">
-                                                <label for="password" class="form-label">Confirme a senha nova:</label>
-                                                <input type="password" class="form-control" name="confirmeSenhaNova" id="confirm_password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
-                                                <div class="invalid-feedback">
-                                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
-                                                </div>
-                                                <span id="confirmeSenhaMessage" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="my-4 text-center">
-                                            <div class="my-0">
-                                                <label for="password" class="form-label">Senha antiga:</label>
-                                                <input type="password" class="form-control" name="senhaAntiga" required minlength="8" maxlength="30">
-                                                <div class="invalid-feedback">
-                                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary mb-4">Enviar</button>
-                                        </div>
-
-                                        <div class="mb-2 text-center">
-                                            <label>Esqueceu sua senha?</label>
-                                            <a href="{{route('register')}}" style="color:#3c31d4;">clique aqui</a><br>
-                                        </div>
+        {{--Template Editar perfil--}}
+        <div class="container  text-center col-10 col-sm-9 col-xxl-9 col-md-8 mt-5 me-sm-0 me-md-5">
+            <div class="dashboard-content">
+                <div class="container">
+                    <main>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row mb-4 text-center border rounded" style="background-color: #edf2f7">
+                                        <h2 class="mt-2">Editar senha</h2>
                                     </div>
-                                </form>
+                                    <form action="{{route('editarSenhaSave')}}" method="post" class="needs-validation" novalidate>
 
-                                @if ($errors->any())
-                                    @foreach ($errors->all() as $error)
-                                        <div class="alert alert-danger text-center mt-3">
-                                            <span>{{ $error }}</span>
+                                        @csrf
+                                        <div class="row border rounded mb-4 " style="background-color: #edf2f7">
+                                            <div class="col-md-6"> <!-- Campos a esquerda: -->
+                                                <div class="my-4">
+                                                    <label for="password" class="form-label">Senha nova:</label>
+                                                    <input type="password" class="form-control" name="senhaNova" id="password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
+                                                    <div class="invalid-feedback">
+                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                    </div>
+                                                    <span id="senhaMessage" class="text-danger"></span>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="col-md-6"> <!-- Campos a direita agora: -->
+                                                <div class="my-4">
+                                                    <label for="password" class="form-label">Confirme a senha nova:</label>
+                                                    <input type="password" class="form-control" name="confirmeSenhaNova" id="confirm_password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
+                                                    <div class="invalid-feedback">
+                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                    </div>
+                                                    <span id="confirmeSenhaMessage" class="text-danger"></span>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="my-4 text-center">
+                                                <div class="my-0">
+                                                    <label for="password" class="form-label">Senha antiga:</label>
+                                                    <input type="password" class="form-control" name="senhaAntiga" required minlength="8" maxlength="30">
+                                                    <div class="invalid-feedback">
+                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary mb-4">Enviar</button>
+                                            </div>
+
+                                            <div class="mb-2 text-center">
+                                                <label>Esqueceu sua senha?</label>
+                                                <a href="{{route('register')}}" style="color:#3c31d4;">clique aqui</a><br>
+                                            </div>
                                         </div>
-                                    @endforeach
-                                @endif
+                                    </form>
 
+                                    @if(session('success'))
+                                        <div class="alert alert-success text-center mt-3">
+                                            <span>{{ session('success') }}</span>
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        @foreach ($errors->all() as $error)
+                                            <div class="alert alert-danger text-center mt-3">
+                                                <span>{{ $error }}</span>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-                            crossorigin="anonymous"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+                                crossorigin="anonymous"></script>
 
-                    <script src="{{ asset('js/validacao.js') }}" ></script>
-
-                </main>
-
+                        <script src="{{ asset('js/validacao.js') }}" ></script>
+                    </main>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
-
-
-
-</div>
-
 </body>
 </html>

@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
-use App\Http\Controllers\ItemController; #Tem que add aqui o endereço do controller também
-use App\Http\Controllers\ResultadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,12 +41,19 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/projetos/editarPerfil/save', [ProjetoController::class, 'editarPerfil'])->name('editarPerfilSave');
     Route::post('/projetos/editarSenha/save', [ProjetoController::class, 'editarSenha'])->name('editarSenhaSave'); //Esse "nome" que damos, é usado no HTML action (do forms).
 
-
-    Route::get('/projetos/itens', [ItemController::class, 'showPageItens'])->name('gerenciarItens'); //Pega o get "/projetos/itens", vai no "ItemController:: , showPageItens..." e aida dá um nome
-    Route::get('/projetos/resultados', [ResultadoController::class, 'showPageResultados'])->name('gerenciarResultados');
-
     //Rota Page principal
     Route::get('/home', [ProjetoController::class, 'home'])->name('home');
+
+
+    //Pages de Itens
+    Route::get('/itens', [ItemController::class, 'showPageItens'])->name('itens');
+    Route::get('/itens/buscar', [ItemController::class,'obterItensDoProjeto'])->name('itens.buscar');
+    Route::post('/itens/salvar', [ItemController::class,'cadastrarItem'])->name('itens.salvar');
+    Route::get('/itens/visualizar/{id}', [ItemController::class, 'visualizarItem'])->name('itens.visualizar');
+    Route::put('/itens/editar', [ItemController::class, 'editarItem'])->name('itens.editar');
+    Route::delete('/itens/deletar', [ItemController::class, 'deletarItem'])->name('itens.deletar');
+
+
 });
 
 
