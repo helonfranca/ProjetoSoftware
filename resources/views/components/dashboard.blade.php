@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link text-white">
+            <a href="{{route('resultados')}}" class="nav-link text-white">
             Resultados
             </a>
         </li>

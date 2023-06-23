@@ -2,30 +2,30 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('itens.salvar')}}" method="POST">
+            <form action="{{route('resultados.salvar')}}" method="POST">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title">Adicionar novo Item</h4>
+                    <h4 class="modal-title">Adicionar novo Resultado</h4>
                     <button class="btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <input type="hidden" name="projeto_id" id="projeto_id" value="">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nome" class="my-1">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" required>
+                        <label for="titulo" class="my-1">Titulo</label>
+                        <input type="text" class="form-control" name="titulo" id="titulo" required>
                     </div>
                     <div class="form-group">
-                        <label for="quantidade" class="my-1">Quantidade</label>
-                        <input type="number" class="form-control" name="quantidade" id="quantidade" required>
+                        <label class="my-1">Data</label>
+                        <input type="date" class="form-control"  name="data" required>
                     </div>
                     <div class="form-group">
-                        <label for="descricao" class="my-1">Descrição</label>
-                        <textarea class="form-control" name="descricao" id="descricao" required></textarea>
+                        <label for="link" class="my-1">Link</label>
+                        <textarea class="form-control" name="link" id="link" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar" id="adicionarItemBtn">
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="adicionarResultadoBtn">
                 </div>
             </form>
         </div>
@@ -36,32 +36,32 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('itens.editar')}}" method="post">
+            <form action="{{route('resultados.editar')}}" method="post">
                 @csrf
                 @method('put')
-                <input type="hidden" name="item_id" id="id_edit">
+                <input type="hidden" name="resultado_id" id="id_edit">
                 <input type="hidden" name="projeto_id" id="projeto_id_edit" value="">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar Item</h4>
+                    <h4 class="modal-title">Editar Resultado</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nome_edit" class="my-1">Nome</label>
-                        <input type="text" class="form-control" id="nome_edit"  name="nome" required>
+                        <label for="titulo_edit" class="my-1">Título</label>
+                        <input type="text" class="form-control" id="titulo_edit"  name="titulo" required>
                     </div>
                     <div class="form-group">
-                        <label for="quantidade_edit" class="my-1">Quantidade</label>
-                        <input type="number" class="form-control" id="quantidade_edit" name="quantidade" required>
+                        <label for="data_edit" class="my-1">Data</label>
+                        <input type="date" class="form-control" id="data_edit" name="data" required>
                     </div>
                     <div class="form-group">
-                        <label for="descricao_edit" class="my-1">Descrição</label>
-                        <textarea class="form-control" id="descricao_edit" name="descricao" required></textarea>
+                        <label for="link_edit" class="my-1">Link</label>
+                        <textarea class="form-control" id="link_edit" name="link" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar" id="EditarItemBtn">
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="EditarResultadoBtn">
                 </div>
             </form>
         </div>
@@ -72,18 +72,18 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('itens.deletar')}}" method="post">
+            <form action="{{route('resultados.deletar')}}" method="post">
                 @csrf
                 @method('delete')
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Excluir Item</h4>
+                    <h4 class="modal-title">Excluir Resultado</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input type="hidden" name="id_item" id="delete_id">
+                <input type="hidden" name="id_resultado" id="delete_id">
                 <div class="modal-body">
-                    <p>Tem certeza que deseja excluir o Item?</p>
-                    <p class="text-warning"><small>Esta ação vai excluir seu item permanentemente</small></p>
+                    <p>Tem certeza que deseja deletar o Resultado?</p>
+                    <p class="text-warning"><small>Esta ação vai excluir seu resultado permanentemente</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -99,7 +99,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Verificar Item</h4>
+                <h4 class="modal-title">Verificar Resultado</h4>
                 <button class="btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -107,19 +107,19 @@
                     <tbody>
                     <tr>
                         <td>#</td>
-                        <td id="id_item"></td>
+                        <td id="id_resultado"></td>
                     </tr>
                     <tr>
-                        <td>Nome</td>
-                        <td id="nome_item"></td>
+                        <td>Título</td>
+                        <td id="titulo_resultado"></td>
                     </tr>
                     <tr>
-                        <td>Quantidade</td>
-                        <td id="quantidade_item"></td>
+                        <td>Data</td>
+                        <td id="data_resultado"></td>
                     </tr>
                     <tr>
-                        <td>Descrição</td>
-                        <td id="descricao_item"></td>
+                        <td>Link</td>
+                        <td id="link_resultado"></td>
                     </tr>
                     </tbody>
                 </table>
