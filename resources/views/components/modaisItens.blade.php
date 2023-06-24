@@ -2,7 +2,7 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('itens.salvar')}}" method="POST">
+            <form action="{{route('itens.salvar')}}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar novo Item</h4>
@@ -12,15 +12,32 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nome" class="my-1">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" required>
+                        <input type="text" class="form-control" name="nome" pattern="[A-Za-zÀ-ÿ0-9\s]{1,300}" id="nome" required>
+
+                        <div class="invalid-feedback">
+                            O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="quantidade" class="my-1">Quantidade</label>
-                        <input type="number" class="form-control" name="quantidade" id="quantidade" required>
+                        <input type="text" class="form-control quantidade" name="quantidade" pattern="^[1-9]\d{0,1}|100$" id="quantidade" required>
+
+                        <div class="invalid-feedback">
+                            A quantidade é obrigatória e deve conter no mínimo 1 caractere numérico, com um limite de 100 por item.
+                            Não são permitidos números negativos.
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="descricao" class="my-1">Descrição</label>
-                        <textarea class="form-control" name="descricao" id="descricao" required></textarea>
+                        <textarea class="form-control descricao" name="descricao" id="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -36,7 +53,7 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('itens.editar')}}" method="post">
+            <form action="{{route('itens.editar')}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
                 <input type="hidden" name="item_id" id="id_edit">
@@ -48,15 +65,31 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nome_edit" class="my-1">Nome</label>
-                        <input type="text" class="form-control" id="nome_edit"  name="nome" required>
+                        <input type="text" class="form-control" id="nome_edit" pattern="[A-Za-zÀ-ÿ0-9\s]{1,300}" name="nome" required>
+
+                        <div class="invalid-feedback">
+                            O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="quantidade_edit" class="my-1">Quantidade</label>
-                        <input type="number" class="form-control" id="quantidade_edit" name="quantidade" required>
+                        <input type="text" class="form-control quantidade" id="quantidade_edit" pattern="^[1-9]\d{0,1}|100$" name="quantidade" required>
+
+                        <div class="invalid-feedback">
+                            A quantidade é obrigatória e deve conter no mínimo 1 caractere numérico, com um limite de 100 por item.
+                            Não são permitidos números negativos.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="descricao_edit" class="my-1">Descrição</label>
-                        <textarea class="form-control" id="descricao_edit" name="descricao" required></textarea>
+                        <textarea class="form-control descricao" id="descricao_edit" name="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">

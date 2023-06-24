@@ -6,35 +6,35 @@
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="{{route('home')}}"  class="nav-link text-white" aria-current="page">
-            Página Inicial
-            </a>
-        </li>
-        <li>
-            <a href="{{route('projetos')}}" class="nav-link text-white">
-            Meus projetos
-            </a>
-        </li>
-        <li>
-            <a href="{{route('itens')}}" class="nav-link text-white">
-            Estoque
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-            Resultados
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link text-white">
+            <li class="nav-item">
+                <a href="{{route('home')}}"  class="nav-link text-white" aria-current="page">
+                    Página Inicial
+                </a>
+            </li>
+            <li>
+                <a href="{{route('projetos')}}" class="nav-link text-white">
+                    Meus projetos
+                </a>
+            </li>
+            <li>
+                <a href="{{route('itens')}}" class="nav-link text-white">
+                    Estoque
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    Resultados
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
 
-            Agenda de equipamentos
-            </a>
-        </li>
+                    Agenda de equipamentos
+                </a>
+            </li>
         </ul>
         <hr>
-            <div class="dropdown">
+        <div class="dropdown">
             <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://img.favpng.com/17/1/20/user-interface-design-computer-icons-default-png-favpng-A0tt8aVzdqP30RjwFGhjNABpm.jpg"
                      alt="" width="32" height="32" class="rounded-circle me-2">
@@ -48,7 +48,7 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{{route("logout")}}">Logout</a></li>
             </ul>
-            </div>
+        </div>
     </div>
 </div>
 
@@ -57,53 +57,53 @@
 <div class="container d-block col-2 col-sm-3 d-md-none d-xxl-none text-center">
     <div class=" d-flex flex-column flex-shrink-0 bg-dark position-fixed pt-3" style="width: 15%; height:100%">
 
-    <ul class="nav nav-pills nav-flush flex-column ">
-    <li class="nav-item">
+        <ul class="nav nav-pills nav-flush flex-column ">
+            <li class="nav-item">
 
-    <a href="/" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-        <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
-        <span class="visually-hidden">Icon-only</span>
-    </a>
+                <a href="/" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
+                    <span class="visually-hidden">Icon-only</span>
+                </a>
 
-    </li>
-        <li class="nav-item">
-            <a href="{{route('home')}}" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-                <i class="bi bi-house-door"></i>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
-                <i class="bi bi-folder"></i>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
-                <i class="bi bi-folder"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
-                <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
-                <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
-            </a>
-        </li>
-    </ul>
-    <div class="dropdown border-top">
-        <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://img.favpng.com/17/1/20/user-interface-design-computer-icons-default-png-favpng-A0tt8aVzdqP30RjwFGhjNABpm.jpg"
-                 alt="user" width="24" height="24" class="rounded-circle">
-        </a>
-
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-            <li><a class="dropdown-item" href="{{route("editarSenha")}}">Editar senha</a></li>
-            <li><a class="dropdown-item" href="{{route("editarPerfil")}}">Editar perfil</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{route("logout")}}">Logout</a></li>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('home')}}" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <i class="bi bi-house-door"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <i class="bi bi-folder"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <i class="bi bi-folder"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
+                </a>
+            </li>
         </ul>
+        <div class="dropdown border-top">
+            <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://img.favpng.com/17/1/20/user-interface-design-computer-icons-default-png-favpng-A0tt8aVzdqP30RjwFGhjNABpm.jpg"
+                     alt="user" width="24" height="24" class="rounded-circle">
+            </a>
+
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                <li><a class="dropdown-item" href="{{route("editarSenha")}}">Editar senha</a></li>
+                <li><a class="dropdown-item" href="{{route("editarPerfil")}}">Editar perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{route("logout")}}">Logout</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
