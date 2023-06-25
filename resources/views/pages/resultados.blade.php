@@ -68,6 +68,7 @@
                                     <th class="bg-dark text-white" scope="col">#</th>
                                     <th class="bg-dark text-white" scope="col">Título</th>
                                     <th class="bg-dark text-white" scope="col">Data</th>
+                                    <th class="bg-dark text-white" scope="col">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +78,6 @@
                                             <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{$resultado->titulo}}</td>
                                             <td>{{ date('d/m/Y', strtotime($resultado->data))}}</td>
-                                            <td>{{$resultado->Link}}</td>
                                             <td scope="col" class="text-center">
                                                 <a href="#viewEmployeeModal" class="view" id="visualizar" data-toggle="modal" data-id="{{ $resultado->id }}">
                                                     <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
@@ -110,6 +110,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-        <script src="{{asset('js/crudItens.js')}}"></script>
+        <script src="{{asset('js/crudResultados.js')}}"></script>
     </body>
 </html>

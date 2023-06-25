@@ -56,18 +56,18 @@ class ResultadoController extends Controller
                 'link.required' => 'O campo link é obrigatório.',
                 'link.url' => 'Coloque um link válido para referente ao documento.',
                 'projeto_id.exists' => 'O projeto selecionado não existe.',
-                'projeto_id.required' =>'Selecione um projeto para adicionar item.',
+                'projeto_id.required' =>'Selecione um projeto para adicionar resultado.',
 
             ]);
 
             $projetoId = $request->input('projeto_id');
 
-            $resultado = new Resultado();
-            $resultado->titulo = trim($request->input('titulo'));
-            $resultado->data = $request->input('data');
-            $resultado->link = trim($request->input('link'));
-            $resultado->projeto_id = $projetoId;
-            $resultado->save();
+            $resultados = new Resultado;
+            $resultados->titulo = trim($request->input('titulo'));
+            $resultados->data = $request->input('data');
+            $resultados->link = trim($request->input('link'));
+            $resultados->projeto_id = $projetoId;
+            $resultados->save();
 
             return redirect()->back()->with('success', 'Resultado adicionado com sucesso!');
 
@@ -78,10 +78,10 @@ class ResultadoController extends Controller
     }
     public function visualizarResultado($idResultado)
     {
-        // Buscar o item pelo ID
+        // Buscar o resultado pelo ID
         $resultado = Resultado::findOrFail($idResultado);
 
-        // Retornar os dados do item em formato JSON
+        // Retornar os dados do resultado em formato JSON
         return response()->json(['resultado' => $resultado]);
     }
 
@@ -104,6 +104,8 @@ class ResultadoController extends Controller
                 'link.url' => 'Coloque um link válido para referente ao documento.',
             ]);
             $idResultado = $request->input('resultado_id');
+
+
 
             $resultado = Resultado::findOrFail($idResultado);
             $resultado->titulo = trim($request->input('titulo'));

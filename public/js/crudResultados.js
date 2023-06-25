@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 //atribuir id de projeto ao modal de adicionar
 $(document).ready(function() {
-    $('#adicionarItemBtn').click(function() {
+    $('#adicionarResultadoBtn').click(function() {
         var projetoId = $('#selectProjetos').val();
         $('#projeto_id').val(projetoId);
     });
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 //atribuir id de projeto ao modal de editar
 $(document).ready(function() {
-    $('#EditarItemBtn').click(function() {
+    $('#EditarResultadoBtn').click(function() {
         var projetoId = $('#selectProjetos').val();
         $('#projeto_id_edit').val(projetoId);
     });
@@ -42,30 +42,30 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('.delete').click(function() {
-        var itemId = $(this).data('id');
-        $('#delete_id').val(itemId);
+        var resultadoId = $(this).data('id');
+        $('#delete_id').val(resultadoId);
     });
 });
 
 document.querySelectorAll('#visualizar').forEach(function(button) {
     button.addEventListener('click', function() {
-        const idItem = this.getAttribute('data-id');
+        const idResultado = this.getAttribute('data-id');
 
-        document.getElementById('id_item').textContent = 'Carregando';
-        document.getElementById('nome_item').textContent = 'Carregando';
-        document.getElementById('quantidade_item').textContent = 'Carregando';
-        document.getElementById('descricao_item').textContent = 'Carregando';
+        document.getElementById('id_resultado').textContent = 'Carregando';
+        document.getElementById('titulo_resultado').textContent = 'Carregando';
+        document.getElementById('data_resultado').textContent = 'Carregando';
+        document.getElementById('link_resultado').textContent = 'Carregando';
 
         // Fazer uma requisição AJAX para atualizar os dados do item
-        fetch('/itens/visualizar/' + idItem)
+        fetch('/resultados/visualizar/' + idResultado)
             .then((response) => response.json())
             .then((data) => {
-                const item = data.item;
+                const resultado = data.resultado;
 
-                document.getElementById('id_item').textContent = item.id;
-                document.getElementById('nome_item').textContent = item.nome;
-                document.getElementById('quantidade_item').textContent = item.quantidade;
-                document.getElementById('descricao_item').textContent = item.descricao;
+                document.getElementById('id_resultado').textContent = resultado.id;
+                document.getElementById('titulo_resultado').textContent = resultado.titulo;
+                document.getElementById('data_resultado').textContent = new Date(resultado.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                document.getElementById('link_resultado').textContent = resultado.link;
             })
             .catch(function(error) {
                 console.log(error);
@@ -75,22 +75,22 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
 
 document.querySelectorAll('#editar').forEach(function(button) {
     button.addEventListener('click', function() {
-        const idItem = this.getAttribute('data-id');
+        const idResultado = this.getAttribute('data-id');
 
-        document.getElementById('id_edit').value = idItem;
-        document.getElementById('nome_edit').value = 'Carregando';
-        document.getElementById('quantidade_edit').value = 'Carregando';
-        document.getElementById('descricao_edit').value = 'Carregando';
+        document.getElementById('id_edit').value = idResultado;
+        document.getElementById('titulo_resultado').value = 'Carregando';
+        document.getElementById('data_resultado').value = 'Carregando';
+        document.getElementById('link_resultado').value = 'Carregando';
 
         // Fazer uma requisição AJAX para atualizar os dados de projeto
-        fetch('/itens/visualizar/' + idItem)
+        fetch('/resultados/visualizar/' + idResultado)
             .then((response) => response.json())
             .then((data) => {
-                const item = data.item;
+                const resultado = data.resultado;
 
-                document.getElementById('nome_edit').value = item.nome;
-                document.getElementById('quantidade_edit').value = item.quantidade;
-                document.getElementById('descricao_edit').value = item.descricao;
+                document.getElementById('titulo_edit').value = resultado.titulo;
+                document.getElementById('data_edit').value = resultado.data;
+                document.getElementById('link_edit').value = resultado.link;
 
             })
             .catch(function(error) {
