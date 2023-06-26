@@ -29,7 +29,6 @@
                                     <h4 class="my-2"> Se você quer alterar ou esqueceu sua senha <a href="{{route('editarSenha')}}"> clique aqui </a></h4>
                                 </div>
                                 <form action="{{route('editarPerfilSave')}}" method="post" class="needs-validation" novalidate>
-                                    <!-- action {{route('editarPerfilSave')}} acessa o que foi nomeado em web.php como "name('editarPerfilSave')" (rotas)-->
                                     @csrf
                                     <div class="row border rounded mb-4 " style="background-color: #edf2f7">
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
