@@ -144,7 +144,9 @@
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
                                     <div>
-                                        <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        <a href="{{route("resultados")}}">
+                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

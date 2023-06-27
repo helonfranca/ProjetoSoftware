@@ -88,8 +88,9 @@ class ResultadoController extends Controller
     public function editarResultado(Request $request)
     {
         try {
+            $idResultado = $request->input('resultado_id');
             $request->validate([
-                'titulo' => 'required|min:1|max:50|unique:resultados' ,
+                'titulo' => 'required|min:1|max:50|unique:resultados,titulo,' . $idResultado,
                 'data' => 'required|date|before_or_equal:today|',
                 'link' => 'required|url|max:255',
             ], [
@@ -102,8 +103,9 @@ class ResultadoController extends Controller
                 'data.date' => 'O campo data deve ser uma data válida.',
                 'link.required' => 'O campo link é obrigatório.',
                 'link.url' => 'Coloque um link válido para referente ao documento.',
+
             ]);
-            $idResultado = $request->input('resultado_id');
+
 
 
 
