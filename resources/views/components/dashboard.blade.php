@@ -81,23 +81,21 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Dashboard"
+                <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Projetos"
                    data-bs-toggle="tooltip" data-bs-placement="right">
-                    <i class="bi bi-folder"></i>
+                    <i class="fas fa-microscope"></i>
                 </a>
             </li>
             <li>
-                <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip"
+                <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Itens" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <i class="bi bi-folder"></i>
+                    <i class="bi bi-inboxes"></i>
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip"
+                <a href="{{route('resultados')}}" class="nav-link py-3 border-bottom" title="Resultados" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Products">
-                        <use xlink:href="#grid"/>
-                    </svg>
+                    <i class="bi bi-clipboard"></i>
                 </a>
             </li>
             <li>

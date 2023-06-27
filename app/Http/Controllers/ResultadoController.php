@@ -102,7 +102,8 @@ class ResultadoController extends Controller
                 'data.before_or_equal' => 'A data deve ser igual ou anterior à data atual.',
                 'data.date' => 'O campo data deve ser uma data válida.',
                 'link.required' => 'O campo link é obrigatório.',
-                'link.url' => 'Coloque um link válido para referente ao documento.',
+                'link.url' => 'Coloque um link válido referente ao documento.',
+                'link.max' => 'O campo link deve ter no máximo 255 caracteres.'
 
             ]);
 
