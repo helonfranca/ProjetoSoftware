@@ -33,5 +33,24 @@ function verificarSenhas() {
     }
 }
 
+function validarDataNascimento() {
+    var inputNascimento = document.getElementById('datanascimento');
+
+    inputNascimento.addEventListener('change', function() {
+        var dataNascimento = new Date(inputNascimento.value);
+        var dataAtual = new Date();
+        var idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
+
+        // Verificar se a idade está entre 13 e 130 anos
+        if (idade >= 13 && idade <= 130) {
+            // A data de nascimento é válida
+            inputNascimento.setCustomValidity('');
+        } else {
+            // A data de nascimento não é válida
+            inputNascimento.setCustomValidity('A data de nascimento deve corresponder a uma idade entre 13 e 130 anos.');
+        }
+    });
+}
+
 
 
