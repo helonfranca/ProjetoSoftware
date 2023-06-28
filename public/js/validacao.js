@@ -79,5 +79,46 @@ function validarDataNascimento() {
     });
 }
 
+function mostrarInfoMessage() {
+    var dataInicial = document.getElementById("data_inicial_edit").value;
+    var dataInfoMessage = document.getElementById("dataInfoMessage");
+
+    if (!dataInicial) {
+        dataInfoMessage.style.display = "block";
+    } else {
+        dataInfoMessage.style.display = "none";
+    }
+}
+function validarDatasIniciaiseFinais() {
+    var dataInicial = document.getElementsByName("data_inicial")[0].value;
+    var dataFinal = document.getElementsByName("data_final")[0].value;
+    var enviarBtn = document.getElementById("enviarBtn");
+    var dataErrorMessage = document.getElementById("dataErrorMessage");
+
+    if (dataInicial && (dataFinal === "" || dataFinal >= dataInicial)) {
+        enviarBtn.disabled = false;
+        enviarBtn.style.opacity = "1";
+        dataErrorMessage.textContent = "";
+        return true;
+    } else if (!dataInicial && !dataFinal) {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "Informe datas válidas.";
+        return false;
+    } else {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "A data final deve ser igual ou posterior à data inicial.";
+        return false;
+    }
+}
+
+document.getElementsByName("data_inicial")[0].addEventListener("input", validarDatasIniciaiseFinais);
+document.getElementsByName("data_final")[0].addEventListener("input", validarDatasIniciaiseFinais);
+
+
+
+
+
 
 

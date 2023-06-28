@@ -1,8 +1,11 @@
 <!-- Adicionar Modal HTML -->
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/modalProjeto.css') }}">
+@endsection
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ route('salvar_projeto') }}" method="POST">
+            <form action="{{ route('salvar_projeto') }}" method="POST" id = "adicionarProjeto">
                 @csrf
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar novo projeto</h4>
@@ -12,19 +15,29 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="my-1">Título</label>
-                        <input type="text" class="form-control" name="titulo" required>
+                        <input type="text" class="form-control" name="titulo" pattern="[A-Za-zÀ-ÿ0-9\s!@#$%^&*()-_+=]{1,50}" required>
+
                     </div>
+                    <div class="invalid-feedback">
+                        O título é obrigatório e deve conter no mínimo 1 letra e no máximo 50 letras!
+                    </div>
+
                     <div class="form-group">
                         <label class="my-1">Data inicial</label>
                         <input type="date" class="form-control"  name="data_inicial" required>
                     </div>
+                    <div class="error-container">
+                        <span id="dataErrorMessage" class="error-message">Informe datas válidas.</span>
+                    </div>
+
                     <div class="form-group">
                         <label class="my-1">Data final</label>
                         <input type="date" class="form-control" name="data_final">
                     </div>
+
                     <div class="form-group">
                         <label class="my-1">Descrição</label>
-                        <textarea class="form-control" name="descricao" required></textarea>
+                        <textarea class="form-control" name="descricao" pattern="[A-Za-z0-9\s!@#$%^&*()-_+=]{10,255}" required></textarea>
                     </div>
                     <div class="form-group multiselect">
                         <label for="participante" class="my-1">Participantes</label>
@@ -54,8 +67,10 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar">
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="enviarBtn" disabled>
+                    <!-- Isso do modal de adicionar novo projeto -->
                 </div>
+
             </form>
         </div>
     </div>
@@ -82,6 +97,8 @@
                         <label for="data_inicial_edit" class="my-1">Data inicial</label>
                         <input type="date" class="form-control" id="data_inicial_edit" name="data_inicial" required>
                     </div>
+                    <div id="dataErrorMessage" class="error-message"></div>
+
                     <div class="form-group">
                         <label for="data_final_edit" class="my-1">Data final</label>
                         <input type="date" class="form-control" id="data_final_edit" name="data_final">
@@ -199,4 +216,5 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('js/validacao.js') }}" ></script>
 
