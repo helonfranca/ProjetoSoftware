@@ -36,9 +36,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="my-1">Descrição</label>
-                        <textarea class="form-control" name="descricao" pattern="[A-Za-z0-9\s!@#$%^&*()-_+=]{10,255}" required></textarea>
+                        <label for="descricao" class="my-1">Descrição</label>
+                        <textarea class="form-control descricao" name="descricao" id="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
+
                     </div>
+
                     <div class="form-group multiselect">
                         <label for="participante" class="my-1">Participantes</label>
                         <div class="selectBox participantes" >
@@ -58,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label class="my-1">Status</label>
-                        <select class="form-select" aria-label="Default select example" name="status">
+                        <select class="form-select" aria-label="Default select example" name="status" required>
                             <option value="Em andamento" selected>Em andamento</option>
                             <option value="Concluído">Concluído</option>
                             <option value="Pendente">Pendente</option>

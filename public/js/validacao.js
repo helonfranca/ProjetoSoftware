@@ -89,6 +89,38 @@ function mostrarInfoMessage() {
         dataInfoMessage.style.display = "none";
     }
 }
+
+/*
+//SEGUINDO A REGRA DE NEGÓCIO ATUAL - MAS NA PRÁTICA NÃO FUNCIONA PRA HOJE:
+function validarDatasIniciaiseFinais() {
+    var dataInicial = document.getElementsByName("data_inicial")[0].value;
+    var dataFinal = document.getElementsByName("data_final")[0].value;
+    var enviarBtn = document.getElementById("enviarBtn");
+    var dataErrorMessage = document.getElementById("dataErrorMessage");
+
+    var hoje = new Date();
+    var dataFinalValida = new Date(dataFinal) >= hoje; //Boleano
+
+    if (dataInicial && (dataFinal === "" || dataFinalValida)) {
+        enviarBtn.disabled = false;
+        enviarBtn.style.opacity = "1";
+        dataErrorMessage.textContent = "";
+        return true;
+    } else if (!dataInicial && !dataFinal) {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "Informe datas válidas.";
+        return false;
+    } else {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "A data final deve ser igual ou posterior à data atual.";
+        return false;
+    }
+}
+*/
+
+//PERMITE QUE A DATA FINAL SEJA APENAS MAIOR QUE A INICAL NO JS (IGNORA TER QUE SER MAIOR Q HOJE)
 function validarDatasIniciaiseFinais() {
     var dataInicial = document.getElementsByName("data_inicial")[0].value;
     var dataFinal = document.getElementsByName("data_final")[0].value;
@@ -115,9 +147,6 @@ function validarDatasIniciaiseFinais() {
 
 document.getElementsByName("data_inicial")[0].addEventListener("input", validarDatasIniciaiseFinais);
 document.getElementsByName("data_final")[0].addEventListener("input", validarDatasIniciaiseFinais);
-
-
-
 
 
 
