@@ -13,7 +13,9 @@ class ResultadoController extends Controller
 
         $usuario = Auth::user();
 
-        if (!empty($usuario->projetos)) {
+        if ($usuario->tipoUsuario == 1) {
+            $projetos = Projeto::all();
+        } else {
             $projetos = $usuario->projetos;
         }
 
