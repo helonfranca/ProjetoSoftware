@@ -33,6 +33,33 @@ function verificarSenhas() {
     }
 }
 
+const descricaoTextareas = document.querySelectorAll('.descricao');
+descricaoTextareas.forEach(function(descricaoTextarea) {
+    const descricaoFeedback = descricaoTextarea.parentElement.querySelector('.invalid-feedback');
+
+    descricaoTextarea.addEventListener('input', function() {
+        const descricao = descricaoTextarea.value;
+
+        if(descricao.length === 0){
+            descricaoTextarea.setCustomValidity('O campo descrição é obrigatório.');
+        } else if (descricao.length < 10) {
+            descricaoTextarea.setCustomValidity('O campo descrição deve ter no mínimo 10 caracteres.');
+        } else if (descricao.length > 255) {
+            descricaoTextarea.setCustomValidity('O campo descrição deve ter no máximo 255 caracteres.');
+        } else {
+            descricaoTextarea.setCustomValidity('');
+        }
+        descricaoFeedback.textContent = descricaoTextarea.validationMessage;
+    });
+});
+
+
+const quantidadeInputs = document.querySelectorAll('.quantidade');
+quantidadeInputs.forEach(function(quantidadeInput) {
+    quantidadeInput.addEventListener('input', function() {
+        quantidadeInput.value = quantidadeInput.value.replace(/\D/g, '');
+    });
+});
 function validarDataNascimento() {
     var inputNascimento = document.getElementById('datanascimento');
 
