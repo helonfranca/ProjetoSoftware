@@ -90,8 +90,10 @@ function mostrarInfoMessage() {
     }
 }
 
+
 /*
-//SEGUINDO A REGRA DE NEGÓCIO ATUAL - MAS NA PRÁTICA NÃO FUNCIONA PRA HOJE:
+//SEGUINDO A REGRA DE NEGÓCIO ATUAL -
+//Opção 2 que funciona: Tive que deixar a variável dataFinal no formato esperado "AAAA-MM-DD" :
 function validarDatasIniciaiseFinais() {
     var dataInicial = document.getElementsByName("data_inicial")[0].value;
     var dataFinal = document.getElementsByName("data_final")[0].value;
@@ -99,7 +101,15 @@ function validarDatasIniciaiseFinais() {
     var dataErrorMessage = document.getElementById("dataErrorMessage");
 
     var hoje = new Date();
-    var dataFinalValida = new Date(dataFinal) >= hoje; //Boleano
+    var anoAtual = hoje.getFullYear();
+    var mesAtual = hoje.getMonth() + 1; // Os meses em JavaScript são indexados a partir de zero
+    var diaAtual = hoje.getDate();
+
+    // Ajusta o formato da data final para "AAAA-MM-DD"
+    var partesDataFinal = dataFinal.split('/');
+    var dataFinalFormatada = partesDataFinal[2] + '-' + partesDataFinal[1] + '-' + partesDataFinal[0];
+
+    var dataFinalValida = new Date(dataFinalFormatada) >= new Date(anoAtual, mesAtual - 1, diaAtual);
 
     if (dataInicial && (dataFinal === "" || dataFinalValida)) {
         enviarBtn.disabled = false;
@@ -120,7 +130,42 @@ function validarDatasIniciaiseFinais() {
 }
 */
 
-//PERMITE QUE A DATA FINAL SEJA APENAS MAIOR QUE A INICAL NO JS (IGNORA TER QUE SER MAIOR Q HOJE)
+//Opção 1 - Escolhi utilizar essa
+function validarDatasIniciaiseFinais() {
+    var dataInicial = document.getElementsByName("data_inicial")[0].value;
+    var dataFinal = document.getElementsByName("data_final")[0].value;
+    var enviarBtn = document.getElementById("enviarBtn");
+    var dataErrorMessage = document.getElementById("dataErrorMessage");
+
+    var hoje = new Date();
+    var ontem = new Date(hoje); // Cria uma cópia da data atual
+
+    ontem.setDate(ontem.getDate() - 1); // Define o dia para ontem
+
+    var dataFinalValida = new Date(dataFinal) >= ontem;
+
+    if (dataInicial && (dataFinal === "" || dataFinalValida)) {
+        enviarBtn.disabled = false;
+        enviarBtn.style.opacity = "1";
+        dataErrorMessage.textContent = "";
+        return true;
+    } else if (!dataInicial && !dataFinal) {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "Informe datas válidas.";
+        return false;
+    } else {
+        enviarBtn.disabled = true;
+        enviarBtn.style.opacity = "0.5";
+        dataErrorMessage.textContent = "A data final deve ser igual ou posterior a ontem.";
+        return false;
+    }
+}
+
+
+
+/*
+//Opção 0: PERMITE QUE A DATA FINAL SEJA APENAS MAIOR QUE A INICAL NO JS (IGNORA TER QUE SER MAIOR Q HOJE)
 function validarDatasIniciaiseFinais() {
     var dataInicial = document.getElementsByName("data_inicial")[0].value;
     var dataFinal = document.getElementsByName("data_final")[0].value;
@@ -144,7 +189,7 @@ function validarDatasIniciaiseFinais() {
         return false;
     }
 }
-
+*/
 document.getElementsByName("data_inicial")[0].addEventListener("input", validarDatasIniciaiseFinais);
 document.getElementsByName("data_final")[0].addEventListener("input", validarDatasIniciaiseFinais);
 
