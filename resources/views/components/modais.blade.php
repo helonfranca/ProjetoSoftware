@@ -97,7 +97,9 @@
                         <label for="data_inicial_edit" class="my-1">Data inicial</label>
                         <input type="date" class="form-control" id="data_inicial_edit" name="data_inicial" required>
                     </div>
-                    <div id="dataErrorMessage" class="error-message"></div>
+                    <div class="error-container">
+                        <span id="dataErrorMessage" class="error-message">Informe datas válidas.</span>
+                    </div>
 
                     <div class="form-group">
                         <label for="data_final_edit" class="my-1">Data final</label>
