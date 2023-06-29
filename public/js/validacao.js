@@ -79,16 +79,7 @@ function validarDataNascimento() {
     });
 }
 
-function mostrarInfoMessage() {
-    var dataInicial = document.getElementById("data_inicial_edit").value;
-    var dataInfoMessage = document.getElementById("dataInfoMessage");
 
-    if (!dataInicial) {
-        dataInfoMessage.style.display = "block";
-    } else {
-        dataInfoMessage.style.display = "none";
-    }
-}
 // Opção 1 - "ontem" pois "hoje" dava problema. Aí segue a regra de negócio agora:
 const validarDatasIniciaiseFinais = () => {
     const dataInicial = document.getElementsByName("data_inicial")[0].value;

@@ -53,7 +53,7 @@
                             <div class="my-4">
                                 <label for="password" class="form-label">Senha:</label>
 
-                                <input type="password" class="form-control" name="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
+                                <input type="password" class="form-control" name="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
                                 <!--
                                 ^ e $: indicam o início e o fim da string, garantindo que a expressão regular corresponda à string de senha inteira, em vez de apenas uma substring dentro da senha.
                                 [A-Za-z\d]{8,30}: corresponde a qualquer combinação de letras maiúsculas, minúsculas e dígitos, com um comprimento mínimo de 8 caracteres e máximo de 30 caracteres.
@@ -61,6 +61,8 @@
                                 (?=.*[a-z]): Verifica a presença de pelo menos uma letra minúscula (é uma assertiva positiva lookahead).
                                 (?=.*[A-Z]): Verifica a presença de pelo menos uma letra maiúscula.
                                 (?=.*\d): Verifica a presença de pelo menos um dígito (número).
+
+                                \W = caracteres especiais.
                                 -->
                                 <div class="invalid-feedback">
                                     A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
@@ -72,7 +74,7 @@
                             <div class="my-4">
                                 <label for="confirm_password" class="form-label">Repetir Senha:</label>
 
-                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
+                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
                                 <div class="invalid-feedback">
                                     A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
                                 </div>
