@@ -93,7 +93,7 @@ const validarDatasIniciaiseFinais = () => {
     ontem.setDate(ontem.getDate() - 1); // Define o dia para ontem
 
     const dataInicialValida = new Date(dataInicial) <= hoje;
-    const dataFinalValida = new Date(dataFinal) >= ontem && new Date(dataFinal) >= new Date(dataInicial);
+    const dataFinalValida = new Date(dataFinal) >= new Date(dataInicial);
 
     if (dataInicial && dataInicialValida && (dataFinal === "" || dataFinalValida)) {
         dataErrorMessageInicial.style.color = "black"; // Define a cor preta
