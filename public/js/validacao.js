@@ -89,43 +89,57 @@ function mostrarInfoMessage() {
         dataInfoMessage.style.display = "none";
     }
 }
-
 // Opção 1 - "ontem" pois "hoje" dava problema. Aí segue a regra de negócio agora:
 const validarDatasIniciaiseFinais = () => {
     const dataInicial = document.getElementsByName("data_inicial")[0].value;
     const dataFinal = document.getElementsByName("data_final")[0].value;
     const enviarBtn = document.getElementById("enviarBtn");
-    const dataErrorMessage = document.getElementById("dataErrorMessage");
+    const dataErrorMessageInicial = document.getElementById("dataErrorMessageInicial");
+    const dataErrorMessageFinal = document.getElementById("dataErrorMessageFinal");
 
     const hoje = new Date();
     const ontem = new Date(hoje); // Cria uma cópia da data atual
     ontem.setDate(ontem.getDate() - 1); // Define o dia para ontem
 
-    const dataFinalValida = new Date(dataFinal) >= ontem;
+    const dataInicialValida = new Date(dataInicial) <= hoje;
+    const dataFinalValida = new Date(dataFinal) >= ontem && new Date(dataFinal) >= new Date(dataInicial);
 
-    if (dataInicial && (dataFinal === "" || dataFinalValida)) {
-        enviarBtn.disabled = false;
-        enviarBtn.style.opacity = "1";
-        dataErrorMessage.textContent = "";
+    if (dataInicial && dataInicialValida && (dataFinal === "" || dataFinalValida)) {
+        dataErrorMessageInicial.style.color = "black"; // Define a cor preta
+        dataErrorMessageInicial.textContent = "";
+        dataErrorMessageFinal.style.color = "black"; // Define a cor preta
+        dataErrorMessageFinal.textContent = "";
         return true;
-    } else if (!dataInicial && !dataFinal) {
-        enviarBtn.disabled = true;
-        enviarBtn.style.opacity = "0.5";
-        dataErrorMessage.textContent = "Informe datas válidas.";
-        return false;
-    } else {
-        enviarBtn.disabled = true;
-        enviarBtn.style.opacity = "0.5";
-        dataErrorMessage.textContent = "A data final deve ser igual ou posterior a ontem.";
+    } else if (!dataInicial || !dataInicialValida || !dataFinalValida) {
+        if (!dataInicial || !dataInicialValida) {
+            dataErrorMessageInicial.style.color = "red"; // Define a cor vermelha
+            dataErrorMessageInicial.textContent = "A data INICIAL deve ser válida e anterior ou igual à data atual.";
+            dataErrorMessageFinal.style.color = "black"; // Define a cor preta
+            dataErrorMessageFinal.textContent = "";
+        } else {
+            dataErrorMessageInicial.style.color = "black"; // Define a cor preta
+            dataErrorMessageInicial.textContent = "";
+            dataErrorMessageFinal.style.color = "red"; // Define a cor vermelha
+            dataErrorMessageFinal.textContent = "A data FINAL deve ser igual ou posterior à data inicial.";
+        }
         return false;
     }
 };
+
+const enviarBtn = document.getElementById("enviarBtn");
+enviarBtn.addEventListener("click", (event) => {
+    if (!validarDatasIniciaiseFinais()) {
+        event.preventDefault(); // Impede o envio do formulário caso as condições não sejam atendidas
+    }
+});
 
 const dataInicialInput = document.getElementsByName("data_inicial")[0];
 dataInicialInput.addEventListener("input", validarDatasIniciaiseFinais);
 
 const dataFinalInput = document.getElementsByName("data_final")[0];
 dataFinalInput.addEventListener("input", validarDatasIniciaiseFinais);
+
+
 
 
 

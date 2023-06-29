@@ -27,13 +27,17 @@
                         <input type="date" class="form-control"  name="data_inicial" required>
                     </div>
                     <div class="error-container">
-                        <span id="dataErrorMessage" class="error-message">Informe datas válidas.</span>
+                        <span id="dataErrorMessageInicial" class="error-message">*Informe datas válidas.</span>
                     </div>
 
                     <div class="form-group">
                         <label class="my-1">Data final</label>
                         <input type="date" class="form-control" name="data_final">
                     </div>
+                    <div class="error-container">
+                        <span id="dataErrorMessageFinal" class="error-message"></span>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="descricao" class="my-1">Descrição</label>
@@ -75,8 +79,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar" id="enviarBtn" disabled>
-                    <!-- Isso do modal de adicionar novo projeto -->
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="enviarBtn">
+                    <!-- ^ Isso do modal de adicionar novo projeto -->
                 </div>
 
             </form>
@@ -111,7 +115,7 @@
 
                     <div class="form-group">
                         <label for="data_final_edit" class="my-1">Data final</label>
-                        <input type="date" class="form-control" id="data_final_edit" name="data_final">
+                        <input type="date" class="form-control" id="data_final_edit" name="data_final" required>
                     </div>
                     <div class="form-group">
                         <label for="descricao_edit" class="my-1">Descrição</label>
