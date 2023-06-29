@@ -176,3 +176,13 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#projectTable2').DataTable({
+        language: {
+            url: 'js/pt-BR.json'
+        },
+        lengthMenu: [5,10],
+        paging: true, // Ativar paginação
+        searching: true, // Ativar barra de pesquisa
+    });
+});

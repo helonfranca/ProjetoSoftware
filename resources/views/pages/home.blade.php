@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="dashboard">
+    <div class="row me-4">
         {{--Dashbord--}}
         @include('components.dashboard')
 
         {{--Main--}}
-        <div class="dashboard-app">
+        <div class="container  text-center col-10 col-sm-9 col-xxl-9 col-md-8 mt-5 me-sm-0 me-md-5">
             <div class="container">
                 <div class="container text-center">
                     <h1>Projetos</h1>
@@ -76,25 +76,25 @@
 
                 <div class="my-custom-margin border"></div>
 
-                <div class="container my-5">
-                    <div class="row">
-                        <div class="col-md-4 d-flex justify-content-center">
+                <div class="container my-4 me-0">
+                    <div class="row ">
+                        <div class="col-md-4 d-flex justify-content-center mt-4">
                             <div class="img-fluid">
                                 <img src="{{ asset('img/tubo-de-ensaio-.jpg') }}" alt="logo" width="250" height="200">
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            <div class="d-flex flex-column h-100 justify-content-between">
+                        <div class="col-md-8 ms-0">
+                            <div class="d-flex flex-column h-100 justify-content-between text-end ms-5">
                                 <div class="mt-4">
                                     <h4>Agenda de equipamentos</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                    </div>
+                                    <div>
+                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button class="button my-3">Acesse aqui</button>
                         </div>
                     </div>
                 </div>
@@ -104,25 +104,26 @@
                 <div class="container my-5">
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="d-flex flex-column h-100 justify-content-between">
+                            <div class="d-flex flex-column h-100 justify-content-between text-start">
                                 <div class="mt-4">
                                     <h4>Estoque</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                    </div>
+                                    <div>
+                                        <a href="{{route("itens")}}">
+                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex justify-content-center">
+                        <div class="col-md-4 d-flex justify-content-center ">
                             <div class="img-fluid">
                                 <img src="{{ asset('img/itens-lab.jpg') }}" alt="logo" width="250" height="200">
                             </div>
                         </div>
-                        <div class="text-center">
-                            <a href="{{route('itens')}}">
-                                <button class="button my-3">Acesse aqui</button>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
 
@@ -136,24 +137,28 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="d-flex flex-column h-100 justify-content-between">
+                            <div class="d-flex flex-column h-100 justify-content-between text-end ms-5">
                                 <div class="mt-4">
                                     <h4>Resultados</h4>
-                                    <div class="mt-3 text-inform">
+                                    <div class="mt-3 ">
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                    </div>
+                                    <div>
+                                        <a href="{{route("resultados")}}">
+                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="button my-3">Acesse aqui</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>

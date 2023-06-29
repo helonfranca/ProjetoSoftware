@@ -110,13 +110,13 @@
                 @method('delete')
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Deletar Item</h4>
+                    <h4 class="modal-title">Excluir Item</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <input type="hidden" name="id_item" id="delete_id">
                 <div class="modal-body">
-                    <p>Tem certeza que deseja deletar o Item?</p>
-                    <p class="text-warning"><small>Esta ação vai deletar seu item permanentemente</small></p>
+                    <p>Tem certeza que deseja excluir o Item?</p>
+                    <p class="text-warning"><small>Esta ação vai excluir seu item permanentemente</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

@@ -13,16 +13,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<div class='dashboard'>
+<div class='row me-4'>
     {{--Dashbord--}}
-    @include('components.dashboard');
-
+    @include('components.dashboard')
     {{--Template Editar perfil--}}
-    <div class="dashboard-app">
+    <div class="container  text-center col-10 col-sm-9 col-xxl-9 col-md-8 mt-5 me-sm-0 me-md-5">
         <div class="dashboard-content">
             <div class="container">
-
-
                 <main>
                     <div class="container">
                         <div class="row">
@@ -32,7 +29,6 @@
                                     <h4 class="my-2"> Se você quer alterar ou esqueceu sua senha <a href="{{route('editarSenha')}}"> clique aqui </a></h4>
                                 </div>
                                 <form action="{{route('editarPerfilSave')}}" method="post" class="needs-validation" novalidate>
-                                    <!-- action {{route('editarPerfilSave')}} acessa o que foi nomeado em web.php como "name('editarPerfilSave')" (rotas)-->
                                     @csrf
                                     <div class="row border rounded mb-4 " style="background-color: #edf2f7">
                                         <div class="col-md-6"> <!-- Campos a esquerda: -->
@@ -58,7 +54,6 @@
                                                 <label for="curriculoLattes" class="form-label" >Currículo Lattes:</label>
                                                 <input type="text" class="form-control" id="lattes" name="curriculoLattes" value="{{ $user->curriculoLattes }}">
                                             </div>
-
                                         </div>
 
                                         <div class="col-md-6"> <!-- Campos a direita agora: -->
@@ -131,20 +126,11 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
                             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                             crossorigin="anonymous"></script>
-
                     <script src="{{ asset('js/validacao.js') }}" ></script>
-
                 </main>
-
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
-</div>
-
 </body>
 </html>
