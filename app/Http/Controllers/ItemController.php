@@ -46,7 +46,7 @@ class ItemController extends Controller
                 'descricao' => 'required| |min:10|max:255',
                 'projeto_id' => 'required|exists:projetos,id',
             ], [
-                'nome.required' => 'O campo "nome" é obrigatório.',
+                'nome.required' => 'O campo nome é obrigatório.',
                 'quantidade.required' => 'O campo quantidade é obrigatório.',
                 'quantidade.numeric' => 'O campo quantidade deve ser um número.',
                 'quantidade.min' => 'O campo quantidade deve ser maior que zero.',

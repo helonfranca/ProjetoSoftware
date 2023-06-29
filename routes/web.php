@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ResultadoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
@@ -52,6 +53,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/itens/visualizar/{id}', [ItemController::class, 'visualizarItem'])->name('itens.visualizar');
     Route::put('/itens/editar', [ItemController::class, 'editarItem'])->name('itens.editar');
     Route::delete('/itens/deletar', [ItemController::class, 'deletarItem'])->name('itens.deletar');
+
+    //Pages de Resultados
+    Route::get('/resultados', [ResultadoController::class, 'showPageResultados'])->name('resultados');
+    Route::get('/resultados/buscar', [ResultadoController::class,'obterResultadosDoProjeto'])->name('resultados.buscar');
+    Route::post('/resultados/salvar', [ResultadoController::class,'cadastrarResultado'])->name('resultados.salvar');
+    Route::get('/resultados/visualizar/{id}', [ResultadoController::class, 'visualizarResultado'])->name('resultados.visualizar');
+    Route::put('/resultados/editar', [ResultadoController::class, 'editarResultado'])->name('resultados.editar');
+    Route::delete('/resultados/deletar', [ResultadoController::class, 'deletarResultado'])->name('resultados.deletar');
 
 });
 

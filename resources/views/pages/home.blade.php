@@ -11,8 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-
 </head>
 <body>
     <div class="row me-4">
@@ -146,7 +144,9 @@
                                         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
                                     </div>
                                     <div>
-                                        <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        <a href="{{route("resultados")}}">
+                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
