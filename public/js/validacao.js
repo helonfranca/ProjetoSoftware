@@ -80,55 +80,73 @@ function validarDataNascimento() {
 }
 
 
-// Opção 1 - "ontem" pois "hoje" dava problema. Aí segue a regra de negócio agora:
+
+
+
+    // Opção 1 - "ontem" pois "hoje" dava problema. Aí segue a regra de negócio agora:
 const validarDatasIniciaiseFinais = () => {
-    const dataInicial = document.getElementsByName("data_inicial")[0].value;
-    const dataFinal = document.getElementsByName("data_final")[0].value;
-    const enviarBtn = document.getElementById("enviarBtn");
-    const dataErrorMessageInicial = document.getElementById("dataErrorMessageInicial");
-    const dataErrorMessageFinal = document.getElementById("dataErrorMessageFinal");
+    const dataInicialInput = document.getElementsByName("data_inicial")[0];
+    const dataFinalInput = document.getElementsByName("data_final")[0];
+
+    const dataInicial = dataInicialInput.value;
+    const dataFinal = dataFinalInput.value;
+
+    const invalidFeedbackInicial = document.getElementsByClassName("invalid-feedback")[1];
+    const invalidFeedbackFinal = document.getElementsByClassName("invalid-feedback")[2];
 
     const hoje = new Date();
-    const ontem = new Date(hoje); // Cria uma cópia da data atual
-    ontem.setDate(ontem.getDate() - 1); // Define o dia para ontem
+    const ontem = new Date(hoje);
+    ontem.setDate(ontem.getDate() - 1);
 
     const dataInicialValida = new Date(dataInicial) <= hoje;
     const dataFinalValida = new Date(dataFinal) >= new Date(dataInicial);
 
+    //dataInicialInput.setCustomValidity("Campo obrigatório");, isso indicará que o campo é inválido e exibirá a mensagem de erro personalizada fornecida.
+    //Por outro lado, ao definir setCustomValidity(""), você está efetivamente removendo qualquer mensagem de erro personalizada e indicando que o campo é válido, permitindo que a validação do navegador seja executada com base nos atributos required, min, max, pattern, entre outros, definidos no campo de entrada.
+
     if (dataInicial && dataInicialValida && (dataFinal === "" || dataFinalValida)) {
-        dataErrorMessageInicial.style.color = "black"; // Define a cor preta
-        dataErrorMessageInicial.textContent = "";
-        dataErrorMessageFinal.style.color = "black"; // Define a cor preta
-        dataErrorMessageFinal.textContent = "";
+        invalidFeedbackInicial.style.display = "none";
+        invalidFeedbackFinal.style.display = "none";
+        dataInicialInput.setCustomValidity(""); //PARA LIMPAR! IMPORTANTE! LIMPA "VERIFICAÇÃO = ou seja, INVALIDEZ", APESAR DE FALAR SOBRE ERRO, parece "desfazer", "retirar/desabilitar". Parece limpar/desinvalidar.
+        dataFinalInput.setCustomValidity("");
         return true;
     } else if (!dataInicial || !dataInicialValida || !dataFinalValida) {
         if (!dataInicial || !dataInicialValida) {
-            dataErrorMessageInicial.style.color = "red"; // Define a cor vermelha
-            dataErrorMessageInicial.textContent = "A data INICIAL deve ser válida e anterior ou igual à data atual.";
-            dataErrorMessageFinal.style.color = "black"; // Define a cor preta
-            dataErrorMessageFinal.textContent = "";
+            invalidFeedbackInicial.textContent = "A data INICIAL deve ser válida e anterior ou igual à data atual.";
+            invalidFeedbackInicial.style.display = "block";
+            invalidFeedbackFinal.style.display = "none";
+
+            dataFinalInput.setCustomValidity(""); //PARA LIMPAR! IMPORTANTE! LIMPA "INVALIDEZ", APESAR DE FALAR SOBRE ERRO, parece "desfazer", "retirar/desabilitar".
+            dataInicialInput.setCustomValidity("A data INICIAL deve ser válida e anterior ou igual à data atual."); //É necessário ter um texto dentro, apesar de estar aparecendo o texto anterior. Pois "" parece limpar/desinvalidar.
         } else {
-            dataErrorMessageInicial.style.color = "black"; // Define a cor preta
-            dataErrorMessageInicial.textContent = "";
-            dataErrorMessageFinal.style.color = "red"; // Define a cor vermelha
-            dataErrorMessageFinal.textContent = "A data FINAL deve ser igual ou posterior à data inicial.";
+            invalidFeedbackInicial.style.display = "none";
+            invalidFeedbackFinal.textContent = "A data FINAL deve ser igual ou posterior à data inicial.";
+            invalidFeedbackFinal.style.display = "block";
+
+            dataInicialInput.setCustomValidity("");
+            dataFinalInput.setCustomValidity("Campo obrigatório"); //É necessário ter um texto dentro, apesar de estar aparecendo o texto anterior. Pois "" parece limpar/desinvalidar.
         }
         return false;
     }
 };
 
-const enviarBtn = document.getElementById("enviarBtn");
-enviarBtn.addEventListener("click", (event) => {
-    if (!validarDatasIniciaiseFinais()) {
-        event.preventDefault(); // Impede o envio do formulário caso as condições não sejam atendidas
-    }
-});
 
-const dataInicialInput = document.getElementsByName("data_inicial")[0];
-dataInicialInput.addEventListener("input", validarDatasIniciaiseFinais);
 
-const dataFinalInput = document.getElementsByName("data_final")[0];
-dataFinalInput.addEventListener("input", validarDatasIniciaiseFinais);
+    //----------------
+
+
+    const enviarBtn = document.getElementById("enviarBtn");
+    enviarBtn.addEventListener("click", (event) => {
+        if (!validarDatasIniciaiseFinais()) {
+            event.preventDefault();
+        }
+    });
+
+    const dataInicialInput = document.getElementsByName("data_inicial")[0];
+    dataInicialInput.addEventListener("input", validarDatasIniciaiseFinais);
+
+    const dataFinalInput = document.getElementsByName("data_final")[0];
+    dataFinalInput.addEventListener("input", validarDatasIniciaiseFinais);
 
 
 
