@@ -2,7 +2,7 @@
 <div id="addEquipamentoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ route('equipamentos.salvar') }}" method="POST">
+            <form action="{{ route('equipamentos.salvar') }}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar novo equipamento</h4>
@@ -12,29 +12,47 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="my-1">Nome</label>
-                        <input type="text" class="form-control" name="nome" required>
+                        <input type="text" class="form-control" name="nome" pattern="[A-Za-zÀ-ÿ0-9\s]{1,200}" id="nome" required>
+
+                        <div class="invalid-feedback">
+                            O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 200 letras!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="my-1">Quantidade</label>
-                        <input type="number" class="form-control"  name="data_inicial" required>
+                        <input type="number" class="form-control quantidade"  name="quantidade" pattern="^[1-9]\d{0,1}|100$" id="quantidade" required>
+                        <div class="invalid-feedback">
+                            A quantidade é obrigatória e deve conter no mínimo 1 caractere numérico, com um limite de 100 por item.
+                            Não são permitidos números negativos.
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label class="my-1">Descrição</label>
-                        <textarea class="form-control" name="descricao" required></textarea>
+                        <textarea class="form-control descricao" name="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label class="my-1">Tipo de equipamento</label>
-                        <select class="form-select" aria-label="Default select example" name="tipoEquipamento">
-                            <option value="1" selected>Equipamento comum</option>
+                        <select class="form-select" aria-label="Default select example" name="tipoEquipamento" required>
+                            <option value="">Selecione o tipo de equipamento</option>
+                            <option value="1">Equipamento comum</option>
                             <option value="2">Fluxo laminar</option>
                         </select>
+                        <div class="invalid-feedback">
+                           Selecione o tipo de equipamento
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-success" value="Adicionar">
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="adicionarEquipamentoBtn">
                 </div>
             </form>
         </div>
@@ -45,10 +63,10 @@
 <div id="editEquipamentoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="" method="post" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
-                <input type="hidden" name="id" id="id_edit">
+                <input type="hidden" name="equipamento_id" id="equipamento_id_edit">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar equipamento</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
@@ -56,21 +74,37 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nome_edit" class="my-1">Nome</label>
-                        <input type="text" class="form-control" id="nome_edit"  name="nome" required>
+                        <input type="text" class="form-control" id="nome_edit"  pattern="[A-Za-zÀ-ÿ0-9\s]{1,200}" name="nome" required>
+
+                        <div class="invalid-feedback">
+                            O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 200 letras!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="quantidade_edit" class="my-1">Quantidade</label>
-                        <input type="number" class="form-control" id="quantidade_edit" name="quantidade" required>
+                        <input type="number" class="form-control" id="quantidade_edit" pattern="^[1-9]\d{0,1}|100$" name="quantidade" required>
+
+                        <div class="invalid-feedback">
+                            A quantidade é obrigatória e deve conter no mínimo 1 caractere numérico, com um limite de 100 por item.
+                            Não são permitidos números negativos.
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="descricao_edit" class="my-1">Descrição</label>
                         <textarea class="form-control"  id="descricao_edit" name="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label class="my-1">Status</label>
-                        <select class="form-select" aria-label="Default select example" id="status_edit" name="status">
+                        <select class="form-select" aria-label="Default select example" id="status_edit" name="status" required>
+                            <option value="">Selecione o tipo de equipamento</option>
                             <option value="1" >Equipamento comum</option>
                             <option value="2">Fluxo laminar</option>
                         </select>
@@ -78,7 +112,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar">
+                    <input type="submit" class="btn btn-success" value="Adicionar" id="EditarEquipamentoBtn">
                 </div>
             </form>
         </div>
