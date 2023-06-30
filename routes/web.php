@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ResultadoController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/resultados/visualizar/{id}', [ResultadoController::class, 'visualizarResultado'])->name('resultados.visualizar');
     Route::put('/resultados/editar', [ResultadoController::class, 'editarResultado'])->name('resultados.editar');
     Route::delete('/resultados/deletar', [ResultadoController::class, 'deletarResultado'])->name('resultados.deletar');
+
+    //Pages de Gerenciar Equipamentos
+    Route::get('/equipamentos', [EquipamentoController::class, 'showPageEquipamentos'])->name('equipamentos');
+    Route::get('/equipamentos/buscar', [EquipamentoController::class,'obterEquipamentosDoProjeto'])->name('equipamentos.buscar');
+    Route::post('/equipamentos/salvar', [EquipamentoController::class,'cadastrarEquipamento'])->name('equipamentos.salvar');
+    Route::get('/equipamentos/visualizar/{id}', [EquipamentoController::class, 'visualizarEquipamento'])->name('equipamentos.visualizar');
+    Route::put('/equipamentos/editar', [EquipamentoController::class, 'editarEquipamento'])->name('equipamentos.editar');
+    Route::delete('/equipamentos/deletar', [EquipamentoController::class, 'deletarEquipamento'])->name('equipamentos.deletar');
 
 });
 
