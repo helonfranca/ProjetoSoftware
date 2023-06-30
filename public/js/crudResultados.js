@@ -55,6 +55,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
         document.getElementById('titulo_resultado').textContent = 'Carregando';
         document.getElementById('data_resultado').textContent = 'Carregando';
         document.getElementById('link_resultado').textContent = 'Carregando';
+        document.getElementById('descricao_resultado').textContent = 'Carregando';
 
         // Fazer uma requisição AJAX para atualizar os dados do item
         fetch('/resultados/visualizar/' + idResultado)
@@ -66,6 +67,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
                 document.getElementById('titulo_resultado').textContent = resultado.titulo;
                 document.getElementById('data_resultado').textContent = new Date(resultado.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
                 document.getElementById('link_resultado').textContent = resultado.link;
+                document.getElementById('descricao_resultado').textContent = resultado.descricao;
             })
             .catch(function(error) {
                 console.log(error);
@@ -81,6 +83,7 @@ document.querySelectorAll('#editar').forEach(function(button) {
         document.getElementById('titulo_resultado').value = 'Carregando';
         document.getElementById('data_resultado').value = 'Carregando';
         document.getElementById('link_resultado').value = 'Carregando';
+        document.getElementById('descricao_resultado').value = 'Carregando';
 
         // Fazer uma requisição AJAX para atualizar os dados de projeto
         fetch('/resultados/visualizar/' + idResultado)
@@ -91,6 +94,7 @@ document.querySelectorAll('#editar').forEach(function(button) {
                 document.getElementById('titulo_edit').value = resultado.titulo;
                 document.getElementById('data_edit').value = resultado.data;
                 document.getElementById('link_edit').value = resultado.link;
+                document.getElementById('descricao_edit').value = resultado.descricao;
 
             })
             .catch(function(error) {

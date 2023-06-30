@@ -43,20 +43,24 @@ class ResultadoController extends Controller
 
         try{
             $request->validate([
-                'titulo' => 'required|min:1|max:50|unique:resultados' ,
+                'titulo' => 'required|min:5|max:50|unique:resultados' ,
                 'data' => 'required|date|before_or_equal:today|',
                 'link' => 'required|url|max:255',
+                'descricao' => 'required|min:5|max:255',
                 'projeto_id' => 'required|exists:projetos,id',
             ], [
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
-                'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
+                'titulo.min' => 'O campo título deve ter pelo menos 5 caractere.',
                 'titulo.max' => 'O campo título deve ter no máximo 50 caracteres.',
                 'data.required' => 'O campo data é obrigatório.',
                 'data.before_or_equal' => 'A data deve ser igual ou anterior à data atual.',
                 'data.date' => 'O campo data deve ser uma data válida.',
                 'link.required' => 'O campo link é obrigatório.',
                 'link.url' => 'Coloque um link válido para referente ao documento.',
+                'descricao.required' => 'O campo link é obrigatório.',
+                'descricao.min' => 'O campo descrição deve ter no mínimo 5 caracteres.',
+                'descricao.max' => 'O campo descricação deve ter no máximo 50 caracteres',
                 'projeto_id.exists' => 'O projeto selecionado não existe.',
                 'projeto_id.required' =>'Selecione um projeto para adicionar resultado.',
 
@@ -68,6 +72,7 @@ class ResultadoController extends Controller
             $resultados->titulo = trim($request->input('titulo'));
             $resultados->data = $request->input('data');
             $resultados->link = trim($request->input('link'));
+            $resultados->descricao = trim($request->input('descricao'));
             $resultados->projeto_id = $projetoId;
             $resultados->save();
 
@@ -92,20 +97,24 @@ class ResultadoController extends Controller
         try {
             $idResultado = $request->input('resultado_id');
             $request->validate([
-                'titulo' => 'required|min:1|max:50|unique:resultados,titulo,' . $idResultado,
+                'titulo' => 'required|min:5|max:50|unique:resultados,titulo,' . $idResultado,
                 'data' => 'required|date|before_or_equal:today|',
                 'link' => 'required|url|max:255',
+                'descricao' => 'required|min:5|max:255'
             ], [
                 'titulo.unique' => 'O titulo já está em uso.',
                 'titulo.required' => 'O campo título é obrigatório.',
-                'titulo.min' => 'O campo título deve ter pelo menos 1 caractere.',
+                'titulo.min' => 'O campo título deve ter pelo menos 5 caractere.',
                 'titulo.max' => 'O campo título deve ter no máximo 50 caracteres.',
                 'titulo.required' => 'O campo data é obrigatório.',
                 'data.before_or_equal' => 'A data deve ser igual ou anterior à data atual.',
                 'data.date' => 'O campo data deve ser uma data válida.',
                 'link.required' => 'O campo link é obrigatório.',
                 'link.url' => 'Coloque um link válido referente ao documento.',
-                'link.max' => 'O campo link deve ter no máximo 255 caracteres.'
+                'link.max' => 'O campo link deve ter no máximo 255 caracteres.',
+                'descricao.required' => 'O campo link é obrigatório.',
+                'descricao.min' => 'O campo descrição deve ter no mínimo 5 caracteres.',
+                'descricao.max' => 'O campo descricação deve ter no máximo 50 caracteres'
 
             ]);
 
@@ -116,6 +125,7 @@ class ResultadoController extends Controller
             $resultado->titulo = trim($request->input('titulo'));
             $resultado->data = $request->input('data');
             $resultado->link = trim($request->input('link'));
+            $resultado->descricao = trim($request->input('descricao'));
             $resultado->projeto_id = $request->input('projeto_id');
             $resultado->save();
 

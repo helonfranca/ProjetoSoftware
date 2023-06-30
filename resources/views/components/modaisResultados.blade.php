@@ -2,7 +2,7 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('resultados.salvar')}}" method="POST">
+            <form action="{{route('resultados.salvar')}}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar novo Resultado</h4>
@@ -12,15 +12,39 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="titulo" class="my-1">Titulo</label>
-                        <input type="text" class="form-control" name="titulo" id="titulo" required>
+                        <input type="text" class="form-control titulo" name="titulo" id="titulo" required>
+
+                        <div class="invalid-feedback">
+                            O campo título é obrigatório.
+                            O campo título deve ter no mínimo 5 caracteres.
+                            O campo título deve ter no máximo 50 caracteres.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="my-1">Data</label>
-                        <input type="date" class="form-control"  name="data" required>
+                        <input type="date" class="form-control data"  name="data" required>
+                        <div class="invalid-feedback">
+                            Insira uma data válida!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="link" class="my-1">Link</label>
-                        <textarea class="form-control" name="link" id="link" required></textarea>
+                        <textarea class="form-control link" name="link" id="link" required></textarea>
+
+                        <div class="invalid-feedback">
+                            Insira uma URL válida!
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao" class="my-1">Descrição</label>
+                        <textarea class="form-control descricao" name="descricao" id="descricao" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -36,7 +60,7 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{route('resultados.editar')}}" method="post">
+            <form action="{{route('resultados.editar')}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
                 <input type="hidden" name="resultado_id" id="id_edit">
@@ -48,16 +72,42 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="titulo_edit" class="my-1">Título</label>
-                        <input type="text" class="form-control" id="titulo_edit"  name="titulo" required>
+                        <input type="text" class="form-control titulo" id="titulo_edit"  name="titulo" required>
+
+                        <div class="invalid-feedback">
+                            O campo título é obrigatório.
+                            O campo título deve ter no mínimo 5 caracteres.
+                            O campo título deve ter no máximo 50 caracteres.
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="data_edit" class="my-1">Data</label>
-                        <input type="date" class="form-control" id="data_edit" name="data" required>
+                        <input type="date" class="form-control data" id="data_edit" name="data" required>
+
+                        <div class="invalid-feedback">
+                            Insira uma data válida!
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="link_edit" class="my-1">Link</label>
-                        <textarea class="form-control" id="link_edit" name="link" required></textarea>
+                        <textarea class="form-control link" id="link_edit" name="link" required></textarea>
+
+                        <div class="invalid-feedback">
+                            Insira uma URL válida!
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label for="descricao" class="my-1">Descrição</label>
+                        <textarea class="form-control descricao" name="descricao" id="descricao_edit" required></textarea>
+
+                        <div class="invalid-feedback">
+                            O campo descrição é obrigatório.
+                            O campo descrição deve ter no mínimo 10 caracteres.
+                            O campo descrição deve ter no máximo 255 caracteres.
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -120,6 +170,10 @@
                     <tr>
                         <td>Link</td>
                         <td id="link_resultado"></td>
+                    </tr>
+                    <tr>
+                        <td>Descrição</td>
+                        <td id="descricao_resultado"></td>
                     </tr>
                     </tbody>
                 </table>
