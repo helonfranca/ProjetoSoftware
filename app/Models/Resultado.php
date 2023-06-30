@@ -14,7 +14,8 @@ class Resultado extends Model
     protected $fillable = [
         'titulo',
         'data',
-        'link'
+        'link',
+        'descricao'
     ];
 
     public function projeto(){

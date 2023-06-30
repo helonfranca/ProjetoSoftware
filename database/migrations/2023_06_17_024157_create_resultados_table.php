@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->date('data');
             $table->string('link');
+            $table->string('descricao');
             $table->unsignedBigInteger('projeto_id');
             $table->foreign('projeto_id')->references('id')->on('projetos');
             $table->timestamps();

@@ -61,6 +61,111 @@ quantidadeInputs.forEach(function(quantidadeInput) {
     });
 });
 
+const tituloTextareas = document.querySelectorAll('.titulo');
+tituloTextareas.forEach(function(tituloTextareas) {
+    const tituloFeedback = tituloTextareas.parentElement.querySelector('.invalid-feedback');
+
+    tituloTextareas.addEventListener('input', function() {
+        const titulo = tituloTextareas.value;
+
+        if(titulo.length === 0){
+            tituloTextareas.setCustomValidity('O campo titulo é obrigatório.');
+        } else if (titulo.length < 5) {
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
+        } else if (titulo.length > 50) {
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
+        } else {
+            tituloTextareas.setCustomValidity('');
+        }
+        tituloFeedback.textContent = tituloTextareas.validationMessage;
+    });
+});
+
+const linkTextareas = document.querySelectorAll('.link');
+
+linkTextareas.forEach(function(linkTextareas) {
+    const linkFeedback = linkTextareas.parentElement.querySelector('.invalid-feedback');
+
+    linkTextareas.addEventListener('input', function() {
+        const link = linkTextareas.value;
+
+        let re = new RegExp("^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$");
+        //let re = new RegExp("^((http(s?):\/\/(www.)?[a-z]+.com\/)|(magnet:\?xt=urn:btih:))");
 
 
+        if (!re.test(link)) {
+            linkTextareas.setCustomValidity('Insira uma URL válida!');
+        }else {
+            linkTextareas.setCustomValidity('');
 
+        }
+
+        /*if(titulo.length === 0){
+            tituloTextareas.setCustomValidity('O campo titulo é obrigatório.');
+        } else if (titulo.length < 5) {
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
+        } else if (titulo.length > 50) {
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
+        } else {
+            tituloTextareas.setCustomValidity('');
+        } */
+        linkFeedback.textContent = linkTextareas.validationMessage;
+    });
+})
+
+const dataInput =  document.querySelectorAll('.data');
+
+dataInput.forEach(function(dataInput) {
+    const dataFeedback = dataInput.parentElement.querySelector('.invalid-feedback');
+
+    dataInput.addEventListener('input', function() {
+        const data = new Date(dataInput.value).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        console.log(data);
+        let datateste= new Date(dataInput.value); // javascript não compara data tipo pt-BR
+
+        let dataAtual = new Date();
+
+
+        let dateformat = /^(0?[1-9]|[1-2][0-9]|3[01])[\/](0?[1-9]|1[0-2])/;
+
+        if(datateste <= dataAtual) {
+            // Matching the date through regular expression
+            if (data.match(dateformat) && data <= dataAtual) {
+                let operator = data.split('/');
+
+                // Extract the string into month, date and year
+                let datepart = [];
+                if (operator.length > 1) {
+                    datepart = data.split('/');
+                }
+                let day = parseInt(datepart[0]);
+                let month = parseInt(datepart[1]);
+                let year = parseInt(datepart[2]);
+
+                // Create a list of days of a month
+                let ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                if (month == 1 || month > 2) {
+                    if (day > ListofDays[month - 1]) {
+                        //to check if the date is out of range
+                        dataInput.setCustomValidity('Insira uma data válida!');
+                    }
+                } else if (month == 2) {
+                    let leapYear = false;
+                    if ((!(year % 4) && year % 100) || !(year % 400)) leapYear = true;
+                    if ((leapYear == false) && (day >= 29)) {
+                        dataInput.setCustomValidity('Insira uma data válida!');
+                    } else if ((leapYear == true) && (day > 29)) {
+                        dataInput.setCustomValidity('Insira uma data válida!');
+                    }
+                }
+            } else {
+                dataInput.setCustomValidity('Insira uma data válida!');
+            }
+            dataInput.setCustomValidity('');
+        } else{
+            dataInput.setCustomValidity('Insira uma data válida!');
+        }
+
+        dataFeedback.textContent = dataInput.validationMessage;
+    });
+})
