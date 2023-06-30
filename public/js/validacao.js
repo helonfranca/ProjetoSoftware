@@ -83,58 +83,67 @@ function validarDataNascimento() {
 
 
 
+function setupValidation() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation, .modal-2 .needs-validation');
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    });
+
+    // Outras validações...
+
     // Opção 1 - "ontem" pois "hoje" dava problema. Aí segue a regra de negócio agora:
-const validarDatasIniciaiseFinais = () => {
-    const dataInicialInput = document.getElementsByName("data_inicial")[0];
-    const dataFinalInput = document.getElementsByName("data_final")[0];
+    const validarDatasIniciaiseFinais = () => {
+        const dataInicialInput = document.getElementsByName("data_inicial")[0];
+        const dataFinalInput = document.getElementsByName("data_final")[0];
 
-    const dataInicial = dataInicialInput.value;
-    const dataFinal = dataFinalInput.value;
+        const dataInicial = dataInicialInput.value;
+        const dataFinal = dataFinalInput.value;
 
-    const invalidFeedbackInicial = document.getElementsByClassName("invalid-feedback")[1];
-    const invalidFeedbackFinal = document.getElementsByClassName("invalid-feedback")[2];
+        const invalidFeedbackInicial = document.getElementsByClassName("invalid-feedback")[1];
+        const invalidFeedbackFinal = document.getElementsByClassName("invalid-feedback")[2];
 
-    const hoje = new Date();
-    const ontem = new Date(hoje);
-    ontem.setDate(ontem.getDate() - 1);
+        const hoje = new Date();
+        const ontem = new Date(hoje);
+        ontem.setDate(ontem.getDate() - 1);
 
-    const dataInicialValida = new Date(dataInicial) <= hoje;
-    const dataFinalValida = new Date(dataFinal) >= new Date(dataInicial);
+        const dataInicialValida = new Date(dataInicial) <= hoje;
+        const dataFinalValida = new Date(dataFinal) >= new Date(dataInicial);
 
-    //dataInicialInput.setCustomValidity("Campo obrigatório");, isso indicará que o campo é inválido e exibirá a mensagem de erro personalizada fornecida.
-    //Por outro lado, ao definir setCustomValidity(""), você está efetivamente removendo qualquer mensagem de erro personalizada e indicando que o campo é válido, permitindo que a validação do navegador seja executada com base nos atributos required, min, max, pattern, entre outros, definidos no campo de entrada.
-
-    if (dataInicial && dataInicialValida && (dataFinal === "" || dataFinalValida)) {
-        invalidFeedbackInicial.style.display = "none";
-        invalidFeedbackFinal.style.display = "none";
-        dataInicialInput.setCustomValidity(""); //PARA LIMPAR! IMPORTANTE! LIMPA "VERIFICAÇÃO = ou seja, INVALIDEZ", APESAR DE FALAR SOBRE ERRO, parece "desfazer", "retirar/desabilitar". Parece limpar/desinvalidar.
-        dataFinalInput.setCustomValidity("");
-        return true;
-    } else if (!dataInicial || !dataInicialValida || !dataFinalValida) {
-        if (!dataInicial || !dataInicialValida) {
-            invalidFeedbackInicial.textContent = "A data INICIAL deve ser válida e anterior ou igual à data atual.";
-            invalidFeedbackInicial.style.display = "block";
-            invalidFeedbackFinal.style.display = "none";
-
-            dataFinalInput.setCustomValidity(""); //PARA LIMPAR! IMPORTANTE! LIMPA "INVALIDEZ", APESAR DE FALAR SOBRE ERRO, parece "desfazer", "retirar/desabilitar".
-            dataInicialInput.setCustomValidity("A data INICIAL deve ser válida e anterior ou igual à data atual."); //É necessário ter um texto dentro, apesar de estar aparecendo o texto anterior. Pois "" parece limpar/desinvalidar.
-        } else {
+        if (dataInicial && dataInicialValida && (dataFinal === "" || dataFinalValida)) {
             invalidFeedbackInicial.style.display = "none";
-            invalidFeedbackFinal.textContent = "A data FINAL deve ser igual ou posterior à data inicial.";
-            invalidFeedbackFinal.style.display = "block";
-
+            invalidFeedbackFinal.style.display = "none";
             dataInicialInput.setCustomValidity("");
-            dataFinalInput.setCustomValidity("Campo obrigatório"); //É necessário ter um texto dentro, apesar de estar aparecendo o texto anterior. Pois "" parece limpar/desinvalidar.
+            dataFinalInput.setCustomValidity("");
+            return true;
+        } else if (!dataInicial || !dataInicialValida || !dataFinalValida) {
+            if (!dataInicial || !dataInicialValida) {
+                invalidFeedbackInicial.textContent = "A data INICIAL deve ser válida e anterior ou igual à data atual.";
+                invalidFeedbackInicial.style.display = "block";
+                invalidFeedbackFinal.style.display = "none";
+                dataFinalInput.setCustomValidity("");
+                dataInicialInput.setCustomValidity("A data INICIAL deve ser válida e anterior ou igual à data atual.");
+            } else {
+                invalidFeedbackInicial.style.display = "none";
+                invalidFeedbackFinal.textContent = "A data FINAL deve ser igual ou posterior à data inicial.";
+                invalidFeedbackFinal.style.display = "block";
+                dataInicialInput.setCustomValidity("");
+                dataFinalInput.setCustomValidity("Campo obrigatório");
+            }
+            return false;
         }
-        return false;
-    }
-};
+    };
 
-
-
-    //----------------
-
-
+    // Event listener para o botão de envio
     const enviarBtn = document.getElementById("enviarBtn");
     enviarBtn.addEventListener("click", (event) => {
         if (!validarDatasIniciaiseFinais()) {
@@ -142,12 +151,19 @@ const validarDatasIniciaiseFinais = () => {
         }
     });
 
+    // Event listener para o input de data inicial
     const dataInicialInput = document.getElementsByName("data_inicial")[0];
     dataInicialInput.addEventListener("input", validarDatasIniciaiseFinais);
 
+    // Event listener para o input de data final
     const dataFinalInput = document.getElementsByName("data_final")[0];
     dataFinalInput.addEventListener("input", validarDatasIniciaiseFinais);
+}
 
+// Chamar a função setupValidation quando os elementos da página estiverem carregados
+window.addEventListener('DOMContentLoaded', function() {
+    setupValidation();
+});
 
 
 
