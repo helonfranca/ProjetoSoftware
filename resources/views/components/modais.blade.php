@@ -2,7 +2,7 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/modalProjeto.css') }}">
 @endsection
-<div id="addEmployeeModal" class="modal fade">
+<div id="addEmployeeModal" class="modal fade modal-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{ route('salvar_projeto') }}" method="POST" id = "adicionarProjeto" class="needs-validation" novalidate>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar" id="enviarBtn">
+                    <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn2">
                     <!-- ^ Isso do modal de adicionar novo projeto -->
                 </div>
 
@@ -117,7 +117,7 @@
 
                     <div class="form-group">
                         <label for="data_inicial_edit" class="my-1">Data inicial</label>
-                        <input type="date" class="form-control" id="data_inicial_edit" name="data_inicial" required>
+                        <input type="date" class="form-control modal-2" id="data_inicial_edit" name="data_inicial" required>
                     </div>
                     <div class="invalid-feedback">
                         A data INICIAL deve ser válida e anterior ou igual à data atual
@@ -125,7 +125,7 @@
 
                     <div class="form-group">
                         <label for="data_final_edit" class="my-1">Data final</label>
-                        <input type="date" class="form-control" id="data_final_edit" name="data_final">
+                        <input type="date" class="form-control modal-2" id="data_final_edit" name="data_final">
                     </div>
 
                     <div class="invalid-feedback">
@@ -171,7 +171,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Adicionar" id="enviarBtn">
+                    <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn"> <!-- class enviarBtn -->
                 </div>
             </form>
         </div>
