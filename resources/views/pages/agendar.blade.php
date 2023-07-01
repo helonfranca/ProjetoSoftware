@@ -61,7 +61,7 @@
                     <th class="bg-dark text-white" scope="col">Horário Final</th>
                     <th class="bg-dark text-white" scope="col">Data inicial</th>
                     <th class="bg-dark text-white" scope="col">Data final</th>
-                    <th class="bg-dark text-white" scope="col">Status</th>
+
                     <th class="bg-dark text-white" scope="col">Ações</th>
                 </tr>
                 </thead>
@@ -87,7 +87,7 @@
                                 <p>Não definida</p>
                             @endif
                         </td>
-                        <td>{{ $projeto->status }}</td>
+
                         <td scope="col" class="text-center">
                             {{-- acessar todos os projetos, do atual usuario, depois pega o primeiro objeto da relação,
                             acessa a tabela intermediaria e ver se tipo de usuario do projeto que retornou é igual criador--}}
@@ -125,7 +125,6 @@
                     <th class="bg-dark text-white" scope="col">Horário Final</th>
                     <th class="bg-dark text-white" scope="col">Data inicial</th>
                     <th class="bg-dark text-white" scope="col">Data final</th>
-                    <th class="bg-dark text-white" scope="col">Status</th>
                     <th class="bg-dark text-white" scope="col">Ações</th>
                 </tr>
                 </thead>
@@ -151,7 +150,7 @@
                                 <p>Não definida</p>
                             @endif
                         </td>
-                        <td>{{ $projeto->status }}</td>
+
                         <td scope="col" class="text-center">
                             {{-- acessar todos os projetos, do atual usuario, depois pega o primeiro objeto da relação,
                             acessa a tabela intermediaria e ver se tipo de usuario do projeto que retornou é igual criador--}}

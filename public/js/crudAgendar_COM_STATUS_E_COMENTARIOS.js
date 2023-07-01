@@ -30,7 +30,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
         document.getElementById('horario_final').textContent = 'Carregando';
         document.getElementById('data_inicial').textContent = 'Carregando';
         document.getElementById('data_final').textContent =  'Carregando';
-
+        document.getElementById('status').textContent = 'Carregando';
 
 
         // Fazer uma requisição AJAX para atualizar os dados de projeto

@@ -13,7 +13,10 @@
                     <button class="btn-close" type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
 
+
+
                 <div class="modal-body">
+                    <!-- NESSE SE PODE AGENDAR MAIS DE UM DE UMA VEZ: -->
                     <div class="form-group multiselect">
                         <label for="participante" class="my-1">Equipamentos</label>
                         <div class="selectBox participantes" >
@@ -31,6 +34,7 @@
                             @endforeach
                         </div>
                     </div>
+                    <!-- NESSE SE PODE AGENDAR MAIS DE UM DE UMA VEZ: -->
 
                     <div class="form-group">
                         <label class="my-1">Data inicial</label>
@@ -69,17 +73,6 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="descricao" class="my-1">Comentários (opcional)</label>
-                        <textarea class="form-control descricao" name="descricao" id="descricao" required></textarea>
-
-                        <div class="invalid-feedback">
-                            O campo descrição é obrigatório.
-                            O campo descrição deve ter no mínimo 10 caracteres.
-                            O campo descrição deve ter no máximo 255 caracteres.
-                        </div>
-
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -157,17 +150,6 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="descricao" class="my-1">Comentários (opcional)</label>
-                        <textarea class="form-control descricao" name="descricao" id="descricao" required></textarea>
-
-                        <div class="invalid-feedback">
-                            O campo descrição é obrigatório.
-                            O campo descrição deve ter no mínimo 10 caracteres.
-                            O campo descrição deve ter no máximo 255 caracteres.
-                        </div>
-
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -243,15 +225,8 @@
                             <td>Data Final</td>
                             <td id="data_final"></td>
                         </tr>
-                        <tr>
-                            <td>Comentários</td>
-                            <td id="descricao"></td>
-                        </tr>
 
-                        <tr>
-                            <td>Status</td>
-                            <td id="status"></td>
-                        </tr>
+
                     </tbody>
                 </table>
                 <div class="modal-footer">
