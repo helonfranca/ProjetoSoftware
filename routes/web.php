@@ -5,6 +5,7 @@ use App\Http\Controllers\ResultadoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
+use App\Http\Controllers\AgendarEquipamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/resultados/visualizar/{id}', [ResultadoController::class, 'visualizarResultado'])->name('resultados.visualizar');
     Route::put('/resultados/editar', [ResultadoController::class, 'editarResultado'])->name('resultados.editar');
     Route::delete('/resultados/deletar', [ResultadoController::class, 'deletarResultado'])->name('resultados.deletar');
+
+    //Rotas de agendar equipamento
+    Route::get('/agendarEquipamento', [AgendarEquipamentoController::class, 'showPageAgendarEquipamentos'])->name('agendarEquipamento'); //Pega o get "/editar...", vai no "Auth:: , showPageEdit..." e aida dá um nome "agendarEquipamento".
 
 });
 
