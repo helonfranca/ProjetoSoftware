@@ -84,7 +84,7 @@
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn2">
-                    <!-- ^ Isso do modal de adicionar novo projeto -->
+                    <!-- ^ Isso do modal de adicionar novo agendamento -->
                 </div>
 
             </form>
@@ -102,14 +102,14 @@
                 @method('put')
                 <input type="hidden" name="id" id="id_edit">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar projeto</h4>
+                    <h4 class="modal-title">Editar agendamento</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="equipamento" class="my-1">Equipamento selecionado:</label>
                         <div class="equipment-selection">
-                            <span>{{$participantes[0]->name}}</span>
+                            <span>{{$projeto->titulo}}</span>
                         </div>
                         </br>
                     </div>
@@ -187,13 +187,13 @@
                 @method('delete')
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Deletar Projeto</h4>
+                    <h4 class="modal-title">Deletar Agendamento</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <input type="hidden" name="id" id="delete_id">
                 <div class="modal-body">
-                    <p>Tem certeza que deseja deletar o projeto?</p>
-                    <p class="text-warning"><small>Esta ação vai deletar seu projeto</small></p>
+                    <p>Tem certeza que deseja deletar o agendamento?</p>
+                    <p class="text-warning"><small>Esta ação vai deletar seu agendamento</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -219,10 +219,22 @@
                             <td>#</td>
                             <td id="id_proj"></td>
                         </tr>
+
                         <tr>
-                            <td>Título</td>
-                            <td id="titulo"></td>
+                            <td>Equipamento</td>
+                            <td id="participants"></td>
                         </tr>
+
+                        <tr>
+                            <td>Horário Inicial</td>
+                            <td id="horario_inicial"></td>
+                        </tr>
+                        <tr>
+                            <td>Horário Final</td>
+                            <td id="horario_final"></td>
+                        </tr>
+                        <tr>
+
                         <tr>
                             <td>Data Inicial</td>
                             <td id="data_inicial"></td>
@@ -232,13 +244,10 @@
                             <td id="data_final"></td>
                         </tr>
                         <tr>
-                            <td>Descrição</td>
+                            <td>Comentários</td>
                             <td id="descricao"></td>
                         </tr>
-                        <tr>
-                            <td>Participantes</td>
-                            <td id="participants"></td>
-                        </tr>
+
                         <tr>
                             <td>Status</td>
                             <td id="status"></td>

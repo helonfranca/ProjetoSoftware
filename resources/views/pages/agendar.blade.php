@@ -19,7 +19,7 @@
     {{--Dashbord--}}
     @include('components.dashboard')
 
-    {{--Template gerenciar projetos--}}
+    {{--Template agendar equipamento--}}
 
     <div class="container text-center col-10 col-sm-9 col-xxl-9 col-md-9 mt-2 me-md-0 ">
         <h1 class=" p-3 bg-dark text-white rounded" >Agendar Equipamento</h1>
@@ -54,8 +54,9 @@
         <div class="table-responsive-md d-none d-md-block text-center p-2">
             <table class="table table-bordered" id="projectTable">
                 <thead>
-                <tr class="text-center ">
+                <tr class="text-center">
                     <th class="bg-dark text-white" scope="col">#</th>
+                    <th class="bg-dark text-white" scope="col">Equipamento</th> <!-- Nova coluna -->
                     <th class="bg-dark text-white" scope="col">Horário Inicial</th>
                     <th class="bg-dark text-white" scope="col">Horário Final</th>
                     <th class="bg-dark text-white" scope="col">Data inicial</th>
@@ -68,6 +69,8 @@
                 @foreach($projetos as $projeto)
                     <tr class="text-center">
                         <th scope="row">{{ $loop->iteration }}</th>
+
+                        <td>{{ $projeto->titulo}}</td>
                         <td>{{ date('d/m/Y H:i:s', strtotime($projeto->data_inicial))}}</td>
                         <td>
                             @if ($projeto->data_final)
@@ -116,19 +119,22 @@
             <table class="table table-bordered" id="projectTable2">
                 <thead>
                 <tr class="text-center">
-                    <th class="bg-dark text-white"  scope="col">#</th>
-                    <th class="bg-dark text-white"  scope="col">Horário Inicial</th>
-                    <th class="bg-dark text-white"  scope="col">Horário Final</th>
-                    <th class="bg-dark text-white"  scope="col">Data inicial</th>
-                    <th class="bg-dark text-white"  scope="col">Data final</th>
-                    <th class="bg-dark text-white"  scope="col">Status</th>
-                    <th class="bg-dark text-white"  scope="col">Ações</th>
+                    <th class="bg-dark text-white" scope="col">#</th>
+                    <th class="bg-dark text-white" scope="col">Equipamento</th> <!-- Nova coluna -->
+                    <th class="bg-dark text-white" scope="col">Horário Inicial</th>
+                    <th class="bg-dark text-white" scope="col">Horário Final</th>
+                    <th class="bg-dark text-white" scope="col">Data inicial</th>
+                    <th class="bg-dark text-white" scope="col">Data final</th>
+                    <th class="bg-dark text-white" scope="col">Status</th>
+                    <th class="bg-dark text-white" scope="col">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($projetos as $projeto)
                     <tr class="text-center">
                         <th scope="row">{{ $loop->iteration }}</th>
+
+                        <td>{{ $projeto->titulo}}</td>
                         <td>{{ date('d/m/Y H:i:s', strtotime($projeto->data_inicial))}}</td>
                         <td>
                             @if ($projeto->data_final)
@@ -183,7 +189,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="{{asset('js/crudProjeto.js')}}"></script>
+<script src="{{asset('js/crudAgendar.js')}}"></script>
 
 </body>
 </html>
