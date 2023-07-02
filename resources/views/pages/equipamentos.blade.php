@@ -63,12 +63,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($equipamentos as $equipamento)
 
                     <tr class="text-center">
-                        <th scope="row">1</th>
-                        <td>Microscópio</td>
-                        <td> 3  </td>
-                        <td>Equipamento comum</td>
+                        <th scope="row">{{$loop->iteration}}</th>
+                        <td>{{$equipamento->nome}}</td>
+                        <td>{{$equipamento->quantidade}}</td>
+                        @foreach($tipo_equipamentos as $tipo_equipamento)
+                            @if($tipo_equipamento->id == $equipamento->tipoEquipamento)
+                                 <td>{{$tipo_equipamento->descricao}}</td>
+                            @endif
+                        @endforeach
                         <td scope="col" class="text-center">
 
                                 <a href="#viewEquipamentoModal" class="view" id="visualizar" data-toggle="modal" data-id="">
@@ -81,11 +86,9 @@
                                     <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                 </a>
 
-
-
                         </td>
                     </tr>
-
+                @endforeach
                 </tbody>
             </table>
         </div>
