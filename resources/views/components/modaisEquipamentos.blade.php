@@ -40,10 +40,11 @@
 
                     <div class="form-group">
                         <label class="my-1">Tipo de equipamento</label>
-                        <select class="form-select" aria-label="Default select example" name="tipoEquipamento" required>
+                        <select class="form-select" aria-label="Default select example" name="tipo_equipamento" required>
                             <option value="">Selecione o tipo de equipamento</option>
-                            <option value="1">Equipamento comum</option>
-                            <option value="2">Fluxo laminar</option>
+                            @foreach($tipo_equipamentos as $tipo_equipamento)
+                                    <option value="{{$tipo_equipamento->id}}"><span>{{$tipo_equipamento->descricao}}</span></option>
+                            @endforeach
                         </select>
                         <div class="invalid-feedback">
                            Selecione o tipo de equipamento

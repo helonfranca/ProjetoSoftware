@@ -13,7 +13,7 @@ class TipoEquipamentoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('tipo_equipamento')->insert([
+        DB::table('tipo_equipamentos')->insert([
             ['descricao' => 'Equipamento Comum'],
             ['descricao' => 'Fluxo laminar'],
         ]);

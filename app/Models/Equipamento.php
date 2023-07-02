@@ -9,11 +9,13 @@ class Equipamento extends Model
 {
     use HasFactory;
 
+    protected $table = 'equipamentos';
+
     protected $fillable = [
         'nome',
         'quantidade',
         'descricao',
-        'tipoEquipamento'
+
     ];
 
 
