@@ -64,10 +64,11 @@
 <div id="editEquipamentoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post" class="needs-validation" novalidate>
+            <form action="{{route('equipamentos.editar')}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
-                <input type="hidden" name="equipamento_id" id="equipamento_id_edit">
+                <input type="hidden" name="equipamento_id" id="id_edit">
+                <input type="hidden" name="tipoequipamento_id" id="tipoequipamento_id_edit">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar equipamento</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
@@ -103,11 +104,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="my-1">Status</label>
-                        <select class="form-select" aria-label="Default select example" id="status_edit" name="status" required>
-                            <option value="">Selecione o tipo de equipamento</option>
-                            <option value="1" >Equipamento comum</option>
-                            <option value="2">Fluxo laminar</option>
+                        <label class="my-1">Tipo de equipamento</label>
+                        <select class="form-select" aria-label="Default select example" name="tipo_equipamento" id="tipo_edit" required>
+                            <option value=""selected>Selecione o tipo de equipamento</option>
+                            @foreach($tipo_equipamentos as $tipo_equipamento)
+                                <option value="{{$tipo_equipamento->id}}"><span>{{$tipo_equipamento->descricao}}</span></option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -124,7 +126,7 @@
 <div id="deleteEquipamentoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="{{route('equipamentos.deletar')}}" method="post">
                 @csrf
                 @method('delete')
 
@@ -132,7 +134,7 @@
                     <h4 class="modal-title">Deletar Projeto</h4>
                     <button  class="btn-close"  type="button" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input type="hidden" name="id" id="delete_id">
+                <input type="hidden" name="id_equipamento" id="delete_id">
                 <div class="modal-body">
                     <p>Tem certeza que deseja deletar o projeto?</p>
                     <p class="text-warning"><small>Esta ação vai deletar seu projeto</small></p>
@@ -163,23 +165,20 @@
                     </tr>
                     <tr>
                         <td>Nome</td>
-                        <td id="nome"></td>
+                        <td id="nome_equipamento"></td>
                     </tr>
                     <tr>
                         <td>Quantidade</td>
-                        <td id="quantidade"></td>
+                        <td id="quantidade_equipamento"></td>
                     </tr>
                     <tr>
                         <td>Descrição</td>
-                        <td id="descricao"></td>
+                        <td id="descricao_equipamento"></td>
                     </tr>
-                    <tr>
-                        <td>Participantes</td>
-                        <td id="participantes"></td>
-                    </tr>
+
                     <tr>
                         <td>Tipo de equipamento</td>
-                        <td id="tipo"></td>
+                        <td id="tipo_equipamento"></td>
                     </tr>
                     </tbody>
                 </table>

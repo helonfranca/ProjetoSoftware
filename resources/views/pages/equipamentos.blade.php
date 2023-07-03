@@ -76,13 +76,13 @@
                         @endforeach
                         <td scope="col" class="text-center">
 
-                                <a href="#viewEquipamentoModal" class="view" id="visualizar" data-toggle="modal" data-id="">
+                                <a href="#viewEquipamentoModal" class="view" id="visualizar" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
                                 </a>
-                                <a href="#editEquipamentoModal" class="edit" id="editar" data-toggle="modal" data-id="">
+                                <a href="#editEquipamentoModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                 </a>
-                                <a href="#deleteEquipamentoModal" class="delete" data-toggle="modal" data-id="">
+                                <a href="#deleteEquipamentoModal" class="delete" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                 </a>
 
@@ -100,30 +100,32 @@
                 <tr class="text-center">
                     <th class="bg-dark text-white"  scope="col">#</th>
                     <th class="bg-dark text-white"  scope="col">Nome</th>
+                    <th class="bg-dark text-white"  scope="col">Quantidade</th>
                     <th class="bg-dark text-white"  scope="col">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-
+                @foreach($equipamentos as $equipamento)
                     <tr class="text-center">
-                        <th scope="row">1</th>
-                        <td>Microscópio</td>
+                        <th scope="row">{{$loop->iteration}}</th>
+                        <td>{{$equipamento->nome}}</td>
+                        <td>{{$equipamento->quantidade}}</td>
 
                         <td scope="col" class="text-center">
 
-
-                                <a href="#" class="view" id="visualizar" data-toggle="modal" data-id="">
+                                <a href="#viewEquipamentoModal" class="view" id="visualizar" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
                                 </a>
-                                <a href="#" class="edit" id="editar" data-toggle="modal" data-id="">
+                                <a href="#editEquipamentoModal" class="edit" id="editar" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                 </a>
-                                <a href="#" class="delete" data-toggle="modal" data-id="">
+                                <a href="#deleteEquipamentoModal" class="delete" data-toggle="modal" data-id="{{ $equipamento->id }}">
                                     <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                 </a>
 
                         </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -140,7 +142,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="{{asset('js/crudProjeto.js')}}"></script>
+<script src="{{asset('js/crudEquipamentos.js')}}"></script>
 <script src="{{asset('js/validacao.js')}}"></script>
 
 
