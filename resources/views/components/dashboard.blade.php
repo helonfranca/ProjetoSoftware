@@ -35,6 +35,13 @@
                     Agenda de equipamentos
                 </a>
             </li>
+            @if(Auth::user()->tipoUsuario == 1)
+            <li>
+                <a href="{{route('equipamentos')}}" class="nav-link text-white">
+                    Gerenciar equipamentos
+                </a>
+            </li>
+            @endif
         </ul>
         <hr>
         <div class="dropdown">
