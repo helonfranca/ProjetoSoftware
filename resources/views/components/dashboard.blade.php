@@ -31,7 +31,7 @@
             </li>
             <li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{route('agendarEquipamento')}}" class="nav-link text-white">
                     Agenda de equipamentos
                 </a>
             </li>
