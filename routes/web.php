@@ -6,6 +6,7 @@ use App\Http\Controllers\ResultadoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjetoController;
+use App\Http\Controllers\AgendarEquipamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/resultados/editar', [ResultadoController::class, 'editarResultado'])->name('resultados.editar');
     Route::delete('/resultados/deletar', [ResultadoController::class, 'deletarResultado'])->name('resultados.deletar');
 
+
     //Pages de Gerenciar Equipamentos
     Route::get('/equipamentos', [EquipamentoController::class, 'showPageEquipamentos'])->name('equipamentos');
     Route::get('/equipamentos/buscar', [EquipamentoController::class,'obterEquipamentosDoProjeto'])->name('equipamentos.buscar');
@@ -71,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/equipamentos/editar', [EquipamentoController::class, 'editarEquipamento'])->name('equipamentos.editar');
     Route::delete('/equipamentos/deletar', [EquipamentoController::class, 'deletarEquipamento'])->name('equipamentos.deletar');
 
+    //Rotas de agendar equipamento
+    Route::get('/agendarEquipamento', [AgendarEquipamentoController::class, 'showPageAgendarEquipamentos'])->name('agendarEquipamento');
 });
 
 
