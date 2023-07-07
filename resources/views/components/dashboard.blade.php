@@ -89,7 +89,7 @@
             <li>
                 <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Projetos"
                    data-bs-toggle="tooltip" data-bs-placement="right">
-                    <i class="fas fa-microscope" style="color: #f1f1f1"></i>
+                    <i class="fas fa-paste" style="color: #f1f1f1"></i>
                 </a>
             </li>
             <li>
@@ -105,11 +105,15 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip"
+                <a href="{{route('equipamentos')}}" class="nav-link py-3 border-bottom" title="Agendar Equipamentos" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Customers">
-                        <use xlink:href="#people-circle"/>
-                    </svg>
+                    <i class="fas fa-microscope" style="color: #f1f1f1"></i>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('agendarEquipamento')}}" class="nav-link py-3 border-bottom" title="Agendar Equipamentos" data-bs-toggle="tooltip"
+                   data-bs-placement="right">
+                    <i class="far fa-calendar" style="color: #f1f1f1"></i>
                 </a>
             </li>
         </ul>
