@@ -121,7 +121,7 @@
                             <div class="my-4">
                                 <label for="instituicao" class="form-label">Instituição:</label>
 
-                                <input type="text" class="form-control" id="instituicao" name="instituicao" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos." required>
+                                <input type="text" class="form-control" id="instituicao" name="instituicao" pattern="[A-Za-zÀ-ÿ\s-]{1,200}" title="A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos." required>
 
                                 <div class="invalid-feedback">
                                     A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos.
@@ -134,7 +134,7 @@
                         <div class="my-4 text-center">
                             <label for="funcao" class="form-label">Função:</label>
 
-                            <input type="text" class="form-control" id="funcao" name="funcao" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.">
+                            <input type="text" class="form-control" id="funcao" name="funcao" pattern="[A-Za-zÀ-ÿ\s-]{1,200}" title="A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.">
 
                             <div class="invalid-feedback">
                                 A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.
