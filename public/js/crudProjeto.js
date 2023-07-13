@@ -28,6 +28,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
         document.getElementById('titulo').textContent = 'Carregando';
         document.getElementById('data_inicial').textContent = 'Carregando';
         document.getElementById('data_final').textContent =  'Carregando';
+        document.getElementById('descricao_vis').textContent = 'Carregando';
         document.getElementById('status').textContent = 'Carregando';
         document.getElementById('participants').textContent = 'Carregando';
 
@@ -54,7 +55,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
                 document.getElementById('id_proj').textContent = dados.id;
                 document.getElementById('titulo').textContent = dados.titulo;
                 document.getElementById('data_inicial').textContent = new Date(dados.data_inicial).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-                document.getElementById('descricao').textContent = dados.descricao;
+                document.getElementById('descricao_vis').textContent = dados.descricao;
 
                 // Exibir os participantes
                 const participantesElement = document.getElementById('participants');
@@ -63,7 +64,7 @@ document.querySelectorAll('#visualizar').forEach(function(button) {
                     if (index === participantes.length - 1) {
                         participantesElement.innerText += ` ${participante.name}.`;
                     } else {
-                        participantesElement.innerText += `${participante.name},`;
+                        participantesElement.innerText += ` ${participante.name}, `;
                     }
                 });
 
