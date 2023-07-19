@@ -70,10 +70,7 @@
                                                 <button type="submit" class="btn btn-primary mb-4">Enviar</button>
                                             </div>
 
-                                            <div class="mb-2 text-center">
-                                                <label>Esqueceu sua senha?</label>
-                                                <a href="{{route('register')}}" style="color:#3c31d4;">clique aqui</a><br>
-                                            </div>
+
                                         </div>
                                     </form>
 
