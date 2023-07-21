@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(DatabaseCleanerSeeder::class);
         $this->call(class: TipoUsuarioSeeder::class);
         $this->call(class: UsuarioAdmSeeder::class);
+
         $this->call(class: ProjetosTableSeeder::class);
         //$this->call(ItensTableSeeder::class); //TIVE QUE POR JUNTO EM PROJETOS, ENTÃO NÃO É CHAMADO
 
-
+        $this->call(class: TipoEquipamentoSeeder::class);
     }
 }

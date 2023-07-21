@@ -64,7 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/resultados/editar', [ResultadoController::class, 'editarResultado'])->name('resultados.editar');
     Route::delete('/resultados/deletar', [ResultadoController::class, 'deletarResultado'])->name('resultados.deletar');
 
-
     //Pages de Gerenciar Equipamentos
     Route::get('/equipamentos', [EquipamentoController::class, 'showPageEquipamentos'])->name('equipamentos');
     Route::get('/equipamentos/buscar', [EquipamentoController::class,'obterEquipamentosDoProjeto'])->name('equipamentos.buscar');
@@ -75,6 +74,11 @@ Route::middleware(['auth'])->group(function () {
 
     //Rotas de agendar equipamento
     Route::get('/agendarEquipamento', [AgendarEquipamentoController::class, 'showPageAgendarEquipamentos'])->name('agendarEquipamento');
+    Route::get('/agendamentos/buscar', [AgendarEquipamentoController::class, 'obterAgendamentodeEquipamento'])->name('agendamentosEquipamento');
+    Route::get('/meusAgendamentos', [AgendarEquipamentoController::class, 'obterAgendamentos'])->name('meusAgendamentos');
+    Route::post('/agendamentos/salvar', [AgendarEquipamentoController::class, 'agendarEquipamento'])->name('agendamento.salvar');
+    Route::put('/agendamentos/editar', [AgendarEquipamentoController::class, 'atualizarAgendamento'])->name('agendamento.editar');
+    Route::delete('/agendamentos/deletar', [AgendarEquipamentoController::class,'deletarAgendamento'])->name('agendamento.deletar');
 });
 
 

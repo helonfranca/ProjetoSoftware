@@ -18,5 +18,9 @@ class Equipamento extends Model
 
     ];
 
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class, 'id_equipamento');
+    }
 
 }
