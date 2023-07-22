@@ -233,7 +233,7 @@
                         </tr>
                         <tr>
                             <td>Descrição</td>
-                            <td id="descricao"></td>
+                            <td id="descricao_vis"></td>
                         </tr>
                         <tr>
                             <td>Participantes</td>
