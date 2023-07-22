@@ -26,7 +26,7 @@
                             <div class="col">
                                 <div class="row mb-4 text-center border rounded" style="background-color: #edf2f7">
                                     <h2 class="mt-4">Editar perfil:</h2>
-                                    <h4 class="my-2"> Se você quer alterar ou esqueceu sua senha <a href="{{route('editarSenha')}}"> clique aqui </a></h4>
+                                    <h4 class="my-2"> Se você quer alterar sua senha <a href="{{route('editarSenha')}}"> clique aqui </a></h4>
                                 </div>
                                 <form action="{{route('editarPerfilSave')}}" method="post" class="needs-validation" novalidate>
                                     @csrf

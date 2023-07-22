@@ -88,7 +88,7 @@
                                 <div class="mt-4">
                                     <h4>Agenda de equipamentos</h4>
                                     <div class="mt-3 ">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                        <span>Aqui, você tem o controle total sobre as reservas dos equipamentos para atender às suas necessidades. Nesta página, você encontrará um calendário interativo que exibe todos os equipamentos disponíveis e suas respectivas disponibilidades de horários. Basta  selecionar o equipamento que você deseja reservar e selecionar uma data e hora.</span>
                                     </div>
                                     <div>
                                         <a href="{{route('agendarEquipamento')}}">
@@ -110,7 +110,7 @@
                                 <div class="mt-4">
                                     <h4>Estoque</h4>
                                     <div class="mt-3 ">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                        <span> A aba de estoque facilita a gestão dos recursos disponíveis no projeto. Nela, você encontra uma lista organizada dos materiais, com detalhes como nome, descrição e quantidade atual.  </span>
                                     </div>
                                     <div>
                                         <a href="{{route("itens")}}">
@@ -143,7 +143,7 @@
                                 <div class="mt-4">
                                     <h4>Resultados</h4>
                                     <div class="mt-3 ">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore m ullamco laboris nis quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                                        <span> A aba de resultados do nosso projeto no laboratório é onde compartilhamos os dados e descobertas de nossas pesquisas.  </span>
                                     </div>
                                     <div>
                                         <a href="{{route("resultados")}}">

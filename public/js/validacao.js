@@ -188,47 +188,46 @@ function setupValidation(modalSelector) {
 }
 
 // Chamadas para configurar a validação em cada modal específico
-setupValidation("#addEmployeeModal");
-setupValidation("#editEmployeeModal");
 
 
 
 const tituloTextareas = document.querySelectorAll('.titulo');
-tituloTextareas.forEach(function(tituloTextareas) {
-    const tituloFeedback = tituloTextareas.parentElement.querySelector('.invalid-feedback');
+tituloTextareas.forEach(function(tituloTextarea) {
+    const tituloFeedback = tituloTextarea.parentElement.querySelector('.invalid-feedback');
 
-    tituloTextareas.addEventListener('input', function() {
-        const titulo = tituloTextareas.value;
+    tituloTextarea.addEventListener('input', function() {
+        const titulo = tituloTextarea.value;
+        console.log(tituloTextarea.value);
 
         if(titulo.length === 0){
-            tituloTextareas.setCustomValidity('O campo titulo é obrigatório.');
+            tituloTextarea.setCustomValidity('O campo titulo é obrigatório.');
         } else if (titulo.length < 5) {
-            tituloTextareas.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
+            tituloTextarea.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
         } else if (titulo.length > 50) {
-            tituloTextareas.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
+            tituloTextarea.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
         } else {
-            tituloTextareas.setCustomValidity('');
+            tituloTextarea.setCustomValidity('');
         }
-        tituloFeedback.textContent = tituloTextareas.validationMessage;
+        tituloFeedback.textContent = tituloTextarea.validationMessage;
     });
 });
 
 const linkTextareas = document.querySelectorAll('.link');
 
-linkTextareas.forEach(function(linkTextareas) {
-    const linkFeedback = linkTextareas.parentElement.querySelector('.invalid-feedback');
+linkTextareas.forEach(function(linkTextarea) {
+    const linkFeedback = linkTextarea.parentElement.querySelector('.invalid-feedback');
 
-    linkTextareas.addEventListener('input', function() {
-        const link = linkTextareas.value;
+    linkTextarea.addEventListener('input', function() {
+        const link = linkTextarea.value;
 
-        let re = new RegExp("^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$");
+        let re2 = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/
         //let re = new RegExp("^((http(s?):\/\/(www.)?[a-z]+.com\/)|(magnet:\?xt=urn:btih:))");
 
 
-        if (!re.test(link)) {
-            linkTextareas.setCustomValidity('Insira uma URL válida!');
+        if (!re2.test(link)) {
+            linkTextarea.setCustomValidity('Insira uma URL válida!');
         }else {
-            linkTextareas.setCustomValidity('');
+            linkTextarea.setCustomValidity('');
 
         }
 
@@ -241,7 +240,7 @@ linkTextareas.forEach(function(linkTextareas) {
         } else {
             tituloTextareas.setCustomValidity('');
         } */
-        linkFeedback.textContent = linkTextareas.validationMessage;
+        linkFeedback.textContent = linkTextarea.validationMessage;
     });
 })
 
@@ -301,3 +300,6 @@ dataInput.forEach(function(dataInput) {
         dataFeedback.textContent = dataInput.validationMessage;
     });
 })
+
+setupValidation("#addEmployeeModal");
+setupValidation("#editEmployeeModal");
