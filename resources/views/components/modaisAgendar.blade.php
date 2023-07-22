@@ -13,16 +13,20 @@
                 <input type="hidden" class="id_Equipamento" name="id_equipamento">
 
                 <div class="modal-body">
+                    <div class="form-group">
                     <label for="data_hora_inicial" class="my-1">Data e Hora Inicio</label>
                     <input type="datetime-local" class="form-control" id="data_hora_inicial" name="data_hora_inicial"
-                           required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}">
+                           pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}" required>
+                    </div>
                     <div class="invalid-feedback">
                         A data e hora são obrigatórias.
                     </div>
 
+                    <div class="form-group">
                     <label for="data_hora_final" class="my-1">Data e Hora Final</label>
                     <input type="datetime-local" class="form-control" id="data_hora_final" name="data_hora_final"
-                           required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}">
+                           pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}" required>
+                    </div>
                     <div class="invalid-feedback">
                         A data e hora são obrigatórias.
                     </div>
@@ -30,7 +34,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default cancelarBtn" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-success botaoEnviar" id="enviarBtn2">Adicionar</button>
+                    <input type="submit" class="btn btn-success botaoEnviar2" value="Adicionar" id="enviarBtn2">
                 </div>
             </form>
         </div>
@@ -72,7 +76,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default cancelarBtn" data-dismiss="modal">Cancelar</button>
                     <a id="btnExcluir" data-toggle="modal" data-target="#excluirModal" class="btn btn-danger cancelarBtn" data-dismiss="modal">Excluir</a>
-                    <button type="submit" class="btn btn-success botaoEnviar" id="enviarBtn2">Adicionar</button>
+                    <input type="submit" class="btn btn-success botaoEnviar2" value="Adicionar" id="enviarBtn2">
                 </div>
             </form>
         </div>
