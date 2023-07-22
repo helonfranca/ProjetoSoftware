@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                     <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn2">
                     <!-- ^ Isso do modal de adicionar novo projeto -->
                 </div>
@@ -170,7 +170,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                     <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn"> <!-- class enviarBtn -->
                 </div>
             </form>
@@ -196,8 +196,8 @@
                     <p class="text-warning"><small>Esta ação vai deletar seu projeto</small></p>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-danger" value="Excluir">
                 </div>
             </form>
         </div>
