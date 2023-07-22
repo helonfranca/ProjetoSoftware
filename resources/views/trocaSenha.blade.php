@@ -15,28 +15,19 @@
             <div class="card justify-content-center text-center"> <!-- Adicionada a classe "text-center" -->
                 <div class="card-header"><h4>{{ __('Redefinir senha') }}</h4></div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('resetar.senha')}}" class="needs-validation" novalidate>
+                    <form method="POST" action="{{route('resetar.senha')}}">
                         @csrf
                         <input type="hidden" name="token" value="{{$token}}">
                         <div class="row justify-content-center"> <!-- Adicionada a classe "row" e a classe "justify-content-center" -->
                             <div class="col-md-8"> <!-- Modificada a classe para "col-md-8" -->
                                 <label for="email" class="col-md-4 form-label text-md-right">Endereço de E-mail:</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{  request('email') }}" required autocomplete="email" autofocus readonly>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Senha:</label>
-                                <input type="password" class="form-control" name="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
-                                <div class="invalid-feedback">
-                                    A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
-                                </div>
-                                <span id="senhaMessage" class="text-danger"></span>
-                                <div>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirmar Senha:</label>
-                                <input type="password" class="form-control" name="password_confirmation" id="confirm_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
-                                <div class="invalid-feedback">
-                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
-                                </div>
-                                <span id="confirmeSenhaMessage" class="text-danger"></span>
-                                </div>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -66,10 +57,4 @@
             </div>
         </div>
     </body>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-            crossorigin="anonymous"></script>
-    <script src="{{ asset('js/validacao.js') }}" ></script>
-
 </html>

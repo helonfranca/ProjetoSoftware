@@ -234,7 +234,12 @@ class ProjetoController extends Controller
             'curriculoLattes.url' => 'Coloque um link valido para o Curriculo Lattes.',
             'curriculoLattes.required' => 'O campo Curriculo Lattes é obrigatório.',
             'instituicao.required' => 'O campo Instituição é obrigatório.'
-        ]);
+        ]
+
+        );
+
+
+
 
         if ($user) {
             $campos = [

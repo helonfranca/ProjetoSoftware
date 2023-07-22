@@ -27,8 +27,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     // Ocultar a mensagem de sucesso após 3 segundos
     setTimeout(function() {
-        $('.mensagemSucesso').fadeOut('slow');
-    }, 5000);
+        $('#mensagemSucesso').fadeOut('slow');
+    }, 3000);
 });
 
 
@@ -67,33 +67,3 @@ $(document).ready(function() {
         searching: true, // Ativar barra de pesquisa
     });
 });
-
-document.getElementById('visualizar_agenda').addEventListener('click', function() {
-        // Fazer uma requisição AJAX para obter os agendamentos
-        fetch('/meusAgendamentos')
-            .then(response => response.json())
-            .then(data => {
-                // Limpar a tabela de agendamentos
-                document.getElementById('agendamentosBody').innerHTML = '';
-
-                // Preencher os agendamentos na tabela
-                data.forEach(function(agendamento) {
-                    var equipamento = agendamento.nome_equipamento;
-                    var dataHoraInicial = new Date(agendamento.data_hora_inicial).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-                    var dataHoraFinal =  new Date(agendamento.data_hora_final).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-
-                    var row = '<tr>' +
-                        '<td>' + equipamento + '</td>' +
-                        '<td>' + dataHoraInicial + '</td>' +
-                        '<td>' + dataHoraFinal + '</td>' +
-                        '</tr>';
-
-                    document.getElementById('agendamentosBody').innerHTML += row;
-                });
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-});
-
-

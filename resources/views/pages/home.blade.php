@@ -91,9 +91,7 @@
                                         <span>Aqui, você tem o controle total sobre as reservas dos equipamentos para atender às suas necessidades. Nesta página, você encontrará um calendário interativo que exibe todos os equipamentos disponíveis e suas respectivas disponibilidades de horários. Basta  selecionar o equipamento que você deseja reservar e selecionar uma data e hora.</span>
                                     </div>
                                     <div>
-                                        <a href="{{route('agendarEquipamento')}}">
-                                            <button class="button my-3 py-2 px-3">Acesse aqui</button>
-                                        </a>
+                                    <button class="button my-3 py-2 px-3">Acesse aqui</button>
                                     </div>
                                 </div>
                             </div>
