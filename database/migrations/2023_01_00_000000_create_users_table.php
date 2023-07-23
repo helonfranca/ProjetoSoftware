@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->string('telefone');
             $table->string('datadeNascimento');
-            $table->string('sexo');
+            $table->string('sexo')->nullable();
             $table->string('curriculoLattes');
             $table->string('instituicao');
-            $table->string('funcao');
+            $table->string('funcao')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -35,6 +35,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Projeto::class, 'usuario_projeto', 'usuario_id', 'projeto_id');
     }
 
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class, 'id_pesquisador');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
