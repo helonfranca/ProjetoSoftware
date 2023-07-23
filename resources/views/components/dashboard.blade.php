@@ -29,9 +29,15 @@
                     Resultados
                 </a>
             </li>
+            @if(Auth::user()->tipoUsuario == 1)
+                <li>
+                    <a href="{{route('equipamentos')}}" class="nav-link text-white">
+                        Gerenciar equipamentos
+                    </a>
+                </li>
+            @endif
             <li>
-            <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{route('agendarEquipamento')}}" class="nav-link text-white">
                     Agenda de equipamentos
                 </a>
             </li>
@@ -67,7 +73,7 @@
         <ul class="nav nav-pills nav-flush flex-column ">
             <li class="nav-item">
 
-                <a href="/" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
+                <a href="{{route('home')}}" class="d-block link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
                    data-bs-placement="right">
                     <img src="{{asset('img/logomobile.png')}}" width="40" height="45">
                     <span class="visually-hidden">Icon-only</span>
@@ -77,33 +83,39 @@
             <li class="nav-item">
                 <a href="{{route('home')}}" class="nav-link py-3 border-bottom" aria-current="page" title="Home"
                    data-bs-toggle="tooltip" data-bs-placement="right">
-                    <i class="bi bi-house-door"></i>
+                    <i class="bi bi-house-door" style="color: #f1f1f1"></i>
                 </a>
             </li>
             <li>
                 <a href="{{route('projetos')}}" class="nav-link py-3 border-bottom" title="Projetos"
                    data-bs-toggle="tooltip" data-bs-placement="right">
-                    <i class="fas fa-microscope"></i>
+                    <i class="fas fa-paste" style="color: #f1f1f1"></i>
                 </a>
             </li>
             <li>
                 <a href="{{route('itens')}}" class="nav-link py-3 border-bottom" title="Itens" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <i class="bi bi-inboxes"></i>
+                    <i class="bi bi-inboxes" style="color: #f1f1f1"></i>
                 </a>
             </li>
             <li>
                 <a href="{{route('resultados')}}" class="nav-link py-3 border-bottom" title="Resultados" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <i class="bi bi-clipboard"></i>
+                    <i class="bi bi-clipboard" style="color: #f1f1f1"></i>
                 </a>
             </li>
+            @if(Auth::user()->tipoUsuario == 1)
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip"
+                <a href="{{route('equipamentos')}}" class="nav-link py-3 border-bottom" title="Gerenciar Equipamentos" data-bs-toggle="tooltip"
                    data-bs-placement="right">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Customers">
-                        <use xlink:href="#people-circle"/>
-                    </svg>
+                    <i class="fas fa-microscope" style="color: #f1f1f1"></i>
+                </a>
+            </li>
+            @endif
+            <li>
+                <a href="{{route('agendarEquipamento')}}" class="nav-link py-3 border-bottom" title="Agendar Equipamentos" data-bs-toggle="tooltip"
+                   data-bs-placement="right">
+                    <i class="far fa-calendar" style="color: #f1f1f1"></i>
                 </a>
             </li>
         </ul>

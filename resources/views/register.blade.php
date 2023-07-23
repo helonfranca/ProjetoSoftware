@@ -35,7 +35,8 @@
                             <div class="my-4">
                                 <label for="nome" class="form-label">Nome:</label>
 
-                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,200}" required>
+                                <input type="text" class="form-control" id="nome" name="name" pattern="[A-Za-zÀ-ÿ\s]{1,300}" required>
+                                <!-- Se quiser, adicione o apóstrofo ' -->
 
                                 <div class="invalid-feedback">
                                     O nome é obrigatório e deve conter no mínimo 1 letra e no máximo 300 letras.
@@ -76,7 +77,7 @@
 
                                 <input type="password" class="form-control" name="confirm_password" id="confirm_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required oninput="verificarSenhas()">
                                 <div class="invalid-feedback">
-                                    A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                    A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
                                 </div>
                                 <span id="confirmeSenhaMessage" class="text-danger"></span>
 
@@ -107,26 +108,33 @@
 
                             <div class="my-4">
                                 <label for="curriculoLattes" class="form-label">Currículo Lattes:</label>
-                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" pattern="^(https?|ftp)://[^\s/$.?#].[^\s]*$" title="Digite uma URL válida (http://www.exemplo.com).">
+                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" title="Digite uma URL válida (http://www.exemplo.com).">
                                 <div class="invalid-feedback">
-                                    Digite uma URL válida (http://www.exemplo.com).
+                                    Digite uma URL válida ex:(http://www.exemplo.com)
                                 </div>
                                 <span id="curriculoLattesMessage" class="text-danger"></span>
+
+
                             </div>
 
                             <div class="my-4">
                                 <label for="instituicao" class="form-label">Instituição:</label>
-                                <input type="text" class="form-control" id="instituicao" name="instituicao" pattern="[a-zA-Z0-9]{1,200}" title="A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos.">
+
+                                <input type="text" class="form-control" id="instituicao" name="instituicao" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos." required>
+
                                 <div class="invalid-feedback">
                                     A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos.
                                 </div>
                                 <span id="instituicaoMessage" class="text-danger"></span>
+
                             </div>
                         </div>
 
                         <div class="my-4 text-center">
                             <label for="funcao" class="form-label">Função:</label>
-                            <input type="text" class="form-control" id="funcao" name="funcao" pattern="[a-zA-Z0-9]{1,200}" title="A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.">
+
+                            <input type="text" class="form-control" id="funcao" name="funcao" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.">
+
                             <div class="invalid-feedback">
                                 A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.
                             </div>

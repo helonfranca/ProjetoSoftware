@@ -5,17 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class Equipamento extends Model
 {
     use HasFactory;
 
-    protected $table = 'itens';
+    protected $table = 'equipamentos';
 
     protected $fillable = [
         'nome',
         'quantidade',
-        'descricao'
+        'descricao',
+
     ];
 
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class, 'id_equipamento');
+    }
 
 }
