@@ -143,7 +143,7 @@
                                 <div class="mt-4">
                                     <h4>Resultados</h4>
                                     <div class="mt-3 ">
-                                        <span> A aba de resultados do nosso projeto no laboratório é onde compartilhamos os dados e descobertas de nossas pesquisas.  </span>
+                                        <span> A aba de resultados dos projetos no laboratório é onde compartilhamos os dados e descobertas de nossas pesquisas.  </span>
                                     </div>
                                     <div>
                                         <a href="{{route("resultados")}}">
