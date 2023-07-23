@@ -17,11 +17,12 @@
                     <div class="form-group">
                         <label class="my-1">Título</label>
                         <input type="text" class="form-control" name="titulo" pattern="[A-Za-zÀ-ÿ0-9\s!@#$%^&*()-_+=]{1,50}" required>
+                        <div class="invalid-feedback">
+                            O título é obrigatório e deve conter no mínimo 1 e no máximo 50 caracteres alfanuméricos!
+                        </div>
 
                     </div>
-                    <div class="invalid-feedback">
-                        O título é obrigatório e deve conter no mínimo 1 letra e no máximo 50 letras!
-                    </div>
+
 
                     <div class="form-group">
                         <label class="my-1">Data inicial</label>
