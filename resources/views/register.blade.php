@@ -107,11 +107,9 @@
 
                             <div class="my-4">
                                 <label for="curriculoLattes" class="form-label">Currículo Lattes:</label>
-
-                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" pattern="^(https?|ftp)://[^\s/$.?#].[^\s]*$" title="Digite uma URL válida (http://www.exemplo.com).">
-
+                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" title="Digite uma URL válida (http://www.exemplo.com).">
                                 <div class="invalid-feedback">
-                                    Digite uma URL válida (http://www.exemplo.com).
+                                    Digite uma URL válida ex:(http://www.exemplo.com)
                                 </div>
                                 <span id="curriculoLattesMessage" class="text-danger"></span>
 

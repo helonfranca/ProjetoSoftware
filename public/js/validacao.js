@@ -301,5 +301,28 @@ dataInput.forEach(function(dataInput) {
     });
 })
 
+const lattesTextareas = document.querySelectorAll('#lattes');
+
+lattesTextareas.forEach(function(latteTextarea) {
+    const latteFeedback = latteTextarea.parentElement.querySelector('.invalid-feedback');
+
+    latteTextarea.addEventListener('input', function() {
+        const latte = latteTextarea.value;
+
+        let re2 = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/;
+        console.log(latteTextarea.value);
+
+        if (!re2.test(latte)) {
+            latteTextarea.setCustomValidity('Digite uma URL válida ex:(http://www.exemplo.com).');
+        }else {
+            latteTextarea.setCustomValidity('');
+
+        }
+
+        latteFeedback.textContent = latteTextarea.validationMessage;
+    });
+})
+
+
 setupValidation("#addEmployeeModal");
 setupValidation("#editEmployeeModal");
