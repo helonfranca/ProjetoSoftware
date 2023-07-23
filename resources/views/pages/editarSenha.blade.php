@@ -35,9 +35,9 @@
                                             <div class="col-md-6"> <!-- Campos a esquerda: -->
                                                 <div class="my-4">
                                                     <label for="password" class="form-label">Senha nova:</label>
-                                                    <input type="password" class="form-control" name="senhaNova" id="password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
+                                                    <input type="password" class="form-control" name="senhaNova" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                                     <div class="invalid-feedback">
-                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                        A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
                                                     </div>
                                                     <span id="senhaMessage" class="text-danger"></span>
                                                 </div>
@@ -48,9 +48,9 @@
                                             <div class="col-md-6"> <!-- Campos a direita agora: -->
                                                 <div class="my-4">
                                                     <label for="password" class="form-label">Confirme a senha nova:</label>
-                                                    <input type="password" class="form-control" name="confirmeSenhaNova" id="confirm_password" required minlength="8" maxlength="30" oninput="verificarSenhas()">
+                                                    <input type="password" class="form-control" name="confirmeSenhaNova" id="confirm_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." required minlength="8" maxlength="30" oninput="verificarSenhas()">
                                                     <div class="invalid-feedback">
-                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                        A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
                                                     </div>
                                                     <span id="confirmeSenhaMessage" class="text-danger"></span>
                                                 </div>
@@ -59,9 +59,9 @@
                                             <div class="my-4 text-center">
                                                 <div class="my-0">
                                                     <label for="password" class="form-label">Senha antiga:</label>
-                                                    <input type="password" class="form-control" name="senhaAntiga" required minlength="8" maxlength="30">
+                                                    <input type="password" class="form-control" name="senhaAntiga" required minlength="8" maxlength="30" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W_]{8,30}$" title="A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres." >
                                                     <div class="invalid-feedback">
-                                                        A senha deve conter no mínimo 8 e no máximo de 30 caracteres.
+                                                        A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, e ter de 8 a 30 caracteres.
                                                     </div>
                                                 </div>
                                             </div>

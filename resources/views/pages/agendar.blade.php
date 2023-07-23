@@ -129,7 +129,7 @@
                                     <i class="material-icons" data-toggle="tooltip" title="Verificar dados">&#xE417;</i>
                                 </a>
                                 <a class="agendar-link" data-id="{{ $equipamento->id }}">
-                                    <i class="material-icons" data-toggle="tooltip" title="Agendar">&#xE254;</i>
+                                    <i class="material-icons" data-toggle="tooltip" title="Agendar">schedule</i>
                                 </a>
                             </td>
                         </tr>

@@ -52,39 +52,56 @@
 
                                             <div class="my-4">
                                                 <label for="curriculoLattes" class="form-label" >Currículo Lattes:</label>
-                                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" value="{{ $user->curriculoLattes }}">
+                                                <input type="text" class="form-control" id="lattes" name="curriculoLattes" pattern="^(https?|ftp)://[^\s/$.?#].[^\s]*$" title="Digite uma URL válida (http://www.exemplo.com)." value="{{ $user->curriculoLattes }}" required>
+                                                <div class="invalid-feedback">
+                                                    Digite uma URL válida (http://www.exemplo.com).
+                                                </div>
+                                                <span id="curriculoLattesMessage" class="text-danger"></span>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6"> <!-- Campos a direita agora: -->
                                             <div class="my-4">
                                                 <label for="datadeNascimento" class="form-label" >Data de Nascimento: </label>
-                                                <input type="date" class="form-control" id="datanascimento" name="datadeNascimento" value="{{ $user->datadeNascimento }}">
+                                                <input type="date" class="form-control" id="datanascimento" name="datadeNascimento" value="{{ $user->datadeNascimento }}" title="A data de nascimento deve ser válida e relativa a uma idade menor que 130 anos e maior que 13 anos." required oninput="validarDataNascimento()">
+                                                <div class="invalid-feedback">
+                                                    A data de nascimento deve ser válida e relativa a uma idade menor que 130 anos e maior que 13 anos.
+                                                </div>
+                                                <span id="datadeNascimentoMessage" class="text-danger"></span>
                                             </div>
+
 
                                             <div class="my-4">
                                                 <label for="celular" class="form-label">Celular:</label>
 
-                                                <input type="tel" class="form-control" id="celular" name="telefone" pattern="\([0-9]{2}\)[\s-]?[0-9]{4,5}-[0-9]{4,5}" value="{{ $user->telefone }}">
+                                                <input type="tel" class="form-control" id="celular" name="telefone" pattern="\([0-9]{2}\)[\s-]?[0-9]{4,5}-[0-9]{4,5}" value="{{ $user->telefone }}" title="Digite um número de celular válido com DDD (21 12345 6789)" required>
                                                 <script> $('#celular').mask('(00) 00000-0000');</script>
 
 
                                                 <div class="invalid-feedback">
-                                                    Digite um número de celular válido com DDD.
+                                                    Digite um número de celular válido com DDD (21 12345 6789).
                                                 </div>
                                             </div>
 
                                             <div class="my-4">
                                                 <label for="instituicao" class="form-label">Instituição:</label>
-                                                <input type="text" class="form-control" id="instituicao" name="instituicao" value="{{ $user->instituicao }}">
+                                                <input type="text" class="form-control" id="instituicao" name="instituicao" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos." required value="{{ $user->instituicao }}">
+                                                <div class="invalid-feedback">
+                                                    A instituição deve conter no mínimo 1 e no máximo 200 caracteres alfanuméricos.
+                                                </div>
+                                                <span id="instituicaoMessage" class="text-danger"></span>
                                             </div>
-                                        </div>
 
+                                        </div>
 
 
                                         <div class="my-4 text-center">
                                             <label for="funcao" class="form-label">Função:</label>
-                                            <input type="text" class="form-control" id="funcao" name="funcao" value="{{ $user->funcao }}">
+                                            <input type="text" class="form-control" id="funcao" name="funcao" value="{{ $user->funcao }}" pattern="[A-Za-zÀ-ÿ\s]{1,200}" title="A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.">
+                                            <div class="invalid-feedback">
+                                                A função deve ser composta apenas por caracteres alfanuméricos, ter no mínimo 1 e no máximo 200 caracteres.
+                                            </div>
+                                            <span id="funcaoMessage" class="text-danger"></span>
                                         </div>
 
                                         <div class="my-4 text-center">

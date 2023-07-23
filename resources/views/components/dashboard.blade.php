@@ -104,12 +104,14 @@
                     <i class="bi bi-clipboard" style="color: #f1f1f1"></i>
                 </a>
             </li>
+            @if(Auth::user()->tipoUsuario == 1)
             <li>
-                <a href="{{route('equipamentos')}}" class="nav-link py-3 border-bottom" title="Agendar Equipamentos" data-bs-toggle="tooltip"
+                <a href="{{route('equipamentos')}}" class="nav-link py-3 border-bottom" title="Gerenciar Equipamentos" data-bs-toggle="tooltip"
                    data-bs-placement="right">
                     <i class="fas fa-microscope" style="color: #f1f1f1"></i>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="{{route('agendarEquipamento')}}" class="nav-link py-3 border-bottom" title="Agendar Equipamentos" data-bs-toggle="tooltip"
                    data-bs-placement="right">
