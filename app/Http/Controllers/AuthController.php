@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function showPagePrincipal()
     {
         if (Auth::check()) {
-            return redirect('/home'); // Redirecionar para a página inicial, por exemplo
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
         }
 
         return view('welcome');
@@ -24,7 +24,7 @@ class AuthController extends Controller
     public function showPageLogin()
     {
         if (Auth::check()) {
-            return redirect('/home'); // Redirecionar para a página inicial, por exemplo
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
         }
 
         return view('login');
@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function showRegistroForm()
     {
         if (Auth::check()) {
-            return redirect('/home'); // Redirecionar para a página inicial, por exemplo
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
         }
         return view('register');
     }
@@ -41,7 +41,7 @@ class AuthController extends Controller
     public function showRecuperarSenhaForm()
     {
         if (Auth::check()) {
-            return redirect('/'); // Redirecionar para a página inicial, por exemplo
+            return redirect('/projetos'); // Redirecionar para a página inicial, por exemplo
         }
         return view('recuperarSenha');
     }
@@ -62,8 +62,8 @@ class AuthController extends Controller
 
         $response = PASSWORD::broker()->sendResetLink(
             $request->only('email'),
-            function ($user, $resetToken) use ($request) {
-                $resetUrl = URL::to('/resetar-senha/' . $resetToken . '?email=' . urlencode($request->input('email')));
+            function ($user, $resetToken) {
+                $resetUrl = URL::to('/resetar-senha/' . $resetToken);
                 $user->notify(new ResetPasswordNotification($resetToken, $resetUrl));
             }
         );
@@ -84,6 +84,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password|min:8'
+
         ],[
             'email.required' => 'O campo de email é obrigatório.',
             'password.required' => 'O campo de senha é obrigatório.',
@@ -111,6 +112,8 @@ class AuthController extends Controller
             $mensagem = 'Falha ao efetuar mudança de senha!';
             return redirect()->route('password.reset/'.$token)->with('danger', $mensagem);
         }
+
+
     }
 
     public function registrar(Request $request)

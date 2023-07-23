@@ -17,5 +17,8 @@ class Item extends Model
         'descricao'
     ];
 
-
+    public function projeto()
+    {
+        return $this->belongsTo(Projeto::class);
+    }
 }

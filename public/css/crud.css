@@ -39,7 +39,7 @@
     background: #40505e;
     color:white;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-
+    
 }
 
 th{
@@ -50,26 +50,17 @@ th{
 #colorb{
     background: #40505e;
     color:white;
-
 }
 table.table td a:hover {
     color: #2196F3;
-    text-decoration: none;
 }
 table.table td a.edit {
     color: #FFC107;
-    text-decoration: none;
 }
 table.table td a.delete {
     color: #F44336;
-    text-decoration: none;
 }
 
-table.table td a.view {
-    color: #2196F3;
-    text-decoration: none;
-
-}
 
 :root {
     --font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont,

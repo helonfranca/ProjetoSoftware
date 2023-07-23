@@ -17,12 +17,11 @@
                     <div class="form-group">
                         <label class="my-1">Título</label>
                         <input type="text" class="form-control" name="titulo" pattern="[A-Za-zÀ-ÿ0-9\s!@#$%^&*()-_+=]{1,50}" required>
-                        <div class="invalid-feedback">
-                            O título é obrigatório e deve conter no mínimo 1 e no máximo 50 caracteres alfanuméricos!
-                        </div>
 
                     </div>
-
+                    <div class="invalid-feedback">
+                        O título é obrigatório e deve conter no mínimo 1 letra e no máximo 50 letras!
+                    </div>
 
                     <div class="form-group">
                         <label class="my-1">Data inicial</label>
@@ -82,7 +81,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn2">
                     <!-- ^ Isso do modal de adicionar novo projeto -->
                 </div>
@@ -171,7 +170,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success botaoEnviar" value="Adicionar" id="enviarBtn"> <!-- class enviarBtn -->
                 </div>
             </form>
@@ -197,8 +196,8 @@
                     <p class="text-warning"><small>Esta ação vai deletar seu projeto</small></p>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-danger" value="Excluir">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
                 </div>
             </form>
         </div>
@@ -234,7 +233,7 @@
                         </tr>
                         <tr>
                             <td>Descrição</td>
-                            <td id="descricao_vis"></td>
+                            <td id="descricao"></td>
                         </tr>
                         <tr>
                             <td>Participantes</td>

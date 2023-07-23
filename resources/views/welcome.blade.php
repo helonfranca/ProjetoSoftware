@@ -23,7 +23,9 @@
                         seus projetos!</h1>
 
                     <div class="mt-4">
-                            <span>Aqui você pode organizar seus projetos dentro do laboratório, organizando os participantes, resultados dos experimentos, estoque e agendamento de equipamentos.</span>
+                            <span>Lorem ipsum dolor sit amet,<br>
+                                consectetur adipiscing elit, sed do <br>
+                                eiusmod tempor incididunt ut.</span>
                     </div>
 
                     <div class="mt-4">

@@ -188,46 +188,47 @@ function setupValidation(modalSelector) {
 }
 
 // Chamadas para configurar a validação em cada modal específico
+setupValidation("#addEmployeeModal");
+setupValidation("#editEmployeeModal");
 
 
 
 const tituloTextareas = document.querySelectorAll('.titulo');
-tituloTextareas.forEach(function(tituloTextarea) {
-    const tituloFeedback = tituloTextarea.parentElement.querySelector('.invalid-feedback');
+tituloTextareas.forEach(function(tituloTextareas) {
+    const tituloFeedback = tituloTextareas.parentElement.querySelector('.invalid-feedback');
 
-    tituloTextarea.addEventListener('input', function() {
-        const titulo = tituloTextarea.value;
-        console.log(tituloTextarea.value);
+    tituloTextareas.addEventListener('input', function() {
+        const titulo = tituloTextareas.value;
 
         if(titulo.length === 0){
-            tituloTextarea.setCustomValidity('O campo titulo é obrigatório.');
+            tituloTextareas.setCustomValidity('O campo titulo é obrigatório.');
         } else if (titulo.length < 5) {
-            tituloTextarea.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no mínimo 5 caracteres.');
         } else if (titulo.length > 50) {
-            tituloTextarea.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
+            tituloTextareas.setCustomValidity('O campo titulo deve ter no máximo 50 caracteres.');
         } else {
-            tituloTextarea.setCustomValidity('');
+            tituloTextareas.setCustomValidity('');
         }
-        tituloFeedback.textContent = tituloTextarea.validationMessage;
+        tituloFeedback.textContent = tituloTextareas.validationMessage;
     });
 });
 
 const linkTextareas = document.querySelectorAll('.link');
 
-linkTextareas.forEach(function(linkTextarea) {
-    const linkFeedback = linkTextarea.parentElement.querySelector('.invalid-feedback');
+linkTextareas.forEach(function(linkTextareas) {
+    const linkFeedback = linkTextareas.parentElement.querySelector('.invalid-feedback');
 
-    linkTextarea.addEventListener('input', function() {
-        const link = linkTextarea.value;
+    linkTextareas.addEventListener('input', function() {
+        const link = linkTextareas.value;
 
-        let re2 = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/
+        let re = new RegExp("^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$");
         //let re = new RegExp("^((http(s?):\/\/(www.)?[a-z]+.com\/)|(magnet:\?xt=urn:btih:))");
 
 
-        if (!re2.test(link)) {
-            linkTextarea.setCustomValidity('Insira uma URL válida!');
+        if (!re.test(link)) {
+            linkTextareas.setCustomValidity('Insira uma URL válida!');
         }else {
-            linkTextarea.setCustomValidity('');
+            linkTextareas.setCustomValidity('');
 
         }
 
@@ -240,7 +241,7 @@ linkTextareas.forEach(function(linkTextarea) {
         } else {
             tituloTextareas.setCustomValidity('');
         } */
-        linkFeedback.textContent = linkTextarea.validationMessage;
+        linkFeedback.textContent = linkTextareas.validationMessage;
     });
 })
 
@@ -300,29 +301,3 @@ dataInput.forEach(function(dataInput) {
         dataFeedback.textContent = dataInput.validationMessage;
     });
 })
-
-const lattesTextareas = document.querySelectorAll('#lattes');
-
-lattesTextareas.forEach(function(latteTextarea) {
-    const latteFeedback = latteTextarea.parentElement.querySelector('.invalid-feedback');
-
-    latteTextarea.addEventListener('input', function() {
-        const latte = latteTextarea.value;
-
-        let re2 = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[^\s]*)?$/;
-        console.log(latteTextarea.value);
-
-        if (!re2.test(latte)) {
-            latteTextarea.setCustomValidity('Digite uma URL válida ex:(http://www.exemplo.com).');
-        }else {
-            latteTextarea.setCustomValidity('');
-
-        }
-
-        latteFeedback.textContent = latteTextarea.validationMessage;
-    });
-})
-
-
-setupValidation("#addEmployeeModal");
-setupValidation("#editEmployeeModal");
