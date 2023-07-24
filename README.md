@@ -3,21 +3,21 @@
 
 ## Visão Geral
 
-Este software foi desenvolvido para facilitar o gerenciamento dos laboratórios na Universidade Federal Rural do Rio de Janeiro (UFRRJ). Ele oferece uma solução abrangente para organizar diversos projetos, resultados de experimentos, estoque dos projetos, equipamentos e controle de agendamento dos equipamentos dentro de cada laboratório. O sistema visa melhorar a eficiência, colaboração e utilização de recursos pelas equipes de pesquisa e membros docentes da UFRRJ.
+Este software foi desenvolvido pensando para facilitar o gerenciamento dos laboratórios na Universidade Federal Rural do Rio de Janeiro (UFRRJ). Ele oferece uma solução abrangente para organizar diversos projetos, resultados de experimentos, estoque dos projetos, equipamentos e controle de agendamento dos equipamentos dentro de cada laboratório. O sistema visa melhorar a eficiência, colaboração e utilização de recursos pelas equipes de pesquisa e membros docentes da UFRRJ.
 
 ## Recursos
 
 - **Gerenciamento de Projetos**: O software permite que os usuários criem, atualizem e organizem diferentes projetos conduzidos nos laboratórios. Cada projeto pode ter vários membros associados a ele.
 
-- **Resultados de Experimentos**: Os pesquisadores podem facilmente registrar e gerenciar os resultados de seus experimentos, anexando arquivos relevantes e notas a cada entrada de experimento.
-
+- **Resultados de Experimentos**: Os pesquisadores podem facilmente registrar e gerenciar os resultados de seus experimentos.
+  
 - **Gestão de Estoque**: O software permite que os usuários acompanhem o estoque usado em vários projetos. Ele ajuda a monitorar a disponibilidade de suprimentos.
 
 - **Rastreamento de Equipamentos**: Os laboratórios podem manter uma lista detalhada de equipamentos disponíveis para fins de pesquisa. Os usuários podem verificar a disponibilidade dos equipamentos e agendar seu uso conforme necessário.
 
-- **Reserva de Equipamentos**: Os pesquisadores podem reservar equipamentos específicos para seus experimentos por meio do sistema de agendamento do software. Conflitos e sobreposições são gerenciados automaticamente para garantir um uso tranquilo.
+- **Reserva de Equipamentos**: Os pesquisadores podem reservar equipamentos específicos para seus experimentos por meio do sistema de agendamento do software. 
 
-- **Funções de Usuário**: O sistema suporta diferentes funções de usuário, como administradores, pesquisadores e assistentes, cada um com permissões e níveis de acesso específicos.
+- **Funções de Usuário**: O sistema suporta diferentes funções de usuário, como administrador e pesquisadores.
 
 
 ## Requisitos do Sistema
